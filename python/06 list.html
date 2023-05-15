@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lists</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>List</h1>
+	<p>Python Collections (Arrays): There are four collection data types in the Python programming language:</p>
+	<ul>
+		<li><strong>List</strong> is a collection which is ordered and changeable.
+			Allows duplicate members.</li>
+		<li><strong>Tuple</strong> is a collection which is ordered and
+			unchangeable. Allows duplicate members.</li>
+		<li><strong>Set</strong> is a collection which is unordered, unindexed,
+			changeable. No duplicate members.</li>
+		<li><strong>Dictionary</strong> is a collection which is unordered,
+			changeable and indexed. No duplicate members.</li>
+	</ul>
+	<p>When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type
+		for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.
+	</p>
+	<h2>List</h2>
+	<p>A list is a collection which is ordered and changeable. In Python lists are written with square brackets.</p>
+	<p>thislist = ["apple","bat","cat"]<br>
+		print(thislist)</p>
+	<h2>Access Items</h2>
+	<p>You access the list items by referring to the index number:</p>
+	<p>Print the second item of the list:</p>
+	<pre>thislist = ["apple","bat","cat"]
+print(thislist[1])</pre>
+	<h2>Negative Indexing</h2>
+	<p>Negative indexing means beginning from the end, -1 refers to the last item, -2 refers to the second last item etc.
+		Print the last item of the list:</p>
+	<pre>fruits = ["apple","bat","cat"]
+print(fruits[-1])</pre>
+	<h2>Range of Indexes</h2>
+	<p>You can specify a range of indexes by specifying where to start and where to end the range. When specifying a
+		range, the return value will be a new list with the specified items.</p>
+	<p>print the third, fourth, and fifth item:</p>
+	<pre>fruits = ["apple","bat","cat", "orange", "kiwi", "melon", "mango"]
+print(fruits[2:5])</pre>
+	<p>Note: The search will start at index 2 (included) and end at index 5 (not included). Remember that the first item
+		has index 0. By leaving out the start value, the range will start at the first item:</p>
+	<pre>fruits = ["apple","bat","cat", "orange", "kiwi", "melon", "mango"]
+print(fruits[:4])</pre>
+	<p>By leaving out the end value empty, the range will go on to the end of the list:</p>
+	<pre>fruits = ["apple","bat","cat", "orange", "kiwi", "melon", "master"]
+print(fruits[2:])</pre>
+	<h2>Negative Indexes</h2>
+	<p>Give negative indexes to start the search from the end of the list.</p>
+	<p>This example returns the items from index -4 (included) to index -2 (excluded)</p>
+	<pre>thislist = ["apple","bat","cat", "orange", "kiwi", "melon", "mango"]
+print(thislist[-4:-2])</pre>
+	<h2>Change Item Value</h2>
+	<p>In order to change the value of a specific item, simply refer to the index number:</p>
+	<p>Change the third item:</p>
+	<pre>fruits = ["apple", "banana", "cherry"]
+fruits[2] = "blackcurrant"
+print(fruits)</pre>
+	<h2>Loop Through a List</h2>
+	<p>You can loop through the list items by using a for loop:</p>
+	<p>Print all items in the list, one by one:</p>
+	<pre>fruits = ["apple", "banana", "mango"]
+for x in fruits:
+	print(x)</pre>
+	<h2>Check if Item Exists</h2>
+	<p>To determine if a specified item is present in a list use the in keyword.</p>
+	<p>Check if "apple" is present in the list:</p>
+	<pre>items = ["apple", "bat", "cat", dog]
+if "apple" in items:
+	print("Yes, 'apple' is in the items list")</pre>
+	<h2>List Length</h2>
+	<p>To know how many items a list has, we can use the len() function:</p>
+	<p>Print the number of items in the list fruits:</p>
+	<pre>fruits = ["apple", "mango", "cherry","orange"]
+print(len(fruits))</pre>
+	<h2>Add Items</h2>
+	<h3>append()</h3>
+	<p>To add an item to the end of the list, we use the append() method:</p>
+	<pre>thislist = ["apple", "banana", "cherry"]
+thislist.append("orange")
+print(thislist)</pre>
+	<h3>insert()</h3>
+	<p>To add an item at the specified index, use the insert() method:<br>
+		Insert an item as the second position:</p>
+	<pre>thislist = ["apple", "banana", "cherry"]
+thislist.insert(1, "orange")
+print(thislist)</pre>
+	<h2>Remove Items:</h2>
+	<h3>remove by item name</h3>
+	<pre>fruits = ["apple", "banana", "cat","apple","cherry"]
+fruits.remove("apple")
+fruits.remove("apple")
+print(fruits)</pre>
+	<h3>remove by index</h3>
+	<p>nth item can be removed</p>
+	<pre>fruits.remove(1)
+print(fruits)
+</pre>
+	<h3>pop() to remove last item</h3>
+	<p>The pop() method removes the specified index, (or the last item if index is not specified):</p>
+	<pre>fruits.pop()
+print(fruits)</pre>
+	<p>The clear() method empties the list:</p>
+	<pre>fruits = ["apple", "banana", "mango"]
+fruits.clear()
+print(fruits)</pre>
+	<p>The del keyword removes the specified index:</p>
+	<pre>fruits = ["apple", "banana", "orange"]
+del fruits[0]
+print(fruits)</pre>
+	<p>The del keyword can also delete the list completely:</p>
+	<pre>fruits = ["apple", "orange", "cherry"]
+del fruits</pre>
+	<h2>Copy a List</h2>
+	<p>You cannot copy a list simply by typing list2 = list1, because: list2 will only be a reference to list1, and
+		changes made in list1 will automatically also be made in list2. So you need to use <strong>method copy()</strong>.
+	</p>
+	<pre>thislist = ["apple", "banana", "cherry"]
+mylist = thislist.copy()
+print(mylist)</pre>
+	<p>Alternatively we can use <strong>method list().</strong></p>
+	<pre>thislist = ["apple", "banana", "cherry"]
+mylist = list(thislist)
+print(mylist)</pre>
+	<h2>Join Two Lists</h2>
+	<pre>list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+list3 = list1 + list2
+print(list3)</pre>
+	<p>Another way to join two lists are by appending all the items from list2 into list1, one by one:</p>
+	<pre>list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+for x in list2:
+		list1.append(x)
+		print(list1)</pre>
+	<p>Alternatively we can use the extend() method, here we can add elements from one list to another list:<br>
+		Use the extend() method to add list2 at the end of list1:</p>
+	<pre>list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+list1.extend(list2)
+print(list1)</pre>
+	<p>The list() Constructor: It is also possible to use the list() constructor to make a new list.<br>
+		Using the list() constructor to make a List:</p>
+	<p>fruits = list(("apple", "banana", "cherry")) # note the double round-brackets<br>
+		print(fruits)</p>
+	<h2>List Methods</h2>
+	<p>Python has a set of built-in methods that you can use on lists.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>Method</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>append()</td>
+				<td>Adds an element at the end of the list</td>
+			</tr>
+			<tr>
+				<td>clear()</td>
+				<td>Removes all the elements from the list</td>
+			</tr>
+			<tr>
+				<td>copy()</td>
+				<td>Returns a copy of the list</td>
+			</tr>
+			<tr>
+				<td>count()</td>
+				<td>Returns the number of elements with the specified value</td>
+			</tr>
+			<tr>
+				<td>extend()</td>
+				<td>Add the elements of a list (or any iterable), to the end of the current list</td>
+			</tr>
+			<tr>
+				<td>index()</td>
+				<td>Returns the index of the first element with the specified value</td>
+			</tr>
+			<tr>
+				<td>insert()</td>
+				<td>Adds an element at the specified position</td>
+			</tr>
+			<tr>
+				<td>pop()</td>
+				<td>Removes the element at the specified position</td>
+			</tr>
+			<tr>
+				<td>remove()</td>
+				<td>Removes the item with the specified value</td>
+			</tr>
+			<tr>
+				<td>reverse()</td>
+				<td>Reverses the order of the list</td>
+			</tr>
+			<tr>
+				<td>sort()</td>
+				<td>Sorts the list</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

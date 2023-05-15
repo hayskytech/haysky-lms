@@ -21,7 +21,7 @@ function htmlcss_fhc() {
 	include 'html_css.php';
 }
 function basic_tags_fhc() {
-	include 'basic_tags.php';
+	include 'basic_tags.html';
 }
 function table_fhc() {
 	include 'html_table.php';

@@ -1,0 +1,57 @@
+pre {
+	line-height: 22px;
+	background: white;
+	display: block;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 5px;
+	tab-size: 2;
+	border: 1px solid;
+}
+
+.code {
+	position: relative;
+}
+
+#wpbody-content,
+body, p {
+	font-size: 17px;
+	font-family: Arial;
+}
+
+#wpfooter {
+	display: none;
+}
+
+#wpbody,
+body {
+	padding: 20px 20px 20px 20px !important;
+}
+
+#adminmenuwrap {
+	margin: 0 !important;
+}
+
+.tablenav .actions select {
+	padding: 2px 30px 2px 15px !important;
+}
+
+.open-html {
+	position: absolute;
+	padding: 6px;
+	border: 1px solid;
+	border-radius: 5px;
+	top: 10px;
+	right: 10px;
+}
+
+.open-html:hover {
+	background: skyblue;
+	outline: 2px solid;
+}
+
+body {
+	background-color: #f0f0f1;
+	max-width: 1000px;
+	margin: auto;
+}

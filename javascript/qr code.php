@@ -81,7 +81,7 @@
 		var pa = document.getElementById("pa").value;
 		var pn = document.getElementById("pn").value;
 		var am = document.getElementById("am").value;
-		var text = `upi://pay?pa=${pa}&pn=${pa}&am=${am}&cu=INR`;
+		var text = `upi://pay?pa=${pa}&pn=${pn}&am=${am}&cu=INR`;
 		qrcode.makeCode(text);
 	}
 	makeCode();

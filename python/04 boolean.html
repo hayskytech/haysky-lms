@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Boolean</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>Boolean</h1>
+	<p>Booleans represent one of two values: True or False.</p>
+	<pre>print(10 &gt; 9)
+print(10 == 9)
+print(10 &lt; 9)</pre>
+	<p>When you run a condition in an <strong>if</strong> statement, Python returns True or False:<br>
+		Example: Print a message based on whether the condition is True or False:</p>
+	<pre>a = 200
+b = 33
+if b &gt; a:
+print("b is greater than a")
+else:
+print("b is not greater than a")</pre>
+	<h2>Evaluate Values and Variables</h2>
+	<p>The bool() function allows you to evaluate any value, and give you True or False in
+		return,<br>
+		Example: Evaluate a string and a number:</p>
+	<pre>print(bool("Hello"))
+print(bool(15))</pre>
+	<p>Example: Evaluate two variables:</p>
+	<pre>x = "Hello"
+y = 15
+print(bool(x))
+print(bool(y))</pre>
+	<p>Most Values are True:<br>
+		Almost any value is evaluated to True if it has some sort of content.<br>
+		Any string is True, except empty strings.<br>
+		Any number is True, except 0.<br>
+		Any list, tuple, set, and dictionary are True, except empty ones.</p>
+	<p>Example: The following will return True:</p>
+	<pre>bool("abc")
+bool(123)
+bool(["apple", "cherry", "banana"])</pre>
+	<p>Some Values are False:<br>
+		In fact, there are not many values that evaluates to False, except empty values, such
+		as (), [], {}, “”, the number 0, and the value None. And of course the
+		value False evaluates to False.</p>
+	<p>Example: The following will return False</p>
+	<pre>bool(False)
+bool(None)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})</pre>
+	<h2>Examples</h2>
+	<p>Check if two given integers are equal or not.</p>
+	<pre>print("Enter two numbers: ")
+a = input("Enter a value: ")
+b = input("Enter b value: ")
+if a==b:
+	print("Given numbers are equal.")
+else:
+	print("Given numbers are not equal.")</pre>
+	<p>Check if given number is positive or negative or zero</p>
+	<pre>a = int(input("Enter a number: "))
+if a&gt;0:
+	print("Given number is positive")
+elif a&lt;0:
+	print("Given number is negative")
+else:
+	print("Given number is zero")</pre>
+	<p><span style="font-weight: 400;">Check if given person age is a eligible for voting or not</span></p>
+	<pre>age = int(input("Enter person age: "))
+if age&gt;=18:
+	print("Eligible for voting")
+else:
+	print("Not Eligible for voting")</pre>
+</body>
+</html>

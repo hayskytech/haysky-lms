@@ -1,0 +1,141 @@
+<body>
+	<h1>Python</h1>
+	<p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p>
+	<ul>
+		<li>Python can be used on a server to create web applications / websites.
+		</li>
+		<li>Python can connect to database systems.</li>
+		<li>Python can also read and modify files.</li>
+		<li>Python can be used to handle big data and do complex mathematics.</li>
+		<li>Python supports Windows, Mac, Linux, Raspberry Pi etc.</li>
+		<li>Python has a simple syntax which is similar to normal English language.
+		</li>
+		<li>Python has fewer lines when compared to other programming languages.
+		</li>
+		<li>Python runs on an interpreter system. It means code is executed as soon
+			as it is written.</li>
+		<li>Python can also be treated in a procedural way, an object-oriented way
+			or a functional way.</li>
+	</ul>
+	<p><strong>How to run python in command prompt?</strong></p>
+	<pre>WINKEY + R
+cmd
+E:
+cd folder
+python filename.py</pre>
+	<p><strong>Hello world program:</strong></p>
+	<pre>print('Hello world')
+</pre>
+	<h2>VARIABLES</h2>
+	<ul>
+		<li>Variables are containers for storing data values.</li>
+		<li>Python has no command for declaring a variable.</li>
+		<li>A variable is created the moment you first assign a value to it.</li>
+	</ul>
+	<pre>x = 5
+y = "John"
+print(x)
+print(y)</pre>
+	<p>Variables do not need to be declared with any particular type, and can even change type later.</p>
+	<pre>x = 4 # x is of type int
+x = "Mohan" # x is now of type str
+print(x)</pre>
+	<p>String variables can be declared either by using single or double quotes:</p>
+	<pre>x = "hello"
+# is the same as
+x = 'hello'</pre>
+	<p><strong>Variable Names:</strong></p>
+	<p>A variable can have a short name (like a or b) or a more descriptive name (age, name, total, phone, volume).</p>
+	<ul>
+		<li>A variable name must start with a letter or the underscore character
+		</li>
+		<li>It cannot start with a number</li>
+		<li>It can only contain alpha-numeric characters and underscores (A-z, 0-9,
+			and _ )</li>
+		<li>Variable names are case-sensitive (age, Age and AGE are three different
+			variables)</li>
+	</ul>
+	<p><strong>Legal variable names:</strong></p>
+	<pre>myvar = "apple"
+my_var = "bat"
+_my_var = "cat"
+myVar = "dog"
+MYVAR = "eye"
+myvar2 = "frog"</pre>
+	<p><strong>Illegal variable names:</strong></p>
+	<pre>2myvar = "fish"
+my-var = "frog"
+my var = "fan"</pre>
+	<p>NOTE: Remember that <em><strong>variable names are case-sensitive</strong></em></p>
+	<p><strong>Assign Value to Multiple Variables:</strong></p>
+	<p>Python allows you to assign values to multiple variables in one line:</p>
+	<pre>x, y, z = "apple", "bat", "cat"
+print(x)
+print(y)
+print(z)</pre>
+	<p>And you can assign the same value to multiple variables in one line:</p>
+	<pre>x = y = z = "banana"
+print(x)
+print(y)
+print(z)</pre>
+	<p><strong>Output Variables:</strong></p>
+	<p>The print statement is often used to output variables. To combine both text and a variable, Python uses
+		the + character:</p>
+	<pre>x = "awesome"
+print("Haysky is " + x)</pre>
+	<p>You can also use the + character to add a variable to another variable:</p>
+	<pre>x = "Haysky is "
+y = "awesome"
+z =  x + y
+print(z)</pre>
+	<p>For numbers, the + character works as a mathematical operator – addition:</p>
+	<pre>x = 5
+y = 10
+print(x + y)</pre>
+	<p>If you try to combine a string and a number, <strong>Python will give you an error:</strong></p>
+	<pre>x = 5
+y = "John"
+print(x + y)
+</pre>
+	<h2>COMMENTS</h2>
+	<ul>
+		<li>Comments can be used to explain Python code and make the code more
+			readable.</li>
+		<li>Comments can be used to prevent execution when testing code.</li>
+		<li>Comments start with a # at the beginning of each line.</li>
+	</ul>
+	<pre>#This is a comment
+print("Hello, Haysky!")</pre>
+	<p>Comments can be placed at the end of a line, and Python will ignore the rest of the line.</p>
+	<pre>print("Hello, Sir") #This is a comment</pre>
+	<p>Comments does not have to be text to explain the code, it can also be used to prevent Python from executing:</p>
+	<pre>#print("Hello, World!")
+print("Hai, Dear!")</pre>
+	<p><strong>Multi-Line Comments:</strong></p>
+	<p>Python does not really have a syntax for multi-line comments. To add a multiline comment you could insert
+		a # for each line:</p>
+	<pre>#This is a comment
+#written in
+#more than just one line
+print("Hello, World!")</pre>
+	<p>Or, not quite as intended, you can use a multiline string. Since Python will ignore string literals that are
+		not assigned to a variable, you can add a multiline string (triple quotes) in your code, and place your comment
+		inside it:</p>
+	<p>Example:</p>
+	<pre>"""
+This is a comment
+written in
+more than just one line
+"""
+print("Hello, World!")</pre>
+	<p>As long as the string is not assigned to a variable, Python will read the code, but then ignore it, and you have
+		made a multiline comment.</p>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		pre = document.getElementsByTagName("pre");
+		for (var i = 0; i < unf.length; i++) {
+			pre[i].innerText = unf[i].innerHTML
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>

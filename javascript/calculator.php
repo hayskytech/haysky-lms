@@ -1,6 +1,16 @@
-<h1>Calculator</h1>
-<?php sc1(); ?>
-<div id="main">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+</head>
+
+<body>
+	<h1>Calculator</h1>
+	<unf><div id="main_cal">
 	<h3>Simple Calculator</h3>
 	<textarea name="" id="inp" cols="26" rows="4" onkeypress="handleKey(event)"></textarea>
 	<div class="line">
@@ -49,12 +59,12 @@
 	}
 </script>
 <style>
-	* {
+	#main_cal * {
 		font-size: 20px;
 		font-family: Arial;
 	}
 
-	#main {
+	#main_cal {
 		width: 300px;
 		border: 1px solid;
 		padding: 15px 0 15px 15px;
@@ -74,14 +84,25 @@
 		color: white;
 	}
 
-	.result {
+	#main_cal .result {
 		background-color: green;
 		color: white;
 	}
 
-	h3 {
+	#main_cal h3 {
 		text-align: center;
 		margin: 0;
 	}
 </style>
-<?php sc2(); ?>
+</unf>
+	<pre></pre>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		pre = document.getElementsByTagName("pre");
+		for (var i = 0; i < unf.length; i++) {
+			pre[i].innerText = unf[i].innerHTML
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

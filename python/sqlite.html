@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SQLite3 - Python</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>SQLite</h1>
+	<h2>Connect to database</h2>
+	<pre>import sqlite3
+con = sqlite3.connect("tutorial.db")</pre>
+	<p>In order to execute SQL statements and fetch results from SQL queries, we will need to use a database cursor.</p>
+	<pre>cur = con.cursor()</pre>
+	<p>This will create new database file if it does not exists.</p>
+	<h2>Create Table</h2>
+	<pre>cur.execute("CREATE TABLE book(title, year, price)")</pre>
+	<p>we can mention datatypes as well</p>
+	<pre>cur.execute("""CREATE TABLE COMPANY
+	(id INT PRIMARY KEY NOT NULL,
+	person TEXT NOT NULL,
+	age INT NOT NULL,
+	address CHAR(50),
+	salary REAL);""")</pre>
+
+	<h3>Check if table exists:</h3>
+	<p>This returns the table names in a tuple:</p>
+	<pre>res = cur.execute("SELECT name FROM sqlite_master")
+print(res.fetchall())</pre>
+
+	<h2>INSERT</h2>
+	<pre>cur.execute("""
+INSERT INTO book VALUES
+('HTML CSS', 1975, 250),
+('JavaScript', 1983, 300)
+""")
+con.commit()</pre>
+	<p>The INSERT statement implicitly opens a transaction, which needs to be committed. You can multiple execute statements and finally commit all at once.</p>
+
+	<h2>SELECT</h2>
+	<p>Get single row in a tuple</p>
+	<pre>res = cur.execute("SELECT price FROM book")
+res.fetchone()</pre>
+	<p>Get all the rows in a list of tuples. Each row is a tuple</p>
+	<pre>res = cur.execute("SELECT price FROM book")
+res.fetchall()</pre>
+
+	<h2>INSERT many using list data</h2>
+	<pre>data = [
+	("PHP", 1982, 300),
+	("MySQL", 1983, 200),
+]
+cur.executemany("INSERT INTO book VALUES(?, ?, ?)", data)
+con.commit()</pre>
+
+	<h2>UPDATE</h2>
+	<pre>cur.execute("UPDATE book set title = 'Python' where title = 'PHP'")
+con.commit()</pre>
+	<p>You can get count of total changes done.</p>
+	<pre>print("Total number of rows updated :", conn.total_changes)</pre>
+
+	<h2>DELETE row</h2>
+	<pre>conn.execute("DELETE from COMPANY where ID = 2")
+conn.commit()</pre>
+
+	<h2>DROP table (delete)</h2>
+	<pre>cur.execute("DROP TABLE movie")
+con.commit()</pre>
+
+	<h2>Close Database</h2>
+	<pre>con.close()</pre>
+</body>
+</html>
