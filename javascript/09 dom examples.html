@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Examples</title>
+</head>
+
+<body>
+	<h1>DOM Examples</h1>
+
+	<h2>onClick function</h2>
+	<unf><button onclick="go()">Click me</button>
+<script>
+	function go() {
+		alert("I am clicked!")
+	}
+</script>
+</unf>
+
+	<h2>Connect element to function</h2>
+
+	<unf><button  id="myBtn">Hello</button>
+<script>
+	document.getElementById("myBtn").addEventListener('click', run);
+	function run() {
+		alert('Hello');
+	}
+</script>
+</unf>
+
+	<h2>Without function name</h2>
+	<unf><button  id="myBtn2">Welcome to Haysky</button>
+<script>
+	document.getElementById("myBtn2").onclick = function () {
+		alert('Welcome to Haysky!');
+	}
+</script>
+</unf>
+
+	<h2>Onchange select/input element</h2>
+
+	<unf><select onchange="run1(this)">
+	<option>Male</option>
+	<option>Female</option>
+</select>
+<input type="number" onchange="run2(this)" value="20">
+<h1 id="ans">hai</h1>
+<script type="text/javascript">
+	function run1(x) {
+		document.getElementById('ans').innerText = x.value;
+	}
+	function run2(z) {
+		document.getElementById('ans').style.fontSize = z.value + 'px'
+	}
+</script>
+</unf>
+
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

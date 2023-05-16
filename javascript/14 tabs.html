@@ -1,6 +1,17 @@
-<h1>Tabs</h1>
-<?php sc1(); ?>
-<div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tabs</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>Tabs</h1>
+	<unf><div>
 	<div class="tabs">
 		<ul class="tabs-list">
 			<li class="tabel tabactive" data-tab="tab1">Tab1</li>
@@ -115,4 +126,12 @@
 		}
 	}
 </style>
-<?php sc2(); ?>
+<script>
+	unf = document.getElementsByTagName("unf");
+	for (var i = 0; i < unf.length; i++) {
+		pre = document.createElement("pre");
+		pre.innerText = unf[i].innerHTML;
+		unf[i].appendChild(pre);
+	}
+</script>
+</unf>

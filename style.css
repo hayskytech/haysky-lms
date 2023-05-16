@@ -7,6 +7,7 @@ pre {
 	border-radius: 5px;
 	tab-size: 2;
 	border: 1px solid;
+	font-family: consolas;
 }
 
 .code {
@@ -15,7 +16,6 @@ pre {
 
 #wpbody-content,
 body, p {
-	font-size: 17px;
 	font-family: Arial;
 }
 

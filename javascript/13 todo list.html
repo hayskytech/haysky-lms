@@ -1,21 +1,32 @@
-<h1>Todo List</h1>
-<?php sc1(); ?>
-<input type="text" onkeypress="handleKey(event)" autofocus>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo List</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>Todo List</h1>
+	<unf><input type="text" onkeypress="handleKey(event)" autofocus id="inp1">
 <button onclick="addItem()">OK</button>
-<ol></ol>
+<ol id="list1"></ol>
 <script>
-	input = document.getElementsByTagName('input')[0];
+	inp1 = document.getElementById('inp1');
 	function addItem() {
-		val = input.value
+		val = inp1.value
 		if (val == '') {
 			return
 		}
-		list = document.getElementsByTagName('ol')[0]
+		list = document.getElementById('list1')
 		li = document.createElement('li')
 		li.innerHTML = val + ' <button onclick="del(this)">x</button>'
 		list.appendChild(li)
-		input.value = ''
-		input.focus()
+		inp1.value = ''
+		inp1.focus()
 	}
 	function handleKey(event) {
 		if (event.key == 'Enter') {
@@ -27,26 +38,27 @@
 	}
 </script>
 <style>
-	ol li {
+	ol#list1 li {
 		max-width: 300px;
 		height: 25px;
 		font-size: 22px;
 	}
 
-	ol button {
+	ol#list1 button {
 		float: right;
 	}
 </style>
-<?php sc2(); ?>
-<h2>Todo List using <b>Local storage</b></h2>
-<?php sc1(); ?>
-<h2>Todo List using Local storage</h2>
-<div>
+</unf>
+
+
+	<h2>Todo List using <b>Local storage</b></h2>
+	<unf><div>
 	Enter text: <input id="input" autofocus />
 	<button id="button">ADD Item</button>
 	<button id="removeAll">Remove All</button>
 </div>
-<ol id="main_list"></ol>
+<ol id="main_list">
+</ol>
 
 <script type="text/javascript">
 	const btn = document.getElementById("button");
@@ -88,10 +100,11 @@
 	}
 
 	function render_items() {
-		icon = `<button class="remove" onclick="remove_this(this)" title="Remove this">x</button>`;
+		icon = `<button onclick="remove_this(this)">x</button>`;
 		var str = "";
 		for (var i = 0; i < list.length; i++) {
-			str += `<li index="${i}">${list[i]} ${icon}</li>`;
+			str += `
+<li index="${i}">${list[i]} ${icon}</li>`;
 		}
 		ol.innerHTML = str;
 		const myJSON = JSON.stringify(list);
@@ -110,35 +123,47 @@
 		font-family: Arial;
 	}
 
-	li {
+	#main_list li {
 		max-width: 300px;
 		background: pink;
 		margin: 5px;
 		padding: 5px;
 		border-radius: 5px;
 		border: 1px solid;
+		/* height: 28px; */
 	}
 
-	div,
-	li,
-	#button,
-	#removeAll,
-	input {
+	#main_list div,
+	#main_list li,
+	#main_list #button,
+	#main_list #removeAll,
+	#main_list input {
 		font-size: 20px;
 	}
 
-	li:hover {
+	#main_list li:hover {
 		background: skyblue;
 	}
 
-	ol {
+	#main_list ol {
 		list-style-position: inside;
 		padding: 0;
 	}
 
-	.remove {
+	#main_list button {
 		float: right;
 		cursor: pointer;
+		font-size: 13px;
 	}
 </style>
-<?php sc2(); ?>
+</unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+</body>
+</html>

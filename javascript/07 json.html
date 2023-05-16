@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON</title>
+</head>
+<body>
 <h1>JSON</h1>
 <ul>
 <li>JSON is a format for storing and transporting data. JSON is often used when data is sent from a server to a web page.</li>
@@ -13,8 +22,8 @@
 </ul>
 <h2>JavaScript Objects</h2>
 JavaScript objects are written with curly braces {}. Object properties are written as name:value pairs, separated by commas.
-<?php sc1(); ?>
-<script>
+
+<pre>
 var person = {
   firstName : "John",
   lastName  : "Doe",
@@ -22,13 +31,13 @@ var person = {
   eyeColor  : "blue"
 };
 document.write(person.firstName + " is " + person.age + " years old.");
-</script>
-<?php sc2(); ?>
+</pre>
+
 
 
 <h2>JSON Example</h2>
-<?php sc1(); ?>
-<script type="text/javascript">
+
+<pre>
 	person = {
 		"fname":"ramesh",
 		"lname":"kumar"
@@ -53,22 +62,24 @@ document.write(person.firstName + " is " + person.age + " years old.");
 		"child3" : { "fname":"amhsdv",'lname':'kabsjd' },
 	}
 	alert(std.child1.fname);
-</script>
-<?php sc2(); ?>
+</pre>
+
 <h2>JSON Data - A Name and a Value</h2>
 JSON data is written as name/value pairs, just like JavaScript object properties.
-<?php sc1(); ?>
+<pre>
 "firstName":"John"
-<?php sc2(); ?>
+</pre>
 JSON names require double quotes. JavaScript names do not.
 
 
 <h2>JSON Arrays</h2>
 JSON arrays are written inside square brackets.
-<?php sc1(); ?>
+<pre>
 "employees":[
   {"firstName":"John", "lastName":"Doe"},
   {"firstName":"Anna", "lastName":"Smith"},
   {"firstName":"Peter", "lastName":"Jones"}
 ]
-<?php sc2(); ?>
+</pre>
+<link rel="stylesheet" href="../style.css">
+</body></html>

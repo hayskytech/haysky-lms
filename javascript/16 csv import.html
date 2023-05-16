@@ -10,8 +10,7 @@
 
 <body>
 	<h1>CSV Import using Javascript</h1>
-	<unf><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
-<input type="file" name="file" id="inp" accept=".csv"> <br><br>
+	<unf><input type="file" name="file" id="inp" accept=".csv"> <br><br>
 <input type="button" id="btnsubmit" value="Submit" onclick="readCSVFile();">
 <br><br>
 <table id="tblcsvdata"></table>
@@ -42,28 +41,11 @@
 						newCell = newRow.insertCell();
 						newCell.innerHTML = values[j];
 					}
-					var pn = values[0];
-					var am = values[1];
-					upi_id = values[2].replace(/(\r\n|\n|\r)/gm, "");
-					var pa = upi_id;
-					var url = `upi://pay?pa=${pa}&pn=${pn}&am=${am}&cu=INR`;
-					newCell = newRow.insertCell()
-					newCell.innerHTML =
-						`<div id="qr${i}"></div>
-					<button onclick="showqr('qr${i}','${url}')">Show QR</button>
-					<button onclick="hideqr('qr${i}')">Hide QR</button>`;
 				}
 			};
 		} else {
 			alert("Please select a file.");
 		}
-	}
-	function showqr(qr_id, url) {
-		document.getElementById(qr_id).innerHTML = ""
-		new QRCode(document.getElementById(qr_id), url);
-	}
-	function hideqr(qr_id) {
-		document.getElementById(qr_id).innerHTML = ""
 	}
 </script>
 <style type="text/css">
@@ -81,12 +63,12 @@
 	}
 </style>
 </unf>
-	<pre></pre>
 	<script>
 		unf = document.getElementsByTagName("unf");
-		pre = document.getElementsByTagName("pre");
 		for (var i = 0; i < unf.length; i++) {
-			pre[i].innerText = unf[i].innerHTML
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
 		}
 	</script>
 	<link rel="stylesheet" href="../style.css">

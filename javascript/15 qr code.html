@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QR Code</title>
+</head>
+
+<body>
+	<h1>QR Code Generator</h1>
+	<unf><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+<input id="text" type="text" value="https://www.google.com"
+	onkeypress="handleKey1(event)" />
+<button onclick="run1()">Submit</button>
+<br />
+<div id="qrcode" style="width:200px; height:200px; margin-top:15px;"></div>
+<script type="text/javascript">
+	var qrcode1 = new QRCode(document.getElementById("qrcode"), {
+		width: 200,
+		height: 200
+	});
+	function run1() {
+		var elText = document.getElementById("text");
+		if (!elText.value) {
+			return;
+		}
+		qrcode1.makeCode(elText.value);
+	}
+	run1();
+	function handleKey1(event) {
+		if (event.key == 'Enter') {
+			run1()
+		}
+	}
+</script>
+</unf>
+	<h2>vCard Generator (Contact Info)</h2>
+	<unf><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+<input type="text" id="fn" value="Ramesh Kumar" /><br />
+<input type="text" id="num" value="+912345678900">
+<button onclick="run2()">Generate</button>
+<div id="qrcode2" style="width:200px; height:200px; margin-top:15px;"></div>
+<script type="text/javascript">
+	var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+		width: 200,
+		height: 200
+	});
+	var fn = document.getElementById("fn");
+	var num = document.getElementById("num");
+	function run2() {
+		var text = `BEGIN:VCARD\nVERSION:3.0\nN:;\nFN:${fn.value}\nTEL:${num.value}\nEND:VCARD`;
+		qrcode2.makeCode(text);
+	}
+	run2();
+</script>
+</unf>
+
+	<h2>UPI Payment QR Code</h2>
+	<unf><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+<table>
+	<tr>
+		<td>UPI ID:</td>
+		<td><input type="text" id="pa" value="mdsufyan71@ybl" /></td>
+	</tr>
+	<tr>
+		<td>Full Name:</td>
+		<td><input type="text" id="pn" value="SHAIK MOHAMMAD SUFYAN" /></td>
+	</tr>
+	<tr>
+		<td>Amount: </td>
+		<td><input type="text" id="am" value="200" /></td>
+	</tr>
+</table>
+<button onclick="run3()">Generate</button>
+<div id="qrcode3" style="width:200px; height:200px; margin-top:15px;"></div>
+<script type="text/javascript">
+	var qrcode3 = new QRCode(document.getElementById("qrcode3"), {
+		width: 200,
+		height: 200
+	});
+	function run3() {
+		var pa = document.getElementById("pa").value;
+		var pn = document.getElementById("pn").value;
+		var am = document.getElementById("am").value;
+		var text = `upi://pay?pa=${pa}&pn=${pn}&am=${am}&cu=INR`;
+		qrcode3.makeCode(text);
+	}
+	run3();
+</script>
+</unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			x = document.createElement('div')
+			x.innerHTML = unf[i].innerHTML
+			x.querySelector("div").innerHTML = ''
+			x.querySelector("div").removeAttribute('title')
+			pre = document.createElement("pre");
+			pre.innerText = x.innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

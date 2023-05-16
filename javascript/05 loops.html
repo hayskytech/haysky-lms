@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Loops</title>
+</head>
+
+<body>
+	<h1>Loops</h1>
+	Loops are used to execute a block of code number of continuously.
+	<ul>
+		<li>for - loops through a block of code a number of times</li>
+		<li>for/in - loops through the properties of an object</li>
+		<li>for/of - loops through the values of an iterable object</li>
+		<li>while - loops through a block of code while a specified condition is true</li>
+		<li>do/while - also loops through a block of code while a specified condition is true</li>
+	</ul>
+	<h2>For loop</h2>
+	<pre>
+for (i = 0; i < 5; i++) {
+	alert(i);
+}
+for(x=5; x >= 1; x--){
+	 document.write("hello&lt;br>");
+}
+</pre>
+
+	<h2>The For/In Loop</h2>
+	<p>The for/in statement loops through the properties of an object.</p>
+	<pre>
+var person = {fname:"John", lname:"Doe", age:25};
+for (x in person) {
+	alert(person[x]);
+}
+</pre>
+
+
+	<h2>For/Of Loop</h2>
+	<p>The JavaScript for/of statement loops through the values of an iterable objects for/of lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more.</p>
+	<pre>
+	txt = ["John", "Doe", "blue"]
+	for (x of txt) {
+		alert(x);
+	}
+</pre>
+
+
+	<h2>While Loop</h2>
+	The while loop loops through a block of code as long as a specified condition is true.
+	<pre>
+	var i = 0;
+	while (i < 5) {
+		document.write("hello&lt;br>");
+		i++;
+	}
+</pre>
+
+
+	<h2>Do/While Loop</h2>
+	The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the
+	condition is true, then it will repeat the loop as long as the condition is true.
+	<pre>
+	var i = 20;
+	do {
+		alert(i);
+		i++;
+	}
+	while (i < 10);
+</pre>
+	<h2>Break and Continue</h2>
+	The break statement "jumps out" of a loop. The continue statement "jumps over" one iteration in the loop.
+	<pre>
+	for (i = 1; i <= 20; i++) {
+		if (i == 5) {
+			continue;
+		}
+		if (i == 10) {
+			break;
+		}
+		document.write(i + ') hai&lt;br>');
+	}
+</pre>
+	<h1>Example</h1>
+	<h2>Triangle (left aligned)</h2>
+	<pre>* <br>* * <br>* * * <br>* * * * <br>* * * * * <br>* * * * * * <br>* * * * * * * <br>* * * * * * * * <br>* * * * * * * * * <br>* * * * * * * * * * <br>* * * * * * * * * * * <br></pre>
+	<pre>&lt;script type="text/javascript">
+	str = ''
+	for (x = 0; x <= 10; x++) {
+		for (y = 0; y <= x; y++) {
+			str += '* '
+		}
+		str += '&lt;br>'
+	}
+	document.write('&lt;pre>' + str + '&lt;/pre>')
+&lt;/script></pre>
+
+	<h2>Triangle (center aligned)</h2>
+	<pre>           * <br>          * * <br>         * * * <br>        * * * * <br>       * * * * * <br>      * * * * * * <br>     * * * * * * * <br>    * * * * * * * * <br>   * * * * * * * * * <br>  * * * * * * * * * * <br> * * * * * * * * * * * <br></pre>
+	<pre>&lt;script type="text/javascript">
+	str = ''
+	for (x = 0; x <= 10; x++) {
+		for (z = 0; z <= 10 - x; z++) {
+			str += ' '
+			// use double space for right aligned 
+		}
+		for (y = 0; y <= x; y++) {
+			str += '* '
+		}
+		str += '&lt;br>'
+	}
+	document.write('&lt;pre>' + str + '&lt;/pre>')
+&lt;/script></pre>
+
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

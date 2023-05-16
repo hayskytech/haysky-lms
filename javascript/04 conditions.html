@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Conditional Statements</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>Conditional Statements</h1>
+	<h2>if</h2>
+
+	<p>Execute a block of code <b>if</b> a <b>condition</b> is <b>true</b></p>
+	<pre>
+<script>
+	document.write(`&lt;script type="text/javascript">
+age = 20;
+if (age > 18) {
+	document.write("Eligible for voting");
+}
+&lt;/script>`);
+</script>
+</pre>
+
+	<h2>if else</h2>
+
+	<p>Execute another block of code <b>if</b> a <b>condition</b> is <b>false</b></p>
+	<pre>
+<script type="text/javascript">
+	document.write(`age = 15;
+if (age > 18) {
+	document.write("Eligible for voting");
+} else {
+	document.write("Not Eligible for voting");
+}`);
+</script>
+</pre>
+	<h2>else if <i>ladder</i></h2>
+
+	<pre>
+<script type="text/javascript">
+	document.write(`if (amount > 200) {
+	alert("Lunch");
+} else if (amount > 100) {
+	alert("Breakfast");
+} else if (amount > 50) {
+	alert("Snack");
+} else {
+	alert("Nothing");
+}`);
+</script>
+</pre>
+	<h2>Switch</h2>
+	<ul>
+		<li>The value of the expression is compared with the values of each case.</li>
+		<li>If there is a match, the associated block of code is executed.</li>
+		<li>If there is no match, the default code block is executed.</li>
+	</ul>
+
+	<pre>
+<script>
+	document.write(`x = 2;
+switch (x) {
+	case 1:
+		alert("Monday");
+		break;
+	case 2:
+		alert("Tuesday");
+		break;
+	case 3:
+		alert("Wednesday");
+		break;
+	case 4:
+		alert("Thursday");
+		break;
+	case 5:
+		alert("Friday");
+		break;
+	case 6:
+		alert("Saturday");
+		break;
+	case 7:
+		alert("Sunday");
+		break;
+	default:
+		echo("Invalid day");
+		break;
+	}`)
+</script>
+</pre>
+
+
+	<h1>Tasks</h1>
+	<li>Write a program to determine student <b>pass or fail</b>. <i>(Marks should be above 35.)</i></li>
+	<li>Write a program to choose <b>month</b> using switch.</li>
+</body>
+</html>

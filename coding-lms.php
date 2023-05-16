@@ -14,7 +14,7 @@ error_reporting(E_ERROR | E_PARSE);
 add_action('admin_menu', function () {
 	add_menu_page('HTML CSS', 'HTML CSS', 'manage_options', 'htmlcss_admin', 'htmlcss_fhc', 'dashicons-media-code', '2.1');
 	add_menu_page('JavaScript', 'JavaScript', 'student', 'javascript_admin', function () {
-		include 'javascript/JavaScript.php';
+		include 'javascript/01 JavaScript.php';
 	}, 'dashicons-media-code', '2.2');
 	add_menu_page('JQuery', 'JQuery', 'student', 'jquery_admin', 'jquery_znh', 'dashicons-media-code', '2.3');
 	add_menu_page('PHP', 'PHP', 'manage_options', 'php_admin', 'php_basics_vam', 'dashicons-pinterest', '2.4');
@@ -71,13 +71,13 @@ include 'php/home.php';
 include 'mysql/home.php';
 
 add_action('admin_menu', function () {
-	$pages = array('Operators', 'Data types', 'Conditions', 'Loops', 'Functoins', 'Json', 'DOM', 'DOM Examples', 'EventListener', 'Examples', 'Todo List', 'QR Code', 'CSV Import', 'CSV UPI QRCode', 'Tabs', 'Calculator');
+	$pages = array('02 Operators', '03 Data types', '04 Conditions', '05 Loops', '06 Functions', '07 JSON', '08 DOM', '09 DOM Examples', '10 EventListener', '11 Examples', '12 Calculator', '13 Todo List', '14 Tabs', '15 QR Code', '16 CSV Import', '17 CSV UPI QRCode');
 
 	$c = count($pages);
 	for ($i = 0; $i < $c; $i++) {
 		$slug = strtolower($pages[$i]);
 		add_submenu_page('javascript_admin', $pages[$i], $pages[$i], 'student', $slug, function () {
-			include 'javascript/' . $_GET["page"] . ".php";
+			include 'javascript/' . $_GET["page"] . ".html";
 		});
 	}
 });

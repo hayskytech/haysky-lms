@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Examples</title>
+</head>
+
+<body>
+	<h2>Addition of two numbers using Form</h2>
+	<unf><p>Enter two values for addition</p>
+Enter a <input type="number" id="a" onchange="addition()" value="1">
+<br>
+Enter b <input type="number" id="b" onchange="addition()" value="1">
+<button onclick="addition()">Addition</button>
+<h2 id="add"></h2>
+<script type="text/javascript">
+	function addition() {
+		a = document.getElementById('a').value;
+		b = document.getElementById('b').value;
+		add = parseInt(a) + parseInt(b);
+		document.getElementById('add').innerHTML = add
+	}
+	addition()
+</script>
+</unf>
+
+	<h2>Voting Eligibility</h2>
+	<unf><p>Enter your age to check voting eligblity</p>
+<input type="number" id="age" onchange="voting()" value="15">
+<button onclick="voting()">Check</button>
+<h2 id="result"></h2>
+<script type="text/javascript">
+	function voting() {
+		age = document.getElementById('age').value;
+		if (age >= 18) {
+			result = 'Eligible for voting.';
+		} else {
+			result = 'Not Eligible for voting.';
+		}
+		document.getElementById('result').innerHTML = result
+	}
+	voting()
+</script>
+</unf>
+
+	<h2>Two numbers equal or not</h2>
+	<unf><p>Two numbers equal or not</p>
+Enter x <input type="number" id="x" onchange="check_equal()" value="5"><br>
+Enter y <input type="number" id="y" onchange="check_equal()" value="5"><br>
+<button onclick="check_equal()">SUBMIT</button>
+<h2 id="equal_result"></h2>
+<script type="text/javascript">
+	function check_equal() {
+		x = document.getElementById('x').value;
+		y = document.getElementById('y').value;
+		if (x == y) {
+			result = 'Both are equal';
+		} else {
+			result = 'Both are not equal';
+		}
+		document.getElementById('equal_result').innerHTML = result
+	}
+	check_equal()
+</script>
+</unf>
+
+	<h2>Even or Odd</h2>
+	<unf>Enter a number (even or odd)
+<input type="number" id="z" value="3" onchange="even_odd()">
+<button onclick="even_odd()">SUBMIT</button>
+<h2 id="even_odd"></h2>
+<script type="text/javascript">
+	function even_odd() {
+		z = document.getElementById('z').value;
+		if ((z % 2) == 0) {
+			result = (z + " is even number.");
+		} else {
+			result = (z + " is odd number.");
+		}
+		document.getElementById('even_odd').innerHTML = result
+	}
+	even_odd()
+</script>
+</unf>
+
+	<h2>DOM Changing CSS</h2>
+	<unf><p id="p1">Lorem ipsum</p>
+<button onclick="increase()">+</button>
+<button onclick="decrease()">-</button>
+<button onclick="pink()">Pink</button>
+<button onclick="skyblue()">Sky Blue</button>
+<button onclick="white()">White</button>
+<script type="text/javascript">
+	function increase() {
+		document.getElementById('p1').style.fontSize = '20px';
+	}
+	function decrease() {
+		document.getElementById('p1').style.fontSize = '10px';
+	}
+	function pink() {
+		document.getElementById('p1').style.backgroundColor = 'pink';
+	}
+	function skyblue() {
+		document.getElementById('p1').style.backgroundColor = 'skyblue';
+	}
+	function white() {
+		document.getElementById('p1').style.backgroundColor = 'white';
+	}
+</script>
+</unf>
+
+	<h2>Changing Body color</h2>
+	<unf><h1 id="h1">Hello world</h1>
+<button onclick="change_color('black')">black</button>
+<button onclick="change_color('blue')">blue</button>
+<button onclick="change_color('red')">red</button>
+<button onclick="change_color('green')">green</button>
+<br>
+<button onclick="change_theme('black','grey')">Dark</button>
+<button onclick="change_theme('white','black')">Bright</button>
+<button onclick="change_theme('pink','black')">Pink</button>
+<button onclick="change_theme('#8787ff','red')">BlueRed</button>
+<script type="text/javascript">
+	function change_color(c) {
+		document.getElementById('h1').style.color = c;
+	}
+	function change_theme(b, c) {
+		document.body.style.backgroundColor = b;
+		document.body.style.color = c;
+	}
+</script>
+</unf>
+
+
+	<h2>Change Image options</h2>
+	<unf><button onclick="change_img('https://picsum.photos/300/200')">IMG 1</button>
+<button onclick="change_img('https://picsum.photos/310/200')">IMG 2</button>
+<button onclick="img_show()">SHOW</button>
+<button onclick="img_hide()">HIDE</button>
+<br>
+<img id="i1" src="https://picsum.photos/300/200">
+<script type="text/javascript">
+	function change_img(x) {
+		document.getElementById('i1').src = x;
+	}
+	function img_hide() {
+		document.getElementById('i1').style.display = 'none';
+	}
+	function img_show() {
+		document.getElementById('i1').style.display = 'inline';
+	}
+</script>
+</unf>
+
+
+	<h2>Change color based on given input</h2>
+	<unf><div id="div1">Lorem ipsum</div>
+
+Body:<input type="color" id="body_color" onchange="run0()">
+Text:<input type="color" id="text_color" onchange="run1()">
+
+<script type="text/javascript">
+	function run0() {
+		c = document.getElementById("body_color").value;
+		document.body.style.backgroundColor = c;
+	}
+	function run1() {
+		c = document.getElementById("text_color").value;
+		x = document.getElementById('div1')
+		x.style.color = c;
+	}
+</script>
+</unf>
+
+
+	<h2>Using "this" parameter inside a function</h2>
+	<unf><h1 id="p2">Lorem ipsum </h1>
+Body:<input type="color" onchange="run2(this)">
+Text:<input type="color" onchange="run3(this)">
+<script type="text/javascript">
+	function run2(element) {
+		document.body.style.backgroundColor = element.value;
+	}
+	function run3(element) {
+		document.getElementById('p2').style.color = element.value;
+	}
+</script>
+</unf>
+
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

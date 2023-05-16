@@ -95,12 +95,12 @@
 	}
 </style>
 </unf>
-	<pre></pre>
 	<script>
 		unf = document.getElementsByTagName("unf");
-		pre = document.getElementsByTagName("pre");
 		for (var i = 0; i < unf.length; i++) {
-			pre[i].innerText = unf[i].innerHTML
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
 		}
 	</script>
 	<link rel="stylesheet" href="../style.css">

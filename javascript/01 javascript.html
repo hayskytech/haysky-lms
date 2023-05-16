@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript</title>
+</head>
+
+<body>
+	<h1>Javascript</h1>
+	<p>JavaScript is the programming language of HTML and the Web. Programming makes computers do what you want them to do.
+	JavaScript is easy to learn. JavaScript is Case Sensitive.
+	JavaScript does NOT have any built-in print or display functions. JavaScript can "display" data in different ways:</p>
+	<ul>
+		<li>Writing into an alert box, using window.alert().</li>
+		<li>Writing into the HTML output using document.write().</li>
+		<li>Writing into the browser console, using console.log().</li>
+	</ul>
+	<pre>
+&lt;script>
+	window.alert("hello world");
+	document.write("bye");
+	console.log('Hai');
+&lt;/script>
+</pre>
+	<p><b>Activate the browser console with F12, and select the "Console" tab in the menu.
+	</b></p>
+
+	<h1>Syntax</h1>
+	<p>JavaScript syntax is the set of rules, how JavaScript programs are constructed:</p>
+
+	<p><b>JavaScript Literals:</b> Numbers are written with or without decimals.</p>
+	<pre>
+&lt;script>
+	document.write(10.50);
+&lt;/script>
+</pre>
+	<h1>Identifiers</h1>
+	<p><b>Variables</b> or <b>constants</b> are used to store data. The first character must be a letter or an underscore
+	(_) or a dollar sign ($)<br>
+	Numbers are not allowed as the first character.
+</p>
+	<pre>
+&lt;script>
+	var x;
+	x = 6;
+	document.write(x);
+&lt;/script>
+</pre>
+	<p><b>Expressions</b>: An expression is a combination of values, variables, and operators, which computes to a value.
+</p>
+	<pre>
+&lt;script>
+	var x;
+	x = 5;
+	document.write(x * 10);
+&lt;/script>
+</pre>
+	<p><b>Keywords</b> JavaScript keywords are used to identify actions to be performed. Examples: if else for var etc. The
+	var keyword tells the browser to create variables.</p>
+	<pre>
+&lt;script>
+	var x, y;
+	x = 5 + 6;
+	y = x * 10;
+	document.write(y);
+&lt;/script>
+</pre>
+	<h1>Comments</h1>
+	<p>Code after double slashes // or between /* and */ is treated as a comment. (Shortcut: Ctrl /)</p>
+	<pre>
+&lt;script>
+	x = 5;
+	// x = 6; will not be executed
+	document.write(x);
+/*
+	document.write("Hello world&lt;br>");
+	document.write("How are you?");
+	*/
+&lt;/script>
+</pre>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>
