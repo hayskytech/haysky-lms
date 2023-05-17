@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Fields</title>
+</head>
+
+<body>
+	<h2>Form</h2>
+	Form is used to collect user input. Text Input:
+	<b>&lt;input type="text"></b> defines a one-line input field for text input.
+	<hr />
+	<unf><form>
+First name:<br>
+<input type="text" name="firstname"><br>
+Last name:<br>
+<input type="text" name="lastname"><br>
+<input type="submit" value="Submit">
+</form>
+</unf>
+
+	<b>The Submit Button</b>: It defines a button for submitting the form data to a form-handler.
+	<h2>Form in Table</h2>
+
+	<unf><form>
+	<table>
+		<tr>
+			<td>First name:</td>
+			<td><input type="text" name="fname"></td>
+		</tr>
+		<tr>
+			<td>Last name:</td>
+			<td><input type="text" name="lname"></td>
+		</tr>	
+		<tr>
+			<td></td>
+			<td><input type="submit"></td>
+		</tr>
+	</table>
+</form>
+</unf>
+
+	<h2><b>Form Elements</b></h2>
+
+	<p>
+<b>The &lt;input> Element</b>: This is the most important form element. The &lt;input> element can be displayed in several ways, depending on the type attribute.
+</p>
+
+	<pre>
+&lt;input type="text" name="firstname">
+</pre>
+
+	<b>The select element defines a drop-down list:</b>
+
+	<unf><select name="cars" size="3" multiple="">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+</select>
+</unf>
+
+	<p>To define a pre-selected option, add the selected attribute to the option: &lt;option value="fiat" selected>Fiat&lt;/option></p>
+
+	<p><b>Visible Values:</b> Use the size attribute to specify the number of visible values. Use the multiple attribute to allow the user to select more than one value.</p>
+
+	<p><b>The &lt;textarea> element</b> defines a multi-line input field (a text area).</p>
+
+	<unf><textarea name="message" rows="10" cols="30"></textarea>
+</unf>
+
+	<p><b>The &lt;button> Element</b>. If the type button is given it will not submit the form. Without the type attribute, clicking on the button element will submit the form.</p>
+
+	<unf><button type="button">Click Me!</button>
+<button>Click Me!</button>
+</unf>
+
+	<p><b>Radio Button Input:</b> Radio buttons let users select ONE of a limited number of choices.</p>
+
+	<unf><input type="radio" name="gender" value="male" checked> Male<br> 
+<input type="radio" name="gender" value="female"> Female<br> 
+<input type="radio" name="gender" value="other"> Other
+</unf>
+
+	<h2>Input Types</h2>
+
+	<table style="font-family: consolas;">
+		<tbody>
+			<tr>
+				<td>&lt;input type="button"><br>
+					&lt;input type="checkbox"><br>
+					&lt;input type="color"><br>
+					<b>&lt;input type="date"></b><br>
+					&lt;input type="datetime-local"><br>
+					<b>&lt;input type="email"></b><br>
+					&lt;input type="week">
+				</td>
+				<td>&lt;input type="file"><br>
+					<b>&lt;input type="hidden"></b><br>
+					&lt;input type="month"><br>
+					&lt;input type="number"><br>
+					<b>&lt;input type="password"></b><br>
+					&lt;input type="radio"><br>
+					&lt;input type="range">
+				</td>
+				<td>&lt;input type="reset"><br>
+					&lt;input type="search"><br>
+					<b>&lt;input type="submit"></b><br>
+					&lt;input type="tel"><br>
+					<b>&lt;input type="text"></b><br>
+					&lt;input type="time"><br>
+					&lt;input type="url">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2>Login Form</h2>
+
+	<unf><h3>Login Form</h3>
+<form method="post">
+	<fieldset>
+		<legend>Enter the details and Login</legend>
+		<table>
+			<tr>
+				<td>Email</td>
+				<td><input type="email" name="email" placeholder="your email"></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="tnc"> I accept all T&amp;C
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="submit" name="submit" value="Login">
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
+</unf>
+
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

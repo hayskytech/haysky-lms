@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML LIST</title>
+</head>
+
+<body>
+	<h2>Unordered List</h2>
+	An unordered list starts with the &lt;ul> tag. Each list item starts with the &lt;li> tag.
+
+	<unf><ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+  <li>Juice</li>
+  <li>Water</li>
+</ul>
+</unf>
+
+	<h2>Ordered List</h2>
+	<p>An ordered list starts with the &lt;ol> tag. Each list item starts with the &lt;li> tag. The list items will be marked with numbers:</p>
+	<unf><ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Juice</li>
+  <li>Milk</li>
+</ol>
+</unf>
+
+	<p>Change type attribute: &lt;ol type="a"> A i I 1</p>
+	<unf><ol type="A">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Juice</li>
+  <li>Milk</li>
+</ol>
+</unf>
+
+	<h2>Nested HTML Lists</h2>
+	<p>List can be nested (lists inside lists):</p>
+	<unf><ol>
+  <li>Coffee</li>
+  <li>Tea
+     <ol>
+        <li>Black tea</li>
+        <li>Green tea</li>
+     </ol>
+  </li>
+  <li>Milk</li>
+</ol>
+</unf>
+
+	<strong>Control List starting number using start attribute:</strong>
+	<unf><ol start="20">
+  <li>Apple</li>
+  <li>Bat</li>
+</ol>
+</unf>
+
+	<strong>Example:</strong>
+	<pre>&lt;ul>
+	&lt;li>APPLE
+		&lt;ul>
+			&lt;li>MANGO&lt;/li>
+			&lt;li>ORANGE
+				&lt;ul>
+					&lt;li>BANANA&lt;/li>
+					&lt;li>PINEAPPLE&lt;/li>
+				&lt;/ul>
+			&lt;/li>
+			&lt;li>GUAVA&lt;/li>
+			&lt;li>LEMON&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>POMEGRANITE&lt;/li>
+	&lt;li>BAT&lt;/li>
+	&lt;li>CAT&lt;/li>
+	&lt;li>DOG&lt;/li>
+	&lt;li>BUFFALO
+		&lt;ul>
+			&lt;li>COW&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+&lt;/ul>
+</pre>
+	<hr>
+	<pre>&lt;ol>
+	&lt;li>APPLE
+		&lt;ol type="a">
+			&lt;li>MANGO&lt;/li>
+			&lt;li>ORANGE
+				&lt;ol type="i">
+					&lt;li>BANANA&lt;/li>
+					&lt;li>PINEAPPLE&lt;/li>
+				&lt;/ol>
+			&lt;/li>
+			&lt;li>GUAVA&lt;/li>
+			&lt;li>LEMON&lt;/li>
+		&lt;/ol>
+	&lt;/li>
+	&lt;li>SAPOTA&lt;/li>
+	&lt;li>NERUDU&lt;/li>
+	&lt;li>POMEGRANITE
+		&lt;ol type="a">
+			&lt;li>DRAKSHA&lt;/li>
+		&lt;/ol>
+	&lt;/li>
+&lt;/ol>
+</pre>
+
+	<h2>Example:</h2>
+	<unf><table border="1">
+	<tbody>
+		<tr>
+			<td colspan="3">
+				<center>HOTEL NAME<br>ADDRESS<br>CELL NO:9999999999</center>
+			</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>DOSA</td>
+			<td>30</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>POORI</td>
+			<td>30</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>IDLI</td>
+			<td>60</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>PANI</td>
+			<td>50</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><b>TOTAL</b></td>
+			<td><b>343</b></td>
+		</tr>
+	</tbody>
+</table>
+</unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

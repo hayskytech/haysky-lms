@@ -126,12 +126,14 @@
 		}
 	}
 </style>
-<script>
-	unf = document.getElementsByTagName("unf");
-	for (var i = 0; i < unf.length; i++) {
-		pre = document.createElement("pre");
-		pre.innerText = unf[i].innerHTML;
-		unf[i].appendChild(pre);
-	}
-</script>
 </unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+</body>
+</html>

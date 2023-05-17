@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid Layout</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<h1>Grid Layout</h1>
+	<unf><style type="text/css">
+	#grid-main {
+		padding: 0;
+		margin: 0;
+		background: pink;
+	}
+
+	#grid-main {
+		max-width: 1200px;
+		background: skyblue;
+		padding: 20px;
+		overflow: auto;
+		margin: auto;
+	}
+
+	.grid {
+		width: 100%;
+	}
+
+	.box {
+		float: left;
+		width: 25%;
+	}
+
+	.inner-box {
+		background: orange;
+		margin: 5px;
+		border: 1px solid darkblue;
+		padding: 10px;
+	}
+
+	@media(max-width:768px) {
+		.box {
+			width: 50%;
+		}
+	}
+
+	@media(max-width:480px) {
+		.box {
+			width: 100%;
+		}
+	}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="grid-main">
+	<div class="grid">
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="inner-box">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+			</div>
+		</div>
+	</div>
+</div>
+</unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+</body>
+</html>
