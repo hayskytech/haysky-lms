@@ -11,8 +11,8 @@
 
 <body>
 	<h1>Todo List</h1>
-	<unf><input type="text" onkeypress="handleKey(event)" autofocus id="inp1">
-<button onclick="addItem()">OK</button>
+	<unf>Enter Text: <input type="text" onkeypress="handleKey(event)" autofocus id="inp1">
+<button onclick="addItem()">Add Item</button>
 <ol id="list1"></ol>
 <script>
 	inp1 = document.getElementById('inp1');
@@ -21,10 +21,10 @@
 		if (val == '') {
 			return
 		}
-		list = document.getElementById('list1')
+		list1 = document.getElementById('list1')
 		li = document.createElement('li')
 		li.innerHTML = val + ' <button onclick="del(this)">x</button>'
-		list.appendChild(li)
+		list1.appendChild(li)
 		inp1.value = ''
 		inp1.focus()
 	}

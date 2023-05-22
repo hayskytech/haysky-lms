@@ -82,6 +82,29 @@ function add(a, b) {
 			unf[i].appendChild(pre);
 		}
 	</script>
+
+	<h2>Dialog / Modal</h2>
+	<unf><button onclick="run1()">Open as Dialog</button>
+	<unf><button onclick="run2()">Open as Modal</button>
+<dialog id="welcome">
+	<h3>Welcome to our website</h3>
+	<p>Lorem ipsum dolor sit amet</p>
+	<button onclick="run3()">Close</button>
+</dialog>
+<script>
+	d = document.getElementById("welcome")
+	function run1() {
+		d.show()
+	}
+	function run2() {
+		d.showModal()
+	}
+	function run3() {
+		d.close()
+	}
+</script>
+<p>More info on <a href="https://blog.webdevsimplified.com/2023-04/html-dialog/" target="_blank">Dialog element</a></p>
+</unf>
 	<link rel="stylesheet" href="../style.css">
 </body>
 </html>

@@ -68,7 +68,7 @@
 	document.write(y);
 &lt;/script>
 </pre>
-	<h1>Comments</h1>
+	<h2>Comments</h2>
 	<p>Code after double slashes // or between /* and */ is treated as a comment. (Shortcut: Ctrl /)</p>
 	<pre>
 &lt;script>
@@ -81,6 +81,26 @@
 	*/
 &lt;/script>
 </pre>
+
+	<h2>Prompt</h2>
+	<pre>&lt;script type="text/javascript">
+	x = prompt("enter x")
+	if (x%2 == 0) {
+		alert("even")
+	} else if (x%2 == 1) {
+		alert("odd")
+	}
+&lt;/script></pre>
+
+	<h2>Addition using prompts</h2>
+	<pre>
+a = prompt("Enter a value:")
+a = parseInt(a)
+b = prompt("Enter b value:")
+b = parseInt(b)
+alert(`Sum is ${a + b}`)
+</pre>
+	<h2>Task: Do the same program for substraction, multiplication and division.</h2>
 	<link rel="stylesheet" href="../style.css">
 </body>
 </html>

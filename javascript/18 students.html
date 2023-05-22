@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Students</title>
+</head>
+
+<body>
+	<form action="" method="post" id="student_form">
+		<table>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="full_name" onkeypress="handleKey(event)"></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" name="phone" onkeypress="handleKey(event)"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<select name="gender">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" value="Add Student" onclick="add_student()"></td>
+			</tr>
+		</table>
+	</form>
+	<button onclick="delAll()">Delete All</button>
+	<table id="students_list"></table>
+	<script>
+		str = localStorage.getItem("stu")
+		if (str == null) {
+			students_arr = []
+		} else {
+			students_arr = JSON.parse(str)
+			load_students()
+		}
+		function handleKey(event) {
+			if (event.key == "Enter") {
+				add_student()
+			}
+		}
+		function add_student() {
+			form = document.getElementById("student_form");
+			a = form.elements.namedItem("full_name");
+			b = form.elements.namedItem("phone");
+			c = form.elements.namedItem("gender");
+			if (a.value == '' || b.value == '') {
+				return
+			}
+			x = {
+				"full_name": a.value,
+				"phone": b.value,
+				"gender": c.value,
+			}
+			students_arr.push(x)
+			localStorage.setItem("stu", JSON.stringify(students_arr))
+			load_students()
+			a.value = ""
+			b.value = ""
+		}
+		function load_students() {
+			table = document.getElementById("students_list")
+			table.innerHTML = ''
+			for (i = 0; i < students_arr.length; i++) {
+				tr = document.createElement('tr');
+				tr.innerHTML = `<td>${students_arr[i].full_name}</td>`;
+				tr.innerHTML += `<td>${students_arr[i].phone}</td>`;
+				tr.innerHTML += `<td>${students_arr[i].gender}</td>`;
+				tr.innerHTML += `<td><button onclick="del(${i})">Delete</button></td>`;
+				table.appendChild(tr);
+			}
+		}
+		function delAll() {
+			if (confirm("Delete all students?")) {
+				students_arr = []
+				localStorage.setItem("stu", JSON.stringify(students_arr))
+				load_students();
+			}
+		}
+		function del(i) {
+			sname = students_arr[i].full_name
+			if (confirm(`Delete ${sname}?`)) {
+				students_arr.splice(i, 1)
+				localStorage.setItem("stu", JSON.stringify(students_arr))
+				load_students();
+			}
+		}
+	</script>
+	<style>
+		#students_list,
+		#students_list td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+			margin: 10px 0;
+		}
+	</style>
+</body>
+</html>

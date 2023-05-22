@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON</title>
+</head>
+
+<body>
+	<h2>Sample AJAX request to get data from API</h2>
+	<pre>
+&lt;p>Getting data from API&lt;/p>
+&lt;script>
+	const url = "https://api.sampleapis.com/countries/countries"
+	x = new XMLHttpRequest();
+	x.onload = function () {
+		data = JSON.parse(this.responseText)
+		for (i = 0; i &lt; data.length; i++) {
+			// loop using data[i]
+		}
+		pre = document.createElement('pre');
+		pre.textContent = JSON.stringify(data, undefined, 2)
+		console.log(typeof (data))
+		document.body.append(pre)
+	}
+	x.open("GET", url, true);
+	x.send();
+&lt;/script>
+&lt;style>
+	pre {
+		overflow-x: auto;
+	}
+&lt;/style>
+</pre>
+
+	<h2>Example to load news articles from API</h2>
+	<unf><div id="news"></div>
+<script>
+	wp_website = "http://telugunewsadda.com/"
+	api = "wp-json/wp/v2/posts?_fields=id,title,content,slug,jetpack_featured_media_url&per_page=8";
+	newsurl = wp_website + api
+	x = new XMLHttpRequest();
+	x.onload = function () {
+		data = JSON.parse(this.responseText)
+		news = ''
+		for (i = 0; i < data.length; i++) {
+			title = data[i].title.rendered
+			imgurl = data[i].jetpack_featured_media_url
+			// console.log(data[i])
+			item = `<img src="${imgurl}">`
+			item += `<p>${title}</p>`
+			news = document.createElement('div')
+			news.innerHTML = item
+			document.getElementById("news").appendChild(news)
+		}
+	}
+	x.open("GET", newsurl, true);
+	x.send();
+</script>
+<style>
+	#news {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#news p {
+		font-size: 14px;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		/* number of lines to show */
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	#news>div:hover {
+		background-color: #ffbf48;
+	}
+	#news > div {
+		flex-basis: 208px;
+		font-weight: bold;
+		padding: 10px;
+		border-radius: 10px;
+		border: 1px solid;
+		margin: 10px;
+		background: #ffdda0;
+	}
+
+	#news img {
+		width: 100%;
+		height: 150px;
+		object-fit: cover;
+		border-radius: 10px;
+	}
+</style>
+</unf>
+	<script>
+		unf = document.getElementsByTagName("unf");
+		for (var i = 0; i < unf.length; i++) {
+			pre = document.createElement("pre");
+			pre.innerText = unf[i].innerHTML;
+			unf[i].appendChild(pre);
+		}
+	</script>
+	<link rel="stylesheet" href="../style.css">
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Data Types</title>
+</head>
+
+<body>
+	<link rel="stylesheet" href="../style.css">
+	<h1>Data Types</h1>
+	Javapre variables can hold many data types: numbers, strings, objects and more. Javapre Types are Dynamic. This means
+	that the same variable can be used to hold different data types:
+
+	<pre>
+var x;         // Now x is undefined
+x = 5;         // Now x is a Number
+x = "John";      // Now x is a String
+document.write( x );
+</pre>
+
+	<h2>Strings</h2>
+	A string (or a text string) is a series of characters. Strings are written with quotes. You can use single or double
+	quotes.
+
+	<pre>
+var answer1 = "It's alright";
+var answer2 = "He is called 'Johnny'";
+var answer3 = 'He is called "Johnny"';
+document.getElementById("demo").innerHTML =
+answer1 + "&lt;br>" + 
+answer2 + "&lt;br>" + 
+answer3;
+</pre>
+
+
+
+	<h2>Numbers</h2>
+	Javapre has only one type of numbers. Numbers can be written with, or without decimals.
+
+	<pre>
+var y = 123;
+var z = 123e-5;
+document.write(y + "&lt;br>" + z);
+</pre>
+
+
+
+	<h2>Booleans</h2>
+	Booleans can only have two values: true or false.
+
+	<pre>
+var x = 5;
+var y = 7;
+document.write(x > y);
+</pre>
+
+	<h2>Arrays</h2>
+	Javapre arrays are written with square brackets and array items are separated by commas.
+
+	<pre>
+var cars = ["Saab","Volvo","BMW"];
+document.write(cars[0]);
+</pre>
+
+	Javapre Object you will see in later chapters.
+
+	<h2>Adding Numbers and Strings</h2>
+	Javapre uses the + operator for both addition and concatenation.
+	Numbers are added. Strings are concatenated.
+	If you add two numbers, the result will be a number:
+
+	<pre>
+var x = 10;
+var y = 20;
+var z = x + y;
+</pre>
+
+
+	If you add two strings, the result will be a string concatenation:
+
+	<pre type="text/javapre">
+var x = "10";
+var y = "20";
+var z = x + y;
+</pre>
+
+	If you add a number and a string, the result will be a string concatenation:
+
+	<pre type="text/javapre">
+var x = 10;
+var y = "20";
+var z = x + y;   
+</pre>
+
+	If you add a string and a number, the result will be a string concatenation:
+
+	<pre type="text/javapre">
+var x = "10";
+var y = 20;
+var z = x + y;
+</pre>
+
+	<h2>isNaN</h2>
+	<p>This will check whether it is number or not. <b>isNaN: is Not a Number</b></p>
+	<pre>
+x = prompt("Enter the value:");
+console.log(isNaN(x));
+</pre>
+
+<h1>JSON</h1>
+	<ul>
+		<li>JSON is a format for storing and transporting data. JSON is often used when data is sent from a server to a web
+			page.</li>
+		<li>JSON stands for JavaScript Object Notation</li>
+		<li>JSON is a lightweight data interchange format</li>
+		<li>JSON is language independent *</li>
+		<li>JSON is "self-describing" and easy to understand</li>
+		<li>JSON Syntax Rules</li>
+		<li>Data is in name/value pairs</li>
+		<li>Data is separated by commas</li>
+		<li>Curly braces hold objects</li>
+		<li>Square brackets hold arrays</li>
+	</ul>
+	<h2>JavaScript Objects</h2>
+	JavaScript objects are written with curly braces {}. Object properties are written as name:value pairs, separated by
+	commas.
+
+	<pre>
+var person = {
+  firstName : "John",
+  lastName  : "Doe",
+  age     : 50,
+  eyeColor  : "blue"
+};
+document.write(person.firstName + " is " + person.age + " years old.");
+</pre>
+
+
+
+	<h2>JSON Example</h2>
+
+	<pre>
+// simple object
+person = {
+	"fname": "john",
+	"lname": "moses"
+}
+console.log(person.fname);
+
+// array of objects
+students = [
+	{
+		"fname": "ramesh",
+		"lname": "kumar",
+		"phone": "698464645"
+	},
+	{
+		"fname": "suresh",
+		"lname": "kumar",
+		"phone": "841444474"
+	}
+]
+console.log(students[0].fname);
+console.log(students[0].lname);
+console.log(students[1].phone);
+
+// object of objects
+std = {
+	"child1": { "fname": "nag", 'lname': 'kabsjd' },
+	"child2": { "fname": "suresh", 'lname': 'kabsjd' },
+	"child3": { "fname": "amhsdv", 'lname': 'kabsjd' },
+}
+console.log(std.child1.fname);
+</pre>
+</body>
