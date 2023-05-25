@@ -1,79 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Display</title>
+</head>
+
 <body>
-	<h1>Display</h1>
-	<table>
-		<tbody>
-			<tr>
-				<td>display:</td>
-				<td>block; | inline; | inline-block;</td>
-				<td>(show)</td>
-			</tr>
-			<tr>
-				<td>display:</td>
-				<td>none;</td>
-				<td>(hide &amp; no space)</td>
-			</tr>
-			<tr>
-				<td>visibility:</td>
-				<td>hidden;</td>
-				<td>(hide with space)</td>
-			</tr>
-			<tr>
-				<td>visibility:</td>
-				<td>visible;</td>
-				<td>(default visible state)</td>
-			</tr>
-		</tbody>
-	</table>
 
-	<h2>Max-Width</h2>
-	<table>
-		<tbody>
-			<tr>
-				<td>max-width:</td>
-				<td>500px;</td>
-				<td>(can be less than 500px not more than that)</td>
-			</tr>
-			<tr>
-				<td>min-width:</td>
-				<td>200px;</td>
-				<td>(can be more than 200px not less than that)</td>
-			</tr>
-			<tr>
-				<td>max-height:</td>
-				<td>300px;</td>
-				<td>(can be less than 500px not more than that)</td>
-			</tr>
-			<tr>
-				<td>min-height:</td>
-				<td>400px;</td>
-				<td>(can be more than 200px not less than that)</td>
-			</tr>
-		</tbody>
-	</table>
-	<h2>Float</h2>
-	<table>
-		<tbody>
-			<tr>
-				<td>float:</td>
-				<td>left;</td>
-				<td>(element goes to left)</td>
-			</tr>
-			<tr>
-				<td>float:</td>
-				<td>right;</td>
-				<td>(element goes to right)</td>
-			</tr>
-			<tr>
-				<td>clear:</td>
-				<td>both;</td>
-				<td>(given to elements after float elements)</td>
-			</tr>
-		</tbody>
-	</table>
-	<h2>Align Center</h2>
-	We can use margin: auto; to align center.
+</body>
+</html>
 
-	<unf><h1 id="cen">Haysky</h1>
+<body>
+	<main>
+		<h1>Display</h1>
+		<table>
+			<tbody>
+				<tr>
+					<td>display:</td>
+					<td>block; | inline; | inline-block;</td>
+					<td>(show)</td>
+				</tr>
+				<tr>
+					<td>display:</td>
+					<td>none;</td>
+					<td>(hide &amp; no space)</td>
+				</tr>
+				<tr>
+					<td>visibility:</td>
+					<td>hidden;</td>
+					<td>(hide with space)</td>
+				</tr>
+				<tr>
+					<td>visibility:</td>
+					<td>visible;</td>
+					<td>(default visible state)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>Max-Width</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>max-width:</td>
+					<td>500px;</td>
+					<td>(can be less than 500px not more than that)</td>
+				</tr>
+				<tr>
+					<td>min-width:</td>
+					<td>200px;</td>
+					<td>(can be more than 200px not less than that)</td>
+				</tr>
+				<tr>
+					<td>max-height:</td>
+					<td>300px;</td>
+					<td>(can be less than 500px not more than that)</td>
+				</tr>
+				<tr>
+					<td>min-height:</td>
+					<td>400px;</td>
+					<td>(can be more than 200px not less than that)</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>Float</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>float:</td>
+					<td>left;</td>
+					<td>(element goes to left)</td>
+				</tr>
+				<tr>
+					<td>float:</td>
+					<td>right;</td>
+					<td>(element goes to right)</td>
+				</tr>
+				<tr>
+					<td>clear:</td>
+					<td>both;</td>
+					<td>(given to elements after float elements)</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>Align Center</h2>
+		We can use margin: auto; to align center.
+
+		<unf><h1 id="cen">Haysky</h1>
 <style>
 #cen {
 	background: pink;
@@ -83,36 +99,36 @@
 </style>
 </unf>
 
-	<h2>Overflow</h2>
-	If an element is taller than the element containing it, and it is floated, it will overflow outside of its container
-	then we can add overflow: auto; to the containing element to fix this problem.
-	<table>
-		<tbody>
-			<tr>
-				<td>overflow:</td>
-				<td>visible;</td>
-				<td>(extra content is visible) <strong>Default</strong></td>
-			</tr>
-			<tr>
-				<td>overflow:</td>
-				<td>auto;</td>
-				<td>(scroll appears if needed)</td>
-			</tr>
-			<tr>
-				<td>overflow:</td>
-				<td>scroll;</td>
-				<td>(scroll appears always)</td>
-			</tr>
-			<tr>
-				<td>overflow:</td>
-				<td>hidden;</td>
-				<td>(hide extra content)</td>
-			</tr>
-		</tbody>
-	</table>
-	<strong>Example</strong>
+		<h2>Overflow</h2>
+		If an element is taller than the element containing it, and it is floated, it will overflow outside of its container
+		then we can add overflow: auto; to the containing element to fix this problem.
+		<table>
+			<tbody>
+				<tr>
+					<td>overflow:</td>
+					<td>visible;</td>
+					<td>(extra content is visible) <strong>Default</strong></td>
+				</tr>
+				<tr>
+					<td>overflow:</td>
+					<td>auto;</td>
+					<td>(scroll appears if needed)</td>
+				</tr>
+				<tr>
+					<td>overflow:</td>
+					<td>scroll;</td>
+					<td>(scroll appears always)</td>
+				</tr>
+				<tr>
+					<td>overflow:</td>
+					<td>hidden;</td>
+					<td>(hide extra content)</td>
+				</tr>
+			</tbody>
+		</table>
+		<strong>Example</strong>
 
-	<unf><div id="thediv">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus reiciendis veritatis 
+		<unf><div id="thediv">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus reiciendis veritatis 
 	commodi provident quibusdam ea, cum consectetur saepe neque doloremque facilis accusantium eaque 
 	inventore temporibus aspernatur quod quae, blanditiis aliquid.</div>
 <style>
@@ -126,10 +142,10 @@
 </unf>
 
 
-	<h2>Opacity</h2>
-	The opacity property can take a value from 0.0 - 1.0. Lower the value, the more transparent.
+		<h2>Opacity</h2>
+		The opacity property can take a value from 0.0 - 1.0. Lower the value, the more transparent.
 
-	<unf><h1 id="bat">Hello</h1>
+		<unf><h1 id="bat">Hello</h1>
 <img src="https://picsum.photos/300/200" id="apple">
 <style>
 #apple {
@@ -142,9 +158,9 @@
 </style>
 </unf>
 
-	<h2>Navigation Menu-1</h2>
+		<h2>Navigation Menu-1</h2>
 
-	<unf><ul id="list1">
+		<unf><ul id="list1">
 	<li>HOME</li>
 	<li>ABOUT</li>
 	<li>SERVICES</li>
@@ -166,8 +182,8 @@
 </style>
 </unf>
 
-	<h2>Navigation Menu-2</h2>
-	<unf><ul id="list2">
+		<h2>Navigation Menu-2</h2>
+		<unf><ul id="list2">
 	<li><a href="index.html">HOME</a></li>
 	<li><a href="about.html">ABOUT</a></li>
 	<li><a href="services.html">SERVICES</a></li>
@@ -206,8 +222,8 @@
 </style>
 </unf>
 
-	<h2>Navigation Menu-3</h2>
-	<unf><ul id="list3">
+		<h2>Navigation Menu-3</h2>
+		<unf><ul id="list3">
 	<li><a href="index.html">HOME</a></li>
 	<li><a href="about.html">ABOUT</a></li>
 	<li><a href="services.html">SERVICES</a>
@@ -294,13 +310,16 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
+</html>

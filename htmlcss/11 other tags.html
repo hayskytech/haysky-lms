@@ -9,51 +9,52 @@
 </head>
 
 <body>
-	<h2>Other Tags</h2>
-	Short Quotations: We use &lt;q> tag for normal short quotations.
-	<unf><q>Sun rises in the east</q></unf>
+	<main>
+		<h2>Other Tags</h2>
+		Short Quotations: We use &lt;q> tag for normal short quotations.
+		<unf><q>Sun rises in the east</q></unf>
 
-	&lt;blockquote> element defines a section that is quoted from another source.
-	<pre>
+		&lt;blockquote> element defines a section that is quoted from another source.
+		<pre>
 &lt;blockquote cite="http://www.worldwildlife.org/who/index.html">
 For 50 years, WWF has been protecting the future of nature.&lt;/blockquote>
 </pre>
 
-	Abbreviations: We use &lt;abbr> tag along with title attribute. Full form is written inside the title.
-	<pre>
+		Abbreviations: We use &lt;abbr> tag along with title attribute. Full form is written inside the title.
+		<pre>
 &lt;abbr title="World Health Organization">WHO&lt;/abbr>
 </pre>
 
-	Address or Contact Information
-	<pre>
+		Address or Contact Information
+		<pre>
 &lt;address>
 Written by Sufyan Shaik.&lt;br>
 Visit us at:&lt;br>Kurnool, AP&lt;br>India
 &lt;/address>
 </pre>
 
-	&lt;cite> for Work Title: defines the title of a work. Browsers display &lt;cite> elements in italic.
-	<pre>
+		&lt;cite> for Work Title: defines the title of a work. Browsers display &lt;cite> elements in italic.
+		<pre>
 &lt;p>&lt;cite>The Scream&lt;/cite> by Edvard Munch. Painted in 1893.&lt;/p>
 </pre>
 
-	&lt;bdo> for Bi-Directional Override:
-	<pre>
+		&lt;bdo> for Bi-Directional Override:
+		<pre>
 &lt;bdo dir="rtl">abcdefghijklmnop&lt;/bdo>
 </pre>
 
-	&lt;kbd> for Keyboard Input:
-	<pre>
+		&lt;kbd> for Keyboard Input:
+		<pre>
 &lt;p>Save the document by pressing &lt;kbd>Ctrl + S&lt;/kbd>&lt;/p>
 </pre>
 
-	&lt;samp> For Program Output:
-	<pre>
+		&lt;samp> For Program Output:
+		<pre>
 &lt;p>The program will return &lt;samp>Error!&lt;/samp>&lt;/p>
 </pre>
 
-	&lt;code> For Computer Code: defines a fragment of computer code.
-	<pre>
+		&lt;code> For Computer Code: defines a fragment of computer code.
+		<pre>
 &lt;code>
 x = 5;
 y = 6;
@@ -61,28 +62,28 @@ z = x + y;
 &lt;/code>
 </pre>
 
-	&lt;var> For Variables:
-	<pre>
+		&lt;var> For Variables:
+		<pre>
 Einstein wrote: &lt;var>E&lt;/var> = &lt;var>mc&lt;/var>&lt;sup>2&lt;/sup>.
 </pre>
 
-	<h2>Iframes</h2>
-	<p>An iframe is used to display a web page within a web page.<br>
+		<h2>Iframes</h2>
+		<p>An iframe is used to display a web page within a web page.<br>
 We can give height and width attributes to the iframe. By default, an iframe has a border around it. To remove the border, add the style attribute and use the CSS border property:</p>
 
-	<pre>
+		<pre>
 &lt;iframe src="new.html" style="border:none;" height="500" width="300">&lt;/iframe>
 </pre>
 
-	<p>Iframe - Target for a Link: The target attribute of the link must refer to the name attribute of the iframe:</p>
-	<pre>
+		<p>Iframe - Target for a Link: The target attribute of the link must refer to the name attribute of the iframe:</p>
+		<pre>
 &lt;p>&lt;a href="https://w3schools.com" target="bat">W3Schools.com&lt;/a>&lt;/p>
 &lt;iframe src="demo_iframe.htm" name="bat">&lt;/iframe>
 </pre>
 
-	<h2>Video</h2>
-	The HTML &lt;video> element is used to show a video.
-	<pre>
+		<h2>Video</h2>
+		The HTML &lt;video> element is used to show a video.
+		<pre>
 &lt;video width="320" height="240" controls autoplay>
  &lt;source src="movie.mp4" type="video/mp4">
  &lt;source src="movie.ogg" type="video/ogg">
@@ -90,9 +91,9 @@ We can give height and width attributes to the iframe. By default, an iframe has
 &lt;/video>
 </pre>
 
-	<h2>Audio</h2>
-	The HTML &lt;audio> element is used to play an audio file on a web page.
-	<pre>
+		<h2>Audio</h2>
+		The HTML &lt;audio> element is used to play an audio file on a web page.
+		<pre>
 &lt;audio controls>
  &lt;source src="horse.ogg" type="audio/ogg">
  &lt;source src="horse.mp3" type="audio/mpeg">
@@ -100,56 +101,58 @@ We can give height and width attributes to the iframe. By default, an iframe has
 &lt;/audio>
 </pre>
 
-	<h2>YouTube Embed</h2>
-	Right click on the YouTube video and Copy Embed code. Paste it in your HTML file.
-	<pre>
+		<h2>YouTube Embed</h2>
+		Right click on the YouTube video and Copy Embed code. Paste it in your HTML file.
+		<pre>
 &lt;iframe width="420" height="315"
 src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&amp;loop=1&amp;controls=0">
 &lt;/iframe>
 </pre>
 
-	<h2>SVG Graphics</h2>
-	SVG stands for Scalable Vector Graphics.
-	<br />
-	SVG Circle
-	<pre>
+		<h2>SVG Graphics</h2>
+		SVG stands for Scalable Vector Graphics.
+		<br />
+		SVG Circle
+		<pre>
 &lt;svg width="100" height="100">
 	&lt;circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
 &lt;/svg>
 </pre>
 
-	SVG Rectangle
-	<pre>
+		SVG Rectangle
+		<pre>
 &lt;svg width="400" height="100">
 	&lt;rect width="400" height="100" 
   style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
 &lt;/svg>
 </pre>
 
-	SVG Rounded Rectangle
-	<pre>
+		SVG Rounded Rectangle
+		<pre>
 &lt;svg width="400" height="180">
  &lt;rect x="50" y="20" rx="20" ry="20" width="150" height="150"
  style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
 &lt;/svg>
 </pre>
 
-	SVG Star
-	<pre>
+		SVG Star
+		<pre>
 &lt;svg width="300" height="200">
 	&lt;polygon points="100,10 40,198 190,78 10,78 160,198"
 	style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"/>
 &lt;/svg>
 </pre>
 
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

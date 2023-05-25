@@ -9,8 +9,9 @@
 </head>
 
 <body>
-	<h1>Calculator</h1>
-	<unf><div id="main_cal">
+	<main>
+		<h1>Calculator</h1>
+		<unf><div id="main_cal">
 	<h3>Simple Calculator</h3>
 	<textarea name="" id="inp" cols="26" rows="4" onkeypress="handleKey(event)"></textarea>
 	<div class="line">
@@ -95,14 +96,16 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

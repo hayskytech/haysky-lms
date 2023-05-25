@@ -9,9 +9,10 @@
 </head>
 
 <body>
-	<h1>CSS Flex</h1>
-	<p>The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure without using float or positioning.</p>
-	<unf><div class="flex0">
+	<main>
+		<h1>CSS Flex</h1>
+		<p>The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure without using float or positioning.</p>
+		<unf><div class="flex0">
 	<div>1</div>
 	<div>2</div>
 	<div>3</div>
@@ -30,57 +31,57 @@
 	}
 </style></unf>
 
-	<h2>flex-direction</h2>
-	<table>
-		<tr>
-			<th>Property</th>
-			<th colspan="5">Values</th>
-		</tr>
-		<tr>
-			<th>flex-direction</th>
-			<td>row</td>
-			<td>row-reverse</td>
-			<td>column</td>
-			<td>column-reverse</td>
-		</tr>
-		<tr>
-			<th>flex-wrap</th>
-			<td>wrap</td>
-			<td>nowrap</td>
-			<td>wrap-reverse</td>
-		</tr>
-		<tr>
-			<th>flex-flow</th>
-			<th>row wrap</th>
-			<td><i>(short hand)</i></td>
-		</tr>
-		<tr>
-			<th>justify-content</th>
-			<td>center</td>
-			<td>flex-start</td>
-			<td>flex-end</td>
-			<td>space-around</td>
-			<td>space-between</td>
-		</tr>
-		<tr>
-			<th>align-items</th>
-			<td>center</td>
-			<td>flex-start</td>
-			<td>flex-end</td>
-			<td>stretch</td>
-			<td>baseline</td>
-		</tr>
-		<tr>
-			<th>align-content</th>
-			<td>center</td>
-			<td>space-around</td>
-			<td>space-between</td>
-			<td>stretch</td>
-			<td>flex-start</td>
-			<td>flex-end</td>
-		</tr>
-	</table>
-	<unf><div class="flex1">
+		<h2>flex-direction</h2>
+		<table>
+			<tr>
+				<th>Property</th>
+				<th colspan="5">Values</th>
+			</tr>
+			<tr>
+				<th>flex-direction</th>
+				<td>row</td>
+				<td>row-reverse</td>
+				<td>column</td>
+				<td>column-reverse</td>
+			</tr>
+			<tr>
+				<th>flex-wrap</th>
+				<td>wrap</td>
+				<td>nowrap</td>
+				<td>wrap-reverse</td>
+			</tr>
+			<tr>
+				<th>flex-flow</th>
+				<th>row wrap</th>
+				<td><i>(short hand)</i></td>
+			</tr>
+			<tr>
+				<th>justify-content</th>
+				<td>center</td>
+				<td>flex-start</td>
+				<td>flex-end</td>
+				<td>space-around</td>
+				<td>space-between</td>
+			</tr>
+			<tr>
+				<th>align-items</th>
+				<td>center</td>
+				<td>flex-start</td>
+				<td>flex-end</td>
+				<td>stretch</td>
+				<td>baseline</td>
+			</tr>
+			<tr>
+				<th>align-content</th>
+				<td>center</td>
+				<td>space-around</td>
+				<td>space-between</td>
+				<td>stretch</td>
+				<td>flex-start</td>
+				<td>flex-end</td>
+			</tr>
+		</table>
+		<unf><div class="flex1">
 	<div>1</div>
 	<div>2</div>
 	<div>3</div>
@@ -101,14 +102,16 @@
 </style>
 </unf>
 
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

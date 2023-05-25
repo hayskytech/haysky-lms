@@ -9,7 +9,8 @@
 </head>
 
 <body>
-	<unf><table id="t1">
+	<main>
+		<unf><table id="t1">
 	<caption>SSC Time Table</caption>
 	<tr>
 		<th></th>
@@ -118,7 +119,7 @@
 	#t1 th {
 		border: 1px solid black;
 		border-collapse: collapse;
-		font-size: 22px;
+		font-size: 20px;
 		font-family: Arial;
 		text-align: center;
 		color: black;
@@ -224,14 +225,16 @@
 	</tfoot>
 </table>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

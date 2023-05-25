@@ -9,17 +9,18 @@
 </head>
 
 <body>
-	<h1>Loops</h1>
-	Loops are used to execute a block of code number of continuously.
-	<ul>
-		<li>for - loops through a block of code a number of times</li>
-		<li>for/in - loops through the properties of an object</li>
-		<li>for/of - loops through the values of an iterable object</li>
-		<li>while - loops through a block of code while a specified condition is true</li>
-		<li>do/while - also loops through a block of code while a specified condition is true</li>
-	</ul>
-	<h2>For loop</h2>
-	<pre>
+	<main>
+		<h1>Loops</h1>
+		Loops are used to execute a block of code number of continuously.
+		<ul>
+			<li>for - loops through a block of code a number of times</li>
+			<li>for/in - loops through the properties of an object</li>
+			<li>for/of - loops through the values of an iterable object</li>
+			<li>while - loops through a block of code while a specified condition is true</li>
+			<li>do/while - also loops through a block of code while a specified condition is true</li>
+		</ul>
+		<h2>For loop</h2>
+		<pre>
 for (i = 0; i < 5; i++) {
 	alert(i);
 }
@@ -28,9 +29,9 @@ for(x=5; x >= 1; x--){
 }
 </pre>
 
-	<h2>The For/In Loop</h2>
-	<p>The for/in statement loops through the properties of an object.</p>
-	<pre>
+		<h2>The For/In Loop</h2>
+		<p>The for/in statement loops through the properties of an object.</p>
+		<pre>
 var person = {fname:"John", lname:"Doe", age:25};
 for (x in person) {
 	alert(person[x]);
@@ -38,9 +39,9 @@ for (x in person) {
 </pre>
 
 
-	<h2>For/Of Loop</h2>
-	<p>The JavaScript for/of statement loops through the values of an iterable objects for/of lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more.</p>
-	<pre>
+		<h2>For/Of Loop</h2>
+		<p>The JavaScript for/of statement loops through the values of an iterable objects for/of lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more.</p>
+		<pre>
 	txt = ["John", "Doe", "blue"]
 	for (x of txt) {
 		alert(x);
@@ -48,9 +49,9 @@ for (x in person) {
 </pre>
 
 
-	<h2>While Loop</h2>
-	The while loop loops through a block of code as long as a specified condition is true.
-	<pre>
+		<h2>While Loop</h2>
+		The while loop loops through a block of code as long as a specified condition is true.
+		<pre>
 	var i = 0;
 	while (i < 5) {
 		document.write("hello&lt;br>");
@@ -59,10 +60,10 @@ for (x in person) {
 </pre>
 
 
-	<h2>Do/While Loop</h2>
-	The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the
-	condition is true, then it will repeat the loop as long as the condition is true.
-	<pre>
+		<h2>Do/While Loop</h2>
+		The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the
+		condition is true, then it will repeat the loop as long as the condition is true.
+		<pre>
 	var i = 20;
 	do {
 		alert(i);
@@ -70,9 +71,9 @@ for (x in person) {
 	}
 	while (i < 10);
 </pre>
-	<h2>Break and Continue</h2>
-	The break statement "jumps out" of a loop. The continue statement "jumps over" one iteration in the loop.
-	<pre>
+		<h2>Break and Continue</h2>
+		The break statement "jumps out" of a loop. The continue statement "jumps over" one iteration in the loop.
+		<pre>
 	for (i = 1; i <= 20; i++) {
 		if (i == 5) {
 			continue;
@@ -83,10 +84,10 @@ for (x in person) {
 		document.write(i + ') hai&lt;br>');
 	}
 </pre>
-	<h1>Example</h1>
-	<h2>Triangle (left aligned)</h2>
-	<pre>* <br>* * <br>* * * <br>* * * * <br>* * * * * <br>* * * * * * <br>* * * * * * * <br>* * * * * * * * <br>* * * * * * * * * <br>* * * * * * * * * * <br>* * * * * * * * * * * <br></pre>
-	<pre>&lt;script type="text/javascript">
+		<h1>Example</h1>
+		<h2>Triangle (left aligned)</h2>
+		<pre>* <br>* * <br>* * * <br>* * * * <br>* * * * * <br>* * * * * * <br>* * * * * * * <br>* * * * * * * * <br>* * * * * * * * * <br>* * * * * * * * * * <br>* * * * * * * * * * * <br></pre>
+		<pre>&lt;script type="text/javascript">
 	str = ''
 	for (x = 0; x <= 10; x++) {
 		for (y = 0; y <= x; y++) {
@@ -97,9 +98,9 @@ for (x in person) {
 	document.write('&lt;pre>' + str + '&lt;/pre>')
 &lt;/script></pre>
 
-	<h2>Triangle (center aligned)</h2>
-	<pre>           * <br>          * * <br>         * * * <br>        * * * * <br>       * * * * * <br>      * * * * * * <br>     * * * * * * * <br>    * * * * * * * * <br>   * * * * * * * * * <br>  * * * * * * * * * * <br> * * * * * * * * * * * <br></pre>
-	<pre>&lt;script type="text/javascript">
+		<h2>Triangle (center aligned)</h2>
+		<pre>           * <br>          * * <br>         * * * <br>        * * * * <br>       * * * * * <br>      * * * * * * <br>     * * * * * * * <br>    * * * * * * * * <br>   * * * * * * * * * <br>  * * * * * * * * * * <br> * * * * * * * * * * * <br></pre>
+		<pre>&lt;script type="text/javascript">
 	str = ''
 	for (x = 0; x <= 10; x++) {
 		for (z = 0; z <= 10 - x; z++) {
@@ -114,6 +115,8 @@ for (x in person) {
 	document.write('&lt;pre>' + str + '&lt;/pre>')
 &lt;/script></pre>
 
-	<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

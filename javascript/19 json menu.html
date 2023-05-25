@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON Menu</title>
+</head>
+
+<body>
+	<main>
+		<unf><script>
+			menu = {
+				"html": [
+					"home",
+					"about",
+					"contact"
+				],
+				"javascript": [
+					"apple",
+					"cat",
+					"dog",
+					"elephant"
+				],
+				"python": [
+					"basics",
+					"django"
+				],
+				"react": []
+			}
+		</script>
+<script>
+	nav = document.createElement('div')
+	str = '<ul id="list3">'
+	Object.keys(menu).forEach(key => {
+		str += `<li><a>${key}</a><ol>`
+		for (let i = 0; i < menu[key].length; i++) {
+			str += `<li><a>${menu[key][i]}</a></li>`;
+		}
+		str += `</ol></li>`
+	});
+	str += "<ul>"
+	nav.innerHTML = str;
+	document.getElementsByTagName('main')[0].prepend(nav)
+</script>
+<style type="text/css">
+	#list3,
+	#list3 ol {
+		list-style-type: none;
+		padding: 0;
+		display: block;
+		text-align: center;
+	}
+
+	#list3>li {
+		display: inline-block;
+		margin: 0px 5px;
+		height: 50px;
+		position: relative;
+	}
+
+	#list3 a {
+		font-family: Arial;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	#list3 > li > a {
+		display: inline-block;
+		font-size: 20px;
+		border: 2px solid blue;
+		padding: 10px 20px;
+		background-color: teal;
+		color: white;
+	}
+
+	#list3>li>a:hover {
+		background-color: rgb(146, 0, 73);
+		/* border-color: red; */
+		color: yellow;
+		/* outline: 4px solid orange; */
+	}
+
+	#list3>li:hover>ol {
+		display: block;
+		position: absolute;
+		width: 100%;
+	}
+
+	#list3 ol>li {
+		display: block;
+		z-index: 22;
+		border: 1px solid;
+	}
+
+	#list3 ol>li>a {
+		padding: 10px;
+		background-color: skyblue;
+		text-decoration: none;
+		display: block;
+	}
+
+	#list3 ol {
+		display: none;
+	}
+
+	#list3 ol>li>a:hover {
+		background-color: teal;
+		color: wheat;
+	}
+
+	a {
+		text-transform: uppercase;
+	}
+</style>
+	</unf>
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
+</body>
+</html>

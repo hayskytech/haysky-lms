@@ -9,8 +9,9 @@
 </head>
 
 <body>
-	<h2>Sample AJAX request to get data from API</h2>
-	<pre>
+	<main>
+		<h2>Sample AJAX request to get data from API</h2>
+		<pre>
 &lt;p>Getting data from API&lt;/p>
 &lt;script>
 	const url = "https://api.sampleapis.com/countries/countries"
@@ -35,8 +36,8 @@
 &lt;/style>
 </pre>
 
-	<h2>Example to load news articles from API</h2>
-	<unf><div id="news"></div>
+		<h2>Example to load news articles from API</h2>
+		<unf><div id="news"></div>
 <script>
 	wp_website = "http://telugunewsadda.com/"
 	api = "wp-json/wp/v2/posts?_fields=id,title,content,slug,jetpack_featured_media_url&per_page=8";
@@ -96,14 +97,16 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

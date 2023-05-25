@@ -9,8 +9,9 @@
 </head>
 
 <body>
-	<h1>CSV Import using Javascript</h1>
-	<unf><input type="file" name="file" id="inp" accept=".csv"> <br><br>
+	<main>
+		<h1>CSV Import using Javascript</h1>
+		<unf><input type="file" name="file" id="inp" accept=".csv"> <br><br>
 <input type="button" id="btnsubmit" value="Submit" onclick="readCSVFile();">
 <br><br>
 <table id="tblcsvdata"></table>
@@ -63,13 +64,16 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
+</html>

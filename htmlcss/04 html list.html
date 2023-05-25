@@ -9,10 +9,11 @@
 </head>
 
 <body>
-	<h2>Unordered List</h2>
-	An unordered list starts with the &lt;ul> tag. Each list item starts with the &lt;li> tag.
+	<main>
+		<h2>Unordered List</h2>
+		An unordered list starts with the &lt;ul> tag. Each list item starts with the &lt;li> tag.
 
-	<unf><ul>
+		<unf><ul>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
@@ -21,9 +22,9 @@
 </ul>
 </unf>
 
-	<h2>Ordered List</h2>
-	<p>An ordered list starts with the &lt;ol> tag. Each list item starts with the &lt;li> tag. The list items will be marked with numbers:</p>
-	<unf><ol>
+		<h2>Ordered List</h2>
+		<p>An ordered list starts with the &lt;ol> tag. Each list item starts with the &lt;li> tag. The list items will be marked with numbers:</p>
+		<unf><ol>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Juice</li>
@@ -31,8 +32,8 @@
 </ol>
 </unf>
 
-	<p>Change type attribute: &lt;ol type="a"> A i I 1</p>
-	<unf><ol type="A">
+		<p>Change type attribute: &lt;ol type="a"> A i I 1</p>
+		<unf><ol type="A">
   <li>Coffee</li>
   <li>Tea</li>
   <li>Juice</li>
@@ -40,9 +41,9 @@
 </ol>
 </unf>
 
-	<h2>Nested HTML Lists</h2>
-	<p>List can be nested (lists inside lists):</p>
-	<unf><ol>
+		<h2>Nested HTML Lists</h2>
+		<p>List can be nested (lists inside lists):</p>
+		<unf><ol>
   <li>Coffee</li>
   <li>Tea
      <ol>
@@ -54,15 +55,15 @@
 </ol>
 </unf>
 
-	<strong>Control List starting number using start attribute:</strong>
-	<unf><ol start="20">
+		<strong>Control List starting number using start attribute:</strong>
+		<unf><ol start="20">
   <li>Apple</li>
   <li>Bat</li>
 </ol>
 </unf>
 
-	<strong>Example:</strong>
-	<pre>&lt;ul>
+		<strong>Example:</strong>
+		<pre>&lt;ul>
 	&lt;li>APPLE
 		&lt;ul>
 			&lt;li>MANGO&lt;/li>
@@ -87,8 +88,8 @@
 	&lt;/li>
 &lt;/ul>
 </pre>
-	<hr>
-	<pre>&lt;ol>
+		<hr>
+		<pre>&lt;ol>
 	&lt;li>APPLE
 		&lt;ol type="a">
 			&lt;li>MANGO&lt;/li>
@@ -112,8 +113,8 @@
 &lt;/ol>
 </pre>
 
-	<h2>Example:</h2>
-	<unf><table border="1">
+		<h2>Example:</h2>
+		<unf><table border="1">
 	<tbody>
 		<tr>
 			<td colspan="3">
@@ -148,14 +149,16 @@
 	</tbody>
 </table>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

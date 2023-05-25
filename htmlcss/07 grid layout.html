@@ -10,8 +10,9 @@
 </head>
 
 <body>
-	<h1>Grid Layout</h1>
-	<unf><style type="text/css">
+	<main>
+		<h1>Grid Layout</h1>
+		<unf><style type="text/css">
 	#grid-main {
 		padding: 0;
 		margin: 0;
@@ -108,13 +109,15 @@
 	</div>
 </div>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

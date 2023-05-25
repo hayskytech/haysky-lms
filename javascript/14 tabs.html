@@ -10,8 +10,9 @@
 </head>
 
 <body>
-	<h1>Tabs</h1>
-	<unf><div>
+	<main>
+		<h1>Tabs</h1>
+		<unf><div>
 	<div class="tabs">
 		<ul class="tabs-list">
 			<li class="tabel tabactive" data-tab="tab1">Tab1</li>
@@ -127,13 +128,15 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

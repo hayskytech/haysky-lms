@@ -1,16 +1,29 @@
-<body>
-	<h1>CSS Box Model</h1>
-	<img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png" width="300"
-		style="float: right;">
-	<b>Content</b> - The content of the box, where text and images appear<br />
-	<b>Padding</b> - Clears an area around the content. (transparent)<br />
-	<b>Border</b> - A line that goes around the padding and content. (colored)<br />
-	<b>Outline</b> - A line that goes around the outline and falls on margin. (colored)<br />
-	<b>Margin</b> - Clears an area outside the border. (transparent)
-	<br>
+<!DOCTYPE html>
+<html lang="en">
 
-	<h2>Content</h2>
-	<unf><h1 class="new">Hello</h1>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Box Model</title>
+</head>
+
+<body>
+	<main>
+
+		<body>
+			<h1>CSS Box Model</h1>
+			<img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png" width="300"
+				style="float: right;">
+			<b>Content</b> - The content of the box, where text and images appear<br />
+			<b>Padding</b> - Clears an area around the content. (transparent)<br />
+			<b>Border</b> - A line that goes around the padding and content. (colored)<br />
+			<b>Outline</b> - A line that goes around the outline and falls on margin. (colored)<br />
+			<b>Margin</b> - Clears an area outside the border. (transparent)
+			<br>
+
+			<h2>Content</h2>
+			<unf><h1 class="new">Hello</h1>
 <style>
 h1.new{
 	background: pink;
@@ -20,59 +33,62 @@ h1.new{
 </style>
 </unf>
 
-	<h2>Padding</h2>
-	Creates a transparent gap inside the element.
-	<pre>padding: 20px;</pre>
-	<strong>Padding Individual sides</strong>
-	<pre>padding-top:10px;
+			<h2>Padding</h2>
+			Creates a transparent gap inside the element.
+			<pre>padding: 20px;</pre>
+			<strong>Padding Individual sides</strong>
+			<pre>padding-top:10px;
 padding-right:40px;</pre>
-	<strong>Padding Shorthand property (top right bottom left)</strong>
-	<pre>padding: 10px 40px 30px 0px;</pre>
-	<h2>Margin</h2>
-	Creates a transparent gap outside of the element.
-	<pre>margin: 30px;</pre>
-	<strong>Margin Individual sides</strong>
-	<pre>margin-top:10px;
+			<strong>Padding Shorthand property (top right bottom left)</strong>
+			<pre>padding: 10px 40px 30px 0px;</pre>
+			<h2>Margin</h2>
+			Creates a transparent gap outside of the element.
+			<pre>margin: 30px;</pre>
+			<strong>Margin Individual sides</strong>
+			<pre>margin-top:10px;
 margin-right:40px;</pre>
-	<strong>Margin Shorthand property (top right bottom left)</strong>
-	<pre>margin: 10px 40px 30px 0px;</pre>
-	<h2>Border</h2>
-	<strong>Shorthand property</strong>
-	<pre>border: 1px solid black;</pre>
-	<strong>Border Properties</strong>
-	<pre>border-width: 2px;
+			<strong>Margin Shorthand property (top right bottom left)</strong>
+			<pre>margin: 10px 40px 30px 0px;</pre>
+			<h2>Border</h2>
+			<strong>Shorthand property</strong>
+			<pre>border: 1px solid black;</pre>
+			<strong>Border Properties</strong>
+			<pre>border-width: 2px;
 border-style: solid; (double / dashed / ridge / groove / hidden / none )
 border-color: red;</pre>
-	<strong>Border on individual sides</strong>
-	<pre>border-top-width: 10px;
+			<strong>Border on individual sides</strong>
+			<pre>border-top-width: 10px;
 border-bottom-width: 20px;
 border-top-color: blue;
 border-left-color: red;</pre>
-	<strong>Border Individual Shorthand Property</strong>
-	<pre>border-width: 10px 30px 40px 50px;
+			<strong>Border Individual Shorthand Property</strong>
+			<pre>border-width: 10px 30px 40px 50px;
 border-color: red blue green yellow;</pre>
-	<h2>Outline</h2>
-	<strong>Shorthand property</strong>
-	<pre>outline: 1px solid black;</pre>
-	<strong>Outline Properties</strong>
-	<pre>outline-width: 2px;
+			<h2>Outline</h2>
+			<strong>Shorthand property</strong>
+			<pre>outline: 1px solid black;</pre>
+			<strong>Outline Properties</strong>
+			<pre>outline-width: 2px;
 outline-style: solid;
 outline-color: red;</pre>
-	<strong>Outline on Individual Sides</strong>
-	<pre>outline-top-width: 10px;
+			<strong>Outline on Individual Sides</strong>
+			<pre>outline-top-width: 10px;
 outline-bottom-width: 20px;
 outline-top-color: blue;
 outline-left-color: red;</pre>
-	<strong>Outline Individual Shorthand Property</strong>
-	<pre>outline-width: 10px 30px 40px 50px;
+			<strong>Outline Individual Shorthand Property</strong>
+			<pre>outline-width: 10px 30px 40px 50px;
 outline-color: red blue green yellow;</pre>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+			<script>
+				unf = document.getElementsByTagName("unf");
+				for (var i = 0; i < unf.length; i++) {
+					pre = document.createElement("pre");
+					pre.innerText = unf[i].innerHTML;
+					unf[i].appendChild(pre);
+				}
+			</script>
+			<link rel="stylesheet" href="../style.css">
+			<script src="../menu.js"></script>
+	</main>
 </body>
+</html>

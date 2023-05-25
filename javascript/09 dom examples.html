@@ -9,10 +9,11 @@
 </head>
 
 <body>
-	<h1>DOM Examples</h1>
+	<main>
+		<h1>DOM Examples</h1>
 
-	<h2>onClick function</h2>
-	<unf><button onclick="go()">Click me</button>
+		<h2>onClick function</h2>
+		<unf><button onclick="go()">Click me</button>
 <script>
 	function go() {
 		alert("I am clicked!")
@@ -20,9 +21,9 @@
 </script>
 </unf>
 
-	<h2>Connect element to function</h2>
+		<h2>Connect element to function</h2>
 
-	<unf><button  id="myBtn">Hello</button>
+		<unf><button  id="myBtn">Hello</button>
 <script>
 	document.getElementById("myBtn").addEventListener('click', run);
 	function run() {
@@ -31,8 +32,8 @@
 </script>
 </unf>
 
-	<h2>Without function name</h2>
-	<unf><button  id="myBtn2">Welcome to Haysky</button>
+		<h2>Without function name</h2>
+		<unf><button  id="myBtn2">Welcome to Haysky</button>
 <script>
 	document.getElementById("myBtn2").onclick = function () {
 		alert('Welcome to Haysky!');
@@ -40,9 +41,9 @@
 </script>
 </unf>
 
-	<h2>Onchange select/input element</h2>
+		<h2>Onchange select/input element</h2>
 
-	<unf><select onchange="run1(this)">
+		<unf><select onchange="run1(this)">
 	<option>Male</option>
 	<option>Female</option>
 </select>
@@ -58,14 +59,16 @@
 </script>
 </unf>
 
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
-	<link rel="stylesheet" href="../style.css">
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<link rel="stylesheet" href="../style.css">
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

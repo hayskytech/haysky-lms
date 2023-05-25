@@ -10,8 +10,9 @@
 </head>
 
 <body>
-	<h1>Todo List</h1>
-	<unf>Enter Text: <input type="text" onkeypress="handleKey(event)" autofocus id="inp1">
+	<main>
+		<h1>Todo List</h1>
+		<unf>Enter Text: <input type="text" onkeypress="handleKey(event)" autofocus id="inp1">
 <button onclick="addItem()">Add Item</button>
 <ol id="list1"></ol>
 <script>
@@ -51,8 +52,8 @@
 </unf>
 
 
-	<h2>Todo List using <b>Local storage</b></h2>
-	<unf><div>
+		<h2>Todo List using <b>Local storage</b></h2>
+		<unf><div>
 	Enter text: <input id="input" autofocus />
 	<button id="button">ADD Item</button>
 	<button id="removeAll">Remove All</button>
@@ -157,13 +158,15 @@
 	}
 </style>
 </unf>
-	<script>
-		unf = document.getElementsByTagName("unf");
-		for (var i = 0; i < unf.length; i++) {
-			pre = document.createElement("pre");
-			pre.innerText = unf[i].innerHTML;
-			unf[i].appendChild(pre);
-		}
-	</script>
+		<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>
