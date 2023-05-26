@@ -10,13 +10,14 @@
 </head>
 
 <body>
-	<h1>MySQL - Python</h1>
-	<h2>Setup</h2>
-	<p><b>First of all install and start mysql server.</b></p>
-	<p>Open terminal / cmd / powershell</p>
-	<pre>python -m pip install mysql-connector-python</pre>
-	<h2>Create Connection</h2>
-	<pre>import mysql.connector	
+	<main>
+		<h1>MySQL - Python</h1>
+		<h2>Setup</h2>
+		<p><b>First of all install and start mysql server.</b></p>
+		<p>Open terminal / cmd / powershell</p>
+		<pre>python -m pip install mysql-connector-python</pre>
+		<h2>Create Connection</h2>
+		<pre>import mysql.connector	
 
 mydb = mysql.connector.connect(
 	host="localhost",
@@ -24,51 +25,51 @@ mydb = mysql.connector.connect(
 	password=""
 )</pre>
 
-	<h2>CREATE DATABASE</h2>
-	<pre>mycursor = mydb.cursor()
+		<h2>CREATE DATABASE</h2>
+		<pre>mycursor = mydb.cursor()
 mycursor.execute("CREATE DATABASE mydb")</pre>
-	<h3>Check if Database Exists</h3>
-	<pre>mycursor.execute("SHOW DATABASES")
+		<h3>Check if Database Exists</h3>
+		<pre>mycursor.execute("SHOW DATABASES")
 for x in mycursor:
 	print(x)</pre>
 
-	<h2>Connect to Database</h2>
-	<pre>mydb = mysql.connector.connect(
+		<h2>Connect to Database</h2>
+		<pre>mydb = mysql.connector.connect(
 	host="localhost",
 	user="root",
 	password="",
 	database="mydb"
 )</pre>
 
-	<h2>CREATE TABLE</h2>
-	<pre>mycursor.execute("CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))")</pre>
-	<p>Since we have connected into the database, new tables are created inside it.</p>
+		<h2>CREATE TABLE</h2>
+		<pre>mycursor.execute("CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))")</pre>
+		<p>Since we have connected into the database, new tables are created inside it.</p>
 
-	<h3>SHOW TABLES</h3>
-	<pre>mycursor.execute("SHOW TABLES")
+		<h3>SHOW TABLES</h3>
+		<pre>mycursor.execute("SHOW TABLES")
 for x in mycursor:
 	print(x)</pre>
 
-	<h3>Primary Key</h3>
-	<p>When creating a table, you should also create a column with a unique key for each record.</p>
-	<pre>mycursor.execute("""CREATE TABLE customers (
+		<h3>Primary Key</h3>
+		<p>When creating a table, you should also create a column with a unique key for each record.</p>
+		<pre>mycursor.execute("""CREATE TABLE customers (
 	id INT AUTO_INCREMENT PRIMARY KEY, 
 	name VARCHAR(255), 
 	address VARCHAR(255)
 )""")</pre>
 
-	<h3>Add Column to existing table</h3>
-	<pre>mycursor.execute("ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")</pre>
+		<h3>Add Column to existing table</h3>
+		<pre>mycursor.execute("ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")</pre>
 
-	<h2>INSERT</h2>
-	<pre>sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+		<h2>INSERT</h2>
+		<pre>sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
 val = ("John", "Highway 21")
 mycursor.execute(sql, val)
 mydb.commit()</pre>
-	<p><b>mydb.commit()</b> is required to make the changes, otherwise no changes are made to
+		<p><b>mydb.commit()</b> is required to make the changes, otherwise no changes are made to
 the table.</p>
-	<h3>INSERT Many using list of tuples</h3>
-	<pre>sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+		<h3>INSERT Many using list of tuples</h3>
+		<pre>sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
 val = [
 	('Peter', 'Lowstreet 4'),
 	('Amy', 'Apple st 652'),
@@ -90,65 +91,65 @@ print(mycursor.rowcount, " was inserted.")
 print("1 record inserted, ID:", mycursor.lastrowid)
 </pre>
 
-	<h2>SELECT</h2>
-	<pre>
+		<h2>SELECT</h2>
+		<pre>
 mycursor.execute("SELECT * FROM customers")
 myresult = mycursor.fetchall()
 
 for x in myresult:
 	print(x)
 </pre>
-	<p><b>fetchone()</b>  will get single row only.</p>
-	<h3>WHERE</h3>
-	<pre>mycursor.execute("SELECT * FROM customers WHERE address ='Park Lane 38'")</pre>
-	<h3>Wildcard Characters</h3>
-	<pre>mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")</pre>
-	<h3>Prevent SQL Injection</h3>
-	<pre>sql = "SELECT * FROM customers WHERE address = %s"
+		<p><b>fetchone()</b>  will get single row only.</p>
+		<h3>WHERE</h3>
+		<pre>mycursor.execute("SELECT * FROM customers WHERE address ='Park Lane 38'")</pre>
+		<h3>Wildcard Characters</h3>
+		<pre>mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")</pre>
+		<h3>Prevent SQL Injection</h3>
+		<pre>sql = "SELECT * FROM customers WHERE address = %s"
 adr = ("Yellow Garden 2", )
 mycursor.execute(sql, adr)</pre>
-	<h3>ORDER BY</h3>
-	<pre>sql = "SELECT * FROM customers ORDER BY name DESC"
+		<h3>ORDER BY</h3>
+		<pre>sql = "SELECT * FROM customers ORDER BY name DESC"
 mycursor.execute(sql)</pre>
-	<h3>Limit the Result</h3>
-	<pre>mycursor.execute("SELECT * FROM customers LIMIT 5")</pre>
-	<h3>Start From Another Position</h3>
-	<pre>mycursor.execute("SELECT * FROM customers LIMIT 5 OFFSET 2")</pre>
-	<h2>DELETE</h2>
-	<pre>sql = "DELETE FROM customers WHERE address = 'Mountain 21'"</pre>
-	<h3>Prevent SQL Injection</h3>
-	<pre>sql = "DELETE FROM customers WHERE address = %s"
+		<h3>Limit the Result</h3>
+		<pre>mycursor.execute("SELECT * FROM customers LIMIT 5")</pre>
+		<h3>Start From Another Position</h3>
+		<pre>mycursor.execute("SELECT * FROM customers LIMIT 5 OFFSET 2")</pre>
+		<h2>DELETE</h2>
+		<pre>sql = "DELETE FROM customers WHERE address = 'Mountain 21'"</pre>
+		<h3>Prevent SQL Injection</h3>
+		<pre>sql = "DELETE FROM customers WHERE address = %s"
 adr = ("Yellow Garden 2", )
 mycursor.execute(sql, adr)</pre>
 
-	<h2>UPDATE</h2>
-	<pre>sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"</pre>
-	<h3>Prevent SQL Injection</h3>
-	<pre>sql = "UPDATE customers SET address = %s WHERE address = %s"
+		<h2>UPDATE</h2>
+		<pre>sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"</pre>
+		<h3>Prevent SQL Injection</h3>
+		<pre>sql = "UPDATE customers SET address = %s WHERE address = %s"
 val = ("Valley 345", "Canyon 123")
 mycursor.execute(sql, val)</pre>
 
-	<h2>DROP TABLE</h2>
-	<pre>sql = "DROP TABLE customers"</pre>
-	<pre>sql = "DROP TABLE IF EXISTS customers"</pre>
+		<h2>DROP TABLE</h2>
+		<pre>sql = "DROP TABLE customers"</pre>
+		<pre>sql = "DROP TABLE IF EXISTS customers"</pre>
 
-	<h2>Join Two or More Tables</h2>
-	<p><b>users table:</b></p>
-	<pre>
+		<h2>Join Two or More Tables</h2>
+		<p><b>users table:</b></p>
+		<pre>
 { id: 1, name: 'John', fav: 154},
 { id: 2, name: 'Peter', fav: 154},
 { id: 3, name: 'Amy', fav: 155},
 { id: 4, name: 'Hannah', fav:},
 { id: 5, name: 'Michael', fav:}
 	</pre>
-	<p><b>products table:</b></p>
-	<pre>
+		<p><b>products table:</b></p>
+		<pre>
 { id: 154, name: 'Chocolate Heaven' },
 { id: 155, name: 'Tasty Lemons' },
 { id: 156, name: 'Vanilla Dreams' }
 	</pre>
-	<p>Join users and products to see the name of the users favorite product:</p>
-	<pre>
+		<p>Join users and products to see the name of the users favorite product:</p>
+		<pre>
 sql = "SELECT \
 	users.name AS user, \
 	products.name AS favorite \
@@ -159,23 +160,25 @@ myresult = mycursor.fetchall()
 for x in myresult:
 	print(x)
 	</pre>
-	<p>Note: You can use JOIN instead of INNER JOIN. They will both give you the same result.</p>
+		<p>Note: You can use JOIN instead of INNER JOIN. They will both give you the same result.</p>
 
-	<h3>LEFT JOIN</h3>
-	<p>Select all users and their favorite product:</p>
-	<pre>sql = "SELECT \
+		<h3>LEFT JOIN</h3>
+		<p>Select all users and their favorite product:</p>
+		<pre>sql = "SELECT \
 	users.name AS user, \
 	products.name AS favorite \
 	FROM users \
 	LEFT JOIN products ON users.fav = products.id"</pre>
-	<h3>RIGHT JOIN</h3>
-	<p>Select all products, and the user(s) who have them as their favorite:</p>
-	<pre>
+		<h3>RIGHT JOIN</h3>
+		<p>Select all products, and the user(s) who have them as their favorite:</p>
+		<pre>
 sql = "SELECT \
 	users.name AS user, \
 	products.name AS favorite \
 	FROM users \
 	RIGHT JOIN products ON users.fav = products.id"
 	</pre>
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

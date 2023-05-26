@@ -10,107 +10,111 @@
 </head>
 
 <body>
-	<h1>Strings</h1>
-	<p>String literals are surrounded by either single quotes or double quotes.</p>
-	<pre>print("Hello")
+	<main>
+		<h1>Strings</h1>
+		<p>String literals are surrounded by either single quotes or double quotes.</p>
+		<pre>print("Hello")
 print('Hello')</pre>
-	<p>Assigning a string to a variable is done with the variable name followed by an equal sign and the string:</p>
-	<pre>a = "Hello"
+		<p>Assigning a string to a variable is done with the variable name followed by an equal sign and the string:</p>
+		<pre>a = "Hello"
 print(a)</pre>
-	<h2>Multiline Strings</h2>
-	<p>You can assign a multiline string to a variable by using three quotes:<br>
+		<h2>Multiline Strings</h2>
+		<p>You can assign a multiline string to a variable by using three quotes:<br>
 		You can use three double / single quotes:</p>
-	<pre>a = """Hello this is a 
+		<pre>a = """Hello this is a 
 multi line 
 text"""
 print(a)</pre>
-	<p>Note: In the result, the line breaks are inserted at the same position as in the code.</p>
-	<h2>Strings are Arrays</h2>
-	<p>Like many other popular programming languages, strings in Python are arrays of bytes representing unicode
+		<p>Note: In the result, the line breaks are inserted at the same position as in the code.</p>
+		<h2>Strings are Arrays</h2>
+		<p>Like many other popular programming languages, strings in Python are arrays of bytes representing unicode
 		characters.
 		However, Python does not have a character data type, a single character is simply a string with a length of 1.
 		Square
 		brackets can be used to access elements of the string.<br>
 		Get the character at position 1 (remember that the first character has the position 0):</p>
-	<pre>a = "Hello, World!"
+		<pre>a = "Hello, World!"
 print(a[1])</pre>
-	<h2>Slicing</h2>
-	<p>You can return a range of characters by using the slice syntax. Specify the start index and the end index,
+		<h2>Slicing</h2>
+		<p>You can return a range of characters by using the slice syntax. Specify the start index and the end index,
 		separated
 		by a colon, to return a part of the string.</p>
-	<p>Example: Get the characters from position 2 to position 5 (not included position 5):</p>
-	<pre>b = "Hello, World!"
+		<p>Example: Get the characters from position 2 to position 5 (not included position 5):</p>
+		<pre>b = "Hello, World!"
 print(b[2:5])</pre>
-	<h2>Negative Indexing</h2>
-	<p>Use negative indexes to start the slice from the end of the string:</p>
-	<pre>b = "Hello, World!"
+		<h2>Negative Indexing</h2>
+		<p>Use negative indexes to start the slice from the end of the string:</p>
+		<pre>b = "Hello, World!"
 print(b[-5:-2])</pre>
-	<h2>String Length</h2>
-	<p>To get the length of a string, use the len() function.</p>
-	<pre>a = "Hello, World!"
+		<h2>String Length</h2>
+		<p>To get the length of a string, use the len() function.</p>
+		<pre>a = "Hello, World!"
 print(len(a))</pre>
-	<h2>String Methods</h2>
-	<p>Python has a set of built-in methods that you can use on strings.</p>
-	<p>The strip() method removes any whitespace from the beginning or the end:</p>
-	<pre>a = " Hello, World! "
+		<h2>String Methods</h2>
+		<p>Python has a set of built-in methods that you can use on strings.</p>
+		<p>The strip() method removes any whitespace from the beginning or the end:</p>
+		<pre>a = " Hello, World! "
 print(a.strip())</pre>
-	<p>The lower() method returns the string in lower case:</p>
-	<pre>a = "Hello, World!"
+		<p>The lower() method returns the string in lower case:</p>
+		<pre>a = "Hello, World!"
 print(a.lower())</pre>
-	<p>The upper() method returns the string in upper case:</p>
-	<pre>a = "Hello, World!"
+		<p>The upper() method returns the string in upper case:</p>
+		<pre>a = "Hello, World!"
 print(a.upper())</pre>
-	<p>The replace() method replaces a string with another string:</p>
-	<pre>a = "Hello, World!"
+		<p>The replace() method replaces a string with another string:</p>
+		<pre>a = "Hello, World!"
 print(a.replace("H", "J"))</pre>
-	<p>The split() method splits the string into substrings if it finds instances of the separator:</p>
-	<pre>a = "Hello, World!"
+		<p>The split() method splits the string into substrings if it finds instances of the separator:</p>
+		<pre>a = "Hello, World!"
 print(a.split(",")) # returns ['Hello', ' World!']</pre>
-	<h2>Check String:</h2>
-	<p>To check if a certain phrase or character is present in a string, we can use the keywords in or not
+		<h2>Check String:</h2>
+		<p>To check if a certain phrase or character is present in a string, we can use the keywords in or not
 		in.</p>
-	<p>Example: Check if the phrase “rise” is present in the following text:</p>
-	<pre>txt = "Sun rises in the east"
+		<p>Example: Check if the phrase “rise” is present in the following text:</p>
+		<pre>txt = "Sun rises in the east"
 x = "rise" in txt
 print(x)</pre>
-	<p>Example: Check if the phrase “ain” is NOT present in the following text:</p>
-	<pre>txt = "Sun rises in the east"
+		<p>Example: Check if the phrase “ain” is NOT present in the following text:</p>
+		<pre>txt = "Sun rises in the east"
 x = "west" not in txt
 print(x)</pre>
-	<h2>String Concatenation:</h2>
-	<p>To concatenate, or combine, two strings you can use the + operator.</p>
-	<p>Example: Merge variable a with variable b into variable c:</p>
-	<pre>a = "Hello"
+		<h2>String Concatenation:</h2>
+		<p>To concatenate, or combine, two strings you can use the + operator.</p>
+		<p>Example: Merge variable a with variable b into variable c:</p>
+		<pre>a = "Hello"
 b = "World"
 c = a + b
 print(c)</pre>
-	<p>Example: To add a space between them, add a ” “:</p>
-	<pre>a = "Hello"
+		<p>Example: To add a space between them, add a ” “:</p>
+		<pre>a = "Hello"
 b = "World"
 c = a + " " + b
 print(c)</pre>
-	<h2>String Format:</h2>
-	<p>As we learned in the Python Variables chapter, we cannot combine strings and numbers like this:</p>
-	<pre>age = 36
+		<h2>String Format:</h2>
+		<p>As we learned in the Python Variables chapter, we cannot combine strings and numbers like this:</p>
+		<pre>age = 36
 txt = "My name is John, I am " + age
 print(txt)</pre>
-	<p>But we can combine strings and numbers by using the format() method!</p>
-	<p>The format() method takes the passed arguments, formats them, and places them in the string where the
+		<p>But we can combine strings and numbers by using the format() method!</p>
+		<p>The format() method takes the passed arguments, formats them, and places them in the string where the
 		placeholders {} are:</p>
-	<p>Example: Use the format() method to insert numbers into strings:</p>
-	<pre>age = 36
+		<p>Example: Use the format() method to insert numbers into strings:</p>
+		<pre>age = 36
 txt = "My name is John, and I am {}"
 print(txt.format(age))</pre>
-	<p>The format() method takes unlimited number of arguments, and are placed into the respective placeholders:</p>
-	<pre>quantity = 3
+		<p>The format() method takes unlimited number of arguments, and are placed into the respective placeholders:</p>
+		<pre>quantity = 3
 itemno = 567
 price = 49.95
 myorder = "I want {} pieces of item {} for {} dollars."
 print(myorder.format(quantity, itemno, price))</pre>
-	<p>You can use index numbers {0} to be sure the arguments are placed in the correct placeholders:</p>
-	<pre>quantity = 3
+		<p>You can use index numbers {0} to be sure the arguments are placed in the correct placeholders:</p>
+		<pre>quantity = 3
 itemno = 567
 price = 49.95
 myorder = "I want to pay {2} dollars for {0} pieces of item {1}."
 print(myorder.format(quantity, itemno, price))</pre>
+		<script src="../menu.js"></script>
+	</main>
 </body>
+</html>

@@ -10,35 +10,36 @@
 </head>
 
 <body>
-	<h1>Functions</h1>
-	<ul>
-		<li>A function is a block of code which only runs when it is called.</li>
-		<li>You can pass data, known as parameters, into a function.</li>
-		<li>A function can return data as a result.</li>
-	</ul>
-	<pre>def my_function():
+	<main>
+		<h1>Functions</h1>
+		<ul>
+			<li>A function is a block of code which only runs when it is called.</li>
+			<li>You can pass data, known as parameters, into a function.</li>
+			<li>A function can return data as a result.</li>
+		</ul>
+		<pre>def my_function():
 	print("Hello from a function")
 my_function()
 my_function()</pre>
 
-	<h2>Arguments / Parameters</h2>
-	<p>The terms parameter and argument can be used for the same thing: information that are passed into a function.</p>
-	<pre>def my_function(fname):
+		<h2>Arguments / Parameters</h2>
+		<p>The terms parameter and argument can be used for the same thing: information that are passed into a function.</p>
+		<pre>def my_function(fname):
 	print(fname + " Refsnes")
 
 my_function("Emil")
 my_function("Tobias")
 my_function("Linus")</pre>
-	<p><b>Note:</b>From a function's perspective: A parameter is the variable listed inside the parentheses in the function definition.<br>An argument is the value that is sent to the function when it is called.</p>
-	<hr />
-	<p>This function expects 2 arguments, and gets 2 arguments:</p>
-	<pre>def my_function(fname, lname):
+		<p><b>Note:</b>From a function's perspective: A parameter is the variable listed inside the parentheses in the function definition.<br>An argument is the value that is sent to the function when it is called.</p>
+		<hr />
+		<p>This function expects 2 arguments, and gets 2 arguments:</p>
+		<pre>def my_function(fname, lname):
 	print(fname + " " + lname)
 	
 my_function("Emil", "Refsnes")</pre>
-	<p><b>We cannot give less or more arguments</b></p>
-	<h2>Default Parameter Value</h2>
-	<pre>def my_function(country = "Norway"):
+		<p><b>We cannot give less or more arguments</b></p>
+		<h2>Default Parameter Value</h2>
+		<pre>def my_function(country = "Norway"):
 	print("I am from " + country)
 
 my_function("Sweden")
@@ -46,36 +47,36 @@ my_function("India")
 my_function()
 my_function("Brazil")</pre>
 
-	<h2>Return Values</h2>
-	<pre>def my_function(x):
+		<h2>Return Values</h2>
+		<pre>def my_function(x):
 		return 5 * x
 	
 	print(my_function(3))
 	print(my_function(5))
 	print(my_function(9))</pre>
 
-	<h2>Keyword Arguments</h2>
-	<p>You can also send arguments with the key = value syntax. This way the order of the arguments does not matter.</p>
-	<pre>def my_function(child3, child2, child1):
+		<h2>Keyword Arguments</h2>
+		<p>You can also send arguments with the key = value syntax. This way the order of the arguments does not matter.</p>
+		<pre>def my_function(child3, child2, child1):
 	print("The youngest child is " + child3)
 
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")</pre>
-	<h2>Arbitrary Arguments, *args</h2>
-	<p>If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition. This way the function will receive a tuple of arguments:</p>
-	<pre>def my_function(*kids):
+		<h2>Arbitrary Arguments, *args</h2>
+		<p>If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition. This way the function will receive a tuple of arguments:</p>
+		<pre>def my_function(*kids):
 	print("The youngest child is " + kids[2])
 
 my_function("Emil", "Tobias", "Linus")
 		</pre>
-	<h2>Arbitrary Keyword Arguments, **kwargs</h2>
-	<p>This way the function will receive a dictionary of arguments:</p>
-	<pre>def my_function(**kid):
+		<h2>Arbitrary Keyword Arguments, **kwargs</h2>
+		<p>This way the function will receive a dictionary of arguments:</p>
+		<pre>def my_function(**kid):
 	print("His last name is " + kid["lname"])
 
 my_function(fname = "Tobias", lname = "Refsnes")</pre>
-	<h2>Recursion</h2>
-	<p>Python also accepts function recursion, which means a defined function can call itself.</p>
-	<pre>def tri_recursion(k):
+		<h2>Recursion</h2>
+		<p>Python also accepts function recursion, which means a defined function can call itself.</p>
+		<pre>def tri_recursion(k):
 	if(k > 0):
 		result = k + tri_recursion(k - 1)
 		print(result)
@@ -86,14 +87,14 @@ my_function(fname = "Tobias", lname = "Refsnes")</pre>
 print("\n\nRecursion Example Results")
 tri_recursion(6)</pre>
 
-	<h2>Lambda Function</h2>
-	<p>A lambda function is a small anonymous function. A lambda function can take any number of arguments, but can only have one expression.</p>
-	<pre>x = lambda a : a + 10
+		<h2>Lambda Function</h2>
+		<p>A lambda function is a small anonymous function. A lambda function can take any number of arguments, but can only have one expression.</p>
+		<pre>x = lambda a : a + 10
 print(x(5))</pre>
-	<pre>x = lambda a, b, c : a + b + c
+		<pre>x = lambda a, b, c : a + b + c
 print(x(5, 6, 2))</pre>
 
-	<pre>def myfunc(n):
+		<pre>def myfunc(n):
 	return lambda a : a * n
 
 mydoubler = myfunc(2)
@@ -102,35 +103,35 @@ mytripler = myfunc(3)
 print(mydoubler(11))
 print(mytripler(11))</pre>
 
-	<h1>Scope</h1>
-	<h2>Local Scope</h2>
-	<p>A variable created inside a function belongs to the local scope of that function, and can only be used inside that	function.</p>
-	<pre>def myfunc():
+		<h1>Scope</h1>
+		<h2>Local Scope</h2>
+		<p>A variable created inside a function belongs to the local scope of that function, and can only be used inside that	function.</p>
+		<pre>def myfunc():
 	x = 300
 	print(x)
 
 myfunc()</pre>
-	<h2>Function Inside Function</h2>
-	<pre>def myfunc():
+		<h2>Function Inside Function</h2>
+		<pre>def myfunc():
 	x = 300
 	def myinnerfunc():
 		print(x)
 	myinnerfunc()
 
 myfunc()</pre>
-	<h2>Global Scope</h2>
-	<p>A variable created in the main body of the Python code is a global variable and belongs to the global scope.</p>
-	<pre>x = 300
+		<h2>Global Scope</h2>
+		<p>A variable created in the main body of the Python code is a global variable and belongs to the global scope.</p>
+		<pre>x = 300
 def myfunc():
 	print(x)
 
 myfunc()
 print(x)</pre>
 
-	<h2>Naming Variables</h2>
-	<p>If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables, one available in the global scope (outside the function) and one available in the local scope (inside the function):</p>
+		<h2>Naming Variables</h2>
+		<p>If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables, one available in the global scope (outside the function) and one available in the local scope (inside the function):</p>
 
-	<pre>x = 300
+		<pre>x = 300
 def myfunc():
 	x = 200
 	print(x)
@@ -138,19 +139,21 @@ def myfunc():
 myfunc()
 print(x)</pre>
 
-	<h2>Global Keyword</h2>
-	<p>If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.</p>
-	<pre>def myfunc():
+		<h2>Global Keyword</h2>
+		<p>If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.</p>
+		<pre>def myfunc():
 	global x
 	x = 300
 myfunc()
 print(x)</pre>
-	<p>Also, use the global keyword if you want to make a change to a global variable inside a function.</p>
-	<pre>x = 300
+		<p>Also, use the global keyword if you want to make a change to a global variable inside a function.</p>
+		<pre>x = 300
 def myfunc():
 	global x
 	x = 200
 myfunc()
 print(x)</pre>
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

@@ -10,130 +10,131 @@
 </head>
 
 <body>
-	<h1>Data Types</h1>
-	<p>Variables can store data of different types, and different types can do different things.</p>
-	<table border="1">
-		<tbody>
-			<tr>
-				<td>x = "Hello World"</td>
-				<td>str</td>
-				<td>Text</td>
-			</tr>
-			<tr>
-				<td>x = 80</td>
-				<td>int</td>
-				<td>Numeric</td>
-			</tr>
-			<tr>
-				<td>x = 60.5</td>
-				<td>float</td>
-				<td>Numeric</td>
-			</tr>
-			<tr>
-				<td>x = 2j</td>
-				<td>complex</td>
-				<td>Numeric</td>
-			</tr>
-			<tr>
-				<td>x = ["hello", "world", "bye"]</td>
-				<td>list</td>
-				<td>Sequence</td>
-			</tr>
-			<tr>
-				<td>x = (“good", “morning", “sir")</td>
-				<td>tuple</td>
-				<td>Sequence</td>
-			</tr>
-			<tr>
-				<td>x = range(6)</td>
-				<td>range</td>
-				<td>Sequence</td>
-			</tr>
-			<tr>
-				<td>x = {"name" : "Irfan", "age" : 26}</td>
-				<td>dict</td>
-				<td>Mapping</td>
-			</tr>
-			<tr>
-				<td>x = {"apples", "bananas", "cherrys"}</td>
-				<td>set</td>
-				<td>Set</td>
-			</tr>
-			<tr>
-				<td>x = frozenset({"apple", "bat", "cat"})</td>
-				<td>frozenset</td>
-				<td>Set</td>
-			</tr>
-			<tr>
-				<td>x = False</td>
-				<td>bool</td>
-				<td>bool</td>
-			</tr>
-		</tbody>
-	</table>
-	<p>You can get the data type of any object by using the type() function:</p>
-	<p>Print the data type of the variable x:</p>
-	<pre>x = 5
+	<main>
+		<h1>Data Types</h1>
+		<p>Variables can store data of different types, and different types can do different things.</p>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td>x = "Hello World"</td>
+					<td>str</td>
+					<td>Text</td>
+				</tr>
+				<tr>
+					<td>x = 80</td>
+					<td>int</td>
+					<td>Numeric</td>
+				</tr>
+				<tr>
+					<td>x = 60.5</td>
+					<td>float</td>
+					<td>Numeric</td>
+				</tr>
+				<tr>
+					<td>x = 2j</td>
+					<td>complex</td>
+					<td>Numeric</td>
+				</tr>
+				<tr>
+					<td>x = ["hello", "world", "bye"]</td>
+					<td>list</td>
+					<td>Sequence</td>
+				</tr>
+				<tr>
+					<td>x = (“good", “morning", “sir")</td>
+					<td>tuple</td>
+					<td>Sequence</td>
+				</tr>
+				<tr>
+					<td>x = range(6)</td>
+					<td>range</td>
+					<td>Sequence</td>
+				</tr>
+				<tr>
+					<td>x = {"name" : "Irfan", "age" : 26}</td>
+					<td>dict</td>
+					<td>Mapping</td>
+				</tr>
+				<tr>
+					<td>x = {"apples", "bananas", "cherrys"}</td>
+					<td>set</td>
+					<td>Set</td>
+				</tr>
+				<tr>
+					<td>x = frozenset({"apple", "bat", "cat"})</td>
+					<td>frozenset</td>
+					<td>Set</td>
+				</tr>
+				<tr>
+					<td>x = False</td>
+					<td>bool</td>
+					<td>bool</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>You can get the data type of any object by using the type() function:</p>
+		<p>Print the data type of the variable x:</p>
+		<pre>x = 5
 print(type(x))</pre>
-	<p><strong>Data Type can be specified like this:</strong></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>list</td>
-				<td>x = list(("apple", "bat", "cat"))</td>
-			</tr>
-			<tr>
-				<td>tuple</td>
-				<td>x = tuple(("elephant", "frog", "joker"))</td>
-			</tr>
-		</tbody>
-	</table>
-	<h2 class="betterdocs-content-heading" id="0-toc-title">NUMBERS <a href="#0-toc-title" class="batterdocs-anchor"
-			data-clipboard-text="https://haysky.com/course/python/data-types/#0-toc-title" data-title="Copy URL">#</a></h2>
-	<p>There are three numeric types in Python:</p>
-	<p>To verify the type of any object in Python, use the type() function:
+		<p><strong>Data Type can be specified like this:</strong></p>
+		<table>
+			<tbody>
+				<tr>
+					<td>list</td>
+					<td>x = list(("apple", "bat", "cat"))</td>
+				</tr>
+				<tr>
+					<td>tuple</td>
+					<td>x = tuple(("elephant", "frog", "joker"))</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="betterdocs-content-heading" id="0-toc-title">NUMBERS <a href="#0-toc-title" class="batterdocs-anchor"
+				data-clipboard-text="https://haysky.com/course/python/data-types/#0-toc-title" data-title="Copy URL">#</a></h2>
+		<p>There are three numeric types in Python:</p>
+		<p>To verify the type of any object in Python, use the type() function:
 	</p>
-	<pre>x = 1    # int
+		<pre>x = 1    # int
 y = 2.8  # float
 z = 1j   # complex
 
 print(type(x))
 print(type(y))
 print(type(z))</pre>
-	<p><b>Int</b>, or integer is a whole number, positive or negative, without decimals, of unlimited length.</p>
-	<pre>x = 1
+		<p><b>Int</b>, or integer is a whole number, positive or negative, without decimals, of unlimited length.</p>
+		<pre>x = 1
 y = 35656222554887711
 z = -64846
 print(type(x))
 print(type(y))
 print(type(z))</pre>
-	<p><b>Float</b>, or "floating point number" is a number, positive or negative,
+		<p><b>Float</b>, or "floating point number" is a number, positive or negative,
 		containing one or more decimals.</p>
-	<pre>a = 1.6
+		<pre>a = 1.6
 b = 1.0
 c = -2.3
 print(type(a))
 print(type(b))
 print(type(c))</pre>
-	<p>Floats can also be scientific numbers with an "e" to indicate the power of 10.
+		<p>Floats can also be scientific numbers with an "e" to indicate the power of 10.
 	</p>
-	<pre>x = 32e3
+		<pre>x = 32e3
 y = 11E4
 z = -86.7e100
 print(type(x))
 print(type(y))
 print(type(z))</pre>
-	<p>Complex numbers are written with a "j" as the imaginary part:</p>
-	<pre>x = 3+5j
+		<p>Complex numbers are written with a "j" as the imaginary part:</p>
+		<pre>x = 3+5j
 y = 5j
 z = -5j
 print(type(x))
 print(type(y))
 print(type(z))</pre>
-	<h2>Type Conversion</h2>
-	<p>You can convert from one type to another with the int(), float(),
+		<h2>Type Conversion</h2>
+		<p>You can convert from one type to another with the int(), float(),
 		and complex() methods:</p>
-	<pre>x = 1 # int
+		<pre>x = 1 # int
 y = 2.8 # float
 z = 1j # complex
 #convert from int to float:
@@ -148,14 +149,15 @@ print(c)
 print(type(a))
 print(type(b))
 print(type(c))</pre>
-	<p><em>Note: You cannot convert complex numbers into another number
+		<p><em>Note: You cannot convert complex numbers into another number
 			type.</em></p>
-	<h2>Random Number</h2>
-	<p>Python does not have a random() function to make a random number, but
+		<h2>Random Number</h2>
+		<p>Python does not have a random() function to make a random number, but
 		Python has a built-in module called random that can be used to make random numbers: Import the random
 		module, and display a random number between 1 and 9:</p>
-	<pre>import random
+		<pre>import random
 print(random.randrange(1, 10))</pre>
-
+		<script src="../menu.js"></script>
+	</main>
 </body>
 </html>

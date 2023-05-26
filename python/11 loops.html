@@ -10,77 +10,78 @@
 </head>
 
 <body>
-	<h1>Loops</h1>
-	<p>Python has two primitive loop commands:</p>
-	<ul>
-		<li>while loop</li>
-		<li>for loop</li>
-	</ul>
-	<h2>while</h2>
-	<p>With the while loop we can execute a set of statements as long as a condition is true.</p>
-	<pre>i = 1
+	<main>
+		<h1>Loops</h1>
+		<p>Python has two primitive loop commands:</p>
+		<ul>
+			<li>while loop</li>
+			<li>for loop</li>
+		</ul>
+		<h2>while</h2>
+		<p>With the while loop we can execute a set of statements as long as a condition is true.</p>
+		<pre>i = 1
 while i < 6:
 	print(i)
 	i +=1
 </pre>
-	<h3>The break Statement</h3>
-	<p>With the break statement we can stop the loop even if the while condition is true:</p>
-	<pre>i = 1
+		<h3>The break Statement</h3>
+		<p>With the break statement we can stop the loop even if the while condition is true:</p>
+		<pre>i = 1
 while i < 6:
 	print(i)
 	if i==3:
 		break 
 	i +=1</pre>
-	<h3>The continue Statement:</h3>
-	<p>With the continue statement we can stop the current iteration, and continue with the next:</p>
-	<pre>i = 0
+		<h3>The continue Statement:</h3>
+		<p>With the continue statement we can stop the current iteration, and continue with the next:</p>
+		<pre>i = 0
 while i < 6:
 	i +=1
 	if i==3:
 		continue
 	print(i)</pre>
-	<h3>The else Statement</h3>
-	<p>With the else statement we can run a block of code once when the condition no longer is true:</p>
-	<pre>i = 1
+		<h3>The else Statement</h3>
+		<p>With the else statement we can run a block of code once when the condition no longer is true:</p>
+		<pre>i = 1
 while i < 6:
 	print(i)
 	i +=1
 else:
 	print("i is no longer less than 6")</pre>
-	<h1>For Loop</h1>
-	<p>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a
+		<h1>For Loop</h1>
+		<p>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a
 		string).</p>
-	<pre>fruits = ["apple", "banana", "cherry"]
+		<pre>fruits = ["apple", "banana", "cherry"]
 for x in fruits:
 	print(x)</pre>
-	<p>Note that range(6) is not the values of 0 to 6, but the values 0 to 5.</p>
-	<pre>for x in range(6):
+		<p>Note that range(6) is not the values of 0 to 6, but the values 0 to 5.</p>
+		<pre>for x in range(6):
 	print(x)</pre>
-	<pre>for x in range(2, 6):
+		<pre>for x in range(2, 6):
 	print(x)</pre>
-	<p>The range() function defaults to increment the sequence by 1, however it is possible to specify the increment value
+		<p>The range() function defaults to increment the sequence by 1, however it is possible to specify the increment value
 		by
 		adding a third parameter: range(2, 30, 3):</p>
-	<pre>for x in range(2, 30, 3):
+		<pre>for x in range(2, 30, 3):
 	print(x)</pre>
 
-	<h3>Else in For Loop:</h3>
-	<p>The else keyword in a for loop specifies a block of code to be executed when the loop is finished:</p>
-	<pre>for x in range(6):
+		<h3>Else in For Loop:</h3>
+		<p>The else keyword in a for loop specifies a block of code to be executed when the loop is finished:</p>
+		<pre>for x in range(6):
 	print(x)
 else:
 	print("Finally finished!")</pre>
-</body>
 
-<h1>Examples</h1>
-<h2>Multiplication Table single:</h2>
-<pre>n = input("Enter table num: ")
+
+		<h1>Examples</h1>
+		<h2>Multiplication Table single:</h2>
+		<pre>n = input("Enter table num: ")
 for l in range(1,11):
 	p = l*int(n)
 	print(n,' x ',l,' = ',p)</pre>
 
-<h2>Pyramid pattern</h2>
-<pre>
+		<h2>Pyramid pattern</h2>
+		<pre>
 for x in range(1,10):
 	str = ''
 	for z in range(0,10-x):
@@ -88,4 +89,7 @@ for x in range(1,10):
 	for y in range(1,x):
 		str += '* '
 	print(str)</pre>
+		<script src="../menu.js"></script>
+	</main>
+</body>
 </html>

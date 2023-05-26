@@ -39,7 +39,24 @@ menu = {
 		"17 csv upi qrcode",
 		"18 students",
 		"19 json menu",
-		"20 fecth from url.html"
+		"20 fecth from url"
+	],
+	"python": [
+		"index",
+		'02 data types',
+		'03 strings',
+		'04 boolean',
+		'05 operators',
+		'06 list',
+		'07 tuple',
+		'08 set',
+		'09 dictionaries',
+		'10 if else',
+		'11 loops',
+		'12 functions',
+		'django',
+		'mysql',
+		'sqlite'
 	]
 }
 nav = document.createElement('nav')
@@ -64,4 +81,3 @@ document.getElementsByTagName("main")[0].prepend(header)
 filename = filename.slice(0, -5)
 filename = filename.replace(/%20/g, " ");
 console.log(filename)
-document.getElementById(filename).scrollIntoView()
