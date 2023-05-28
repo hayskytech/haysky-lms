@@ -102,6 +102,31 @@
 </style>
 </unf>
 
+		<h2>Flex gap</h2>
+		<p>Use gap (for parent) instead of margin (for child)</p>
+		<unf><div class="flex3">
+	<div>apple</div>
+	<div>bat</div>
+	<div>cat</div>
+</div>
+<style>
+	.flex3 {
+		display: flex;
+		gap: 10px;
+		padding: 10px;
+		background-color: rgb(255, 145, 0);
+	}
+	.flex3 div {
+		background-color: rgb(46, 255, 185);
+		padding: 10px;
+	}
+</style>
+</unf>
+
+<p>Use row gap along with <q>flex:wrap</q> to parent</p>
+		<pre>row-gap: 10px;
+row-column: 10px;</pre>
+
 		<script>
 			unf = document.getElementsByTagName("unf");
 			for (var i = 0; i < unf.length; i++) {
