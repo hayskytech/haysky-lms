@@ -64,7 +64,6 @@ body {
 	background-color: #f0f0f1;
 	max-width: 1300px;
 	margin: auto;
-	/* padding-bottom: 300px; */
 	display: flex;
 }
 
@@ -137,7 +136,7 @@ nav li a:hover {
 }
 
 main {
-	padding: 20px;
+	padding: 10px;
 	flex-basis: 1000px;
 }
 
@@ -146,6 +145,7 @@ header {
 	justify-content: center;
 	background: skyblue;
 	padding: 5px;
+	margin: -10px -10px 0 -10px;
 }
 
 header a {
