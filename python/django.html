@@ -45,8 +45,8 @@ urlpatterns = [
 		<h2>Output HTML directly</h2>
 		<p>Project / App folder ⟹ <q>views.py</q></p>
 		<pre>from django.http import HttpResponse
-			def home(request):
-			return HttpResponse("&lt;h1&gt;Hello world&lt;h1&gt;")
+def home(request):
+	return HttpResponse("&lt;h1&gt;Hello world&lt;h1&gt;")
 </pre>
 
 		<h2>Output HTML using template</h2>
@@ -148,6 +148,69 @@ elif request.method == 'POST':
 &lt;/form>
 You entered: {{phone}}
 </pre>
+
+		<h1>CRUD Operations</h1>
+		<h2>Create new table</h2>
+		<p>Check if the table exists:</p>
+		<pre>
+if ('books',) not in tables:
+	cur.execute("""CREATE TABLE books
+	(id INTEGER NOT NULL,
+	book TEXT NOT NULL,
+	year INT NULL,
+	price INT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+	);""")
+</pre>
+
+		<h2>Insert Row</h2>
+		<pre>
+if req.POST.get("add_book"):
+	book = req.POST.get("book")
+	year = req.POST.get("year")
+	price = req.POST.get("price")
+	data = (book, year, price)
+	cur.execute("INSERT INTO books (book,year,price) VALUES (?,?,?)", data)
+	con.commit()
+</pre>
+
+		<h2>Delete Row</h2>
+		<pre>
+if req.POST.get("delete"):
+	id = req.POST.get("id")
+	cur.execute("DELETE FROM books WHERE id = ?" , id)
+	con.commit()
+</pre>
+
+		<h2>Select rows</h2>
+		<pre>
+books = cur.execute("SELECT * FROM books").fetchall()
+data = {
+	"books" : books
+}
+return render(request, "books.html", data )
+</pre>
+
+		<h2>Show in HTML template:</h2>
+		<pre>
+&lt;table border="1">
+	{% for book in books %}
+	&lt;tr>
+		&lt;td>{{book.1}}&lt;/td>
+		&lt;td>{{book.2}}&lt;/td>
+		&lt;td>{{book.3}}&lt;/td>
+		&lt;td>
+			&lt;form action="" method="post">
+				{% csrf_token %}
+				&lt;input type="hidden" name="id" value="{{book.0}}">
+				&lt;input type="submit" name="delete" value="Delete">
+			&lt;/form>
+		&lt;/td>
+	&lt;/tr>
+	{% endfor %}
+&lt;/table>
+</pre>
+
 		<script src="../menu.js"></script>
 	</main>
 </body>
