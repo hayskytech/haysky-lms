@@ -211,6 +211,16 @@ return render(request, "books.html", data )
 &lt;/table>
 </pre>
 
+		<h2>Static Files</h2>
+		<p><q>settings.py</q> add this line at the bottom</p>
+		<pre>STATIC_URL = "static/"
+STATICFILES_DIRS = [
+	BASE_DIR / "static"
+]</pre>
+<p>In your HTML file:</p>
+<pre>{% load static %}
+&lt;img src="{% static 'images/logo.png' %}" alt="My image"></pre>
+
 		<script src="../menu.js"></script>
 	</main>
 </body>
