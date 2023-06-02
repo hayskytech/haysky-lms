@@ -41,6 +41,9 @@ menu = {
 		"19 json menu",
 		"20 fecth from url"
 	],
+	"react": [
+		"index"
+	],
 	"python": [
 		"index",
 		'02 data types',
@@ -80,4 +83,3 @@ header.innerHTML = h
 document.getElementsByTagName("main")[0].prepend(header)
 filename = filename.slice(0, -5)
 filename = filename.replace(/%20/g, " ");
-console.log(filename)
