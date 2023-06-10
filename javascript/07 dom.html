@@ -26,9 +26,8 @@
 		</ul>
 
 		<h1>Finding HTML Elements</h1>
-		<ul>
-			<li>document.getElementById(id)</li>
-		</ul>
+		
+			<h2>document.getElementById(id)</h2>
 
 		<unf><h1 id="demo">Hai</h1>
 <button onclick="run1()">Click me</button>
@@ -38,9 +37,8 @@
 	}
 </script>
 </unf>
-		<ul>
-			<li>document.getElementsByTagName(name)[0]</li>
-		</ul>
+
+		<h2>document.getElementsByTagName(name)[0]</h2>
 		<unf><h4>Hai</h4>
 <button onclick="run2()">Change it</button>
 <script type="text/javascript">
@@ -50,9 +48,7 @@
 </script>
 </unf>
 
-		<ul>
-			<li>document.getElementsByClassName(name)[0]</li>
-		</ul>
+		<h2>document.getElementsByClassName(name)[0]</h2>
 		<unf><h1 class="apple">Hai</h1>
 <button onclick="run3()">Change it</button>
 <script type="text/javascript">
@@ -61,6 +57,25 @@
 	}
 </script>
 </unf>
+
+<h2>document.querySelector("h5")</h2>
+<p>Use css selectors: <q>.city</q> <q>#apple</q> <q>p a</q> <q>h1,h2</q></p>
+<unf><h5 class="city">This is a p element.</h5>
+<h5 class="city">This is a p element.</h5>
+<h5 class="city">This is a p element.</h5>
+<button onclick="run31()">Change First</button>
+<button onclick="run32()">Change All</button>
+<script>
+function run31(){
+	document.querySelector("h5").style.backgroundColor = "red";
+}
+function run32(){
+	x = document.querySelectorAll(".city")
+	for (let i = 0; i < x.length; i++) {
+		x[i].style.backgroundColor = "blue";
+	}
+}
+</script></unf>
 
 		<h1>Changing HTML Elements</h1>
 

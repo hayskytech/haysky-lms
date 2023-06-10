@@ -26,13 +26,13 @@ menu = {
 		"04 loops",
 		"05 data types",
 		"06 functions",
-		"07 ajax",
-		"08 dom",
-		"09 dom examples",
-		"10 eventlistener",
-		"11 examples",
-		"12 calculator",
-		"13 todo list",
+		"07 dom",
+		"08 dom Examples",
+		"09 eventlistener",
+		"10 examples",
+		"11 calculator",
+		"12 todo list",
+		"13 ajax",
 		"14 tabs",
 		"15 qr code",
 		"16 csv import",
@@ -62,24 +62,27 @@ menu = {
 		'sqlite'
 	]
 }
-nav = document.createElement('nav')
-str = '<ul>'
-pathArray = window.location.pathname.split('/');
-folder = pathArray[pathArray.length - 2]
-filename = pathArray[pathArray.length - 1]
-for (let i = 0; i < menu[folder].length; i++) {
-	str += `<li id="${menu[folder][i]}"><a href="${menu[folder][i]}.html">${menu[folder][i]}</a></li>`;
-}
-str += "<ul>"
-nav.innerHTML = str
-document.body.prepend(nav)
 
-header = document.createElement("header")
-h = ''
-Object.keys(menu).forEach(key => {
-	h += `<a href="../${key}/index.html">${key}</a>`
-});
-header.innerHTML = h
-document.getElementsByTagName("main")[0].prepend(header)
-filename = filename.slice(0, -5)
-filename = filename.replace(/%20/g, " ");
+if (typeof wordpress === "undefined") {
+	nav = document.createElement('nav')
+	str = '<ul>'
+	pathArray = window.location.pathname.split('/');
+	folder = pathArray[pathArray.length - 2]
+	filename = pathArray[pathArray.length - 1]
+	for (let i = 0; i < menu[folder].length; i++) {
+		str += `<li id="${menu[folder][i]}"><a href="${menu[folder][i]}.html">${menu[folder][i]}</a></li>`;
+	}
+	str += "<ul>"
+	nav.innerHTML = str
+	document.body.prepend(nav)
+
+	header = document.createElement("header")
+	h = ''
+	Object.keys(menu).forEach(key => {
+		h += `<a href="../${key}/index.html">${key}</a>`
+	});
+	header.innerHTML = h
+	document.getElementsByTagName("main")[0].prepend(header)
+	filename = filename.slice(0, -5)
+	filename = filename.replace(/%20/g, " ");
+}

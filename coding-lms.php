@@ -13,16 +13,16 @@ error_reporting(E_ERROR | E_PARSE);
 
 add_action('admin_menu', function () {
 	add_menu_page('HTML CSS', 'HTML CSS', 'manage_options', 'htmlcss_admin', function () {
-		include 'htmlcss/01 html css.html';
+		include 'htmlcss/index.html';
 	}, 'dashicons-media-code', '2.1');
 	add_menu_page('JavaScript', 'JavaScript', 'student', 'javascript_admin', function () {
-		include 'javascript/01 JavaScript.php';
+		include 'javascript/index.html';
 	}, 'dashicons-media-code', '2.2');
 	add_menu_page('JQuery', 'JQuery', 'student', 'jquery_admin', 'jquery_znh', 'dashicons-media-code', '2.3');
 	add_menu_page('PHP', 'PHP', 'manage_options', 'php_admin', 'php_basics_vam', 'dashicons-pinterest', '2.4');
 	add_menu_page('MySQL', 'MySQL', 'manage_options', 'mysql_admin', 'mysql_admin', 'dashicons-database', '2.5');
 	add_menu_page('Python', 'Python', 'student', 'python_admin', function () {
-		include 'python/01 python.html';
+		include 'python/index.html';
 	}, 'dashicons-admin-users', '2.6');
 });
 
@@ -71,7 +71,27 @@ include 'php/home.php';
 include 'mysql/home.php';
 
 add_action('admin_menu', function () {
-	$pages = array('02 Operators', '03 Data types', '04 Conditions', '05 Loops', '06 Functions', '07 JSON', '08 DOM', '09 DOM Examples', '10 EventListener', '11 Examples', '12 Calculator', '13 Todo List', '14 Tabs', '15 QR Code', '16 CSV Import', '17 CSV UPI QRCode');
+	$pages = array(
+		"02 Operators",
+		"03 Conditions",
+		"04 Loops",
+		"05 Data types",
+		"06 Functions",
+		"07 DOM",
+		"08 DOM Examples",
+		"09 Eventlistener",
+		"10 Examples",
+		"11 Calculator",
+		"12 Todo list",
+		"13 AJAX",
+		"14 Tabs",
+		"15 QR code",
+		"16 CSV import",
+		"17 CSV UPI qrcode",
+		"18 Students",
+		"19 JSON menu",
+		"20 Fecth from URL"
+	);
 	$c = count($pages);
 	for ($i = 0; $i < $c; $i++) {
 		$slug = strtolower($pages[$i]);
@@ -83,27 +103,29 @@ add_action('admin_menu', function () {
 
 add_action('admin_menu', function () {
 	$pages = array(
-		'02 Basic Tags',
-		'03 HTML Table',
-		'04 HTML List',
-		'05 CSS Basics',
-		'06 Box Model',
-		'07 Grid Layout',
-		'08 CSS Table',
-		'09 Form Fields',
-		'10 Form Attributes',
-		'11 Other Tags',
-		'12 Display',
-		'13 Position',
-		'14 Combinators',
-		'15 Fixed Sidebar',
-		'16 Structure',
+		"02 Basic Tags",
+		"03 HTML Table",
+		"04 HTML List",
+		"05 CSS Basics",
+		"06 Box Model",
+		"07 Grid Layout",
+		"08 CSS Table",
+		"09 Form Fields",
+		"10 Form Attributes",
+		"11 Other Tags",
+		"12 Display",
+		"13 Position",
+		"14 Combinators",
+		"15 Fixed Sidebar",
+		"16 Structure",
+		"17 CSS Flex",
+		"19 Flex Page"
 	);
 	$c = count($pages);
 	for ($i = 0; $i < $c; $i++) {
 		$slug = strtolower($pages[$i]);
 		add_submenu_page('htmlcss_admin', $pages[$i], $pages[$i], 'student', $slug, function () {
-			include 'htmlcss/' . $_GET["page"] . ".html";
+			include 'htmlcss/' . $_GET["page"] . '.html';
 		});
 	}
 });
@@ -117,6 +139,14 @@ add_action('admin_menu', function () {
 			include 'python/' . $_GET["page"] . ".html";
 		});
 	}
+});
+
+add_action('admin_header', function () {
+	?>
+	<script>
+		const wordpress = true
+	</script>
+	<?php
 });
 
 add_action('admin_footer', function () {
