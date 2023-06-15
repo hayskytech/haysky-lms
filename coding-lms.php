@@ -12,15 +12,15 @@
 error_reporting(E_ERROR | E_PARSE);
 
 add_action('admin_menu', function () {
-	add_menu_page('HTML CSS', 'HTML CSS', 'manage_options', 'htmlcss_admin', function () {
+	add_menu_page('HTML CSS', 'HTML CSS', 'student', 'htmlcss_admin', function () {
 		include 'htmlcss/index.html';
 	}, 'dashicons-media-code', '2.1');
 	add_menu_page('JavaScript', 'JavaScript', 'student', 'javascript_admin', function () {
 		include 'javascript/index.html';
 	}, 'dashicons-media-code', '2.2');
 	add_menu_page('JQuery', 'JQuery', 'student', 'jquery_admin', 'jquery_znh', 'dashicons-media-code', '2.3');
-	add_menu_page('PHP', 'PHP', 'manage_options', 'php_admin', 'php_basics_vam', 'dashicons-pinterest', '2.4');
-	add_menu_page('MySQL', 'MySQL', 'manage_options', 'mysql_admin', 'mysql_admin', 'dashicons-database', '2.5');
+	add_menu_page('PHP', 'PHP', 'student', 'php_admin', 'php_basics_vam', 'dashicons-pinterest', '2.4');
+	add_menu_page('MySQL', 'MySQL', 'student', 'mysql_admin', 'mysql_admin', 'dashicons-database', '2.5');
 	add_menu_page('Python', 'Python', 'student', 'python_admin', function () {
 		include 'python/index.html';
 	}, 'dashicons-admin-users', '2.6');
