@@ -44,6 +44,9 @@ menu = {
 	"react": [
 		"index"
 	],
+	"general": [
+		"index"
+	],
 	"python": [
 		"index",
 		'02 data types',
