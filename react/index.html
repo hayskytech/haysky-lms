@@ -38,7 +38,7 @@ href="#"      =>          href="/"
 import React from 'react'
 export default function Newbar() {
 	return (
-		&lt;div>Hello</div>
+		&lt;div>Hello&lt;/div>
 	)
 }
 </pre>
@@ -63,6 +63,27 @@ export function Html() {
 		<p><q>{ }</q> needed because it is exported by default</p>
 		<pre>
 import { ComponentOne, ComponentTwo, Html } from "./path/of/components"
+</pre>
+
+<h1>Styles</h1>
+<pre>
+import React from 'react'
+function Student() {
+	const student = {
+		border: '1px solid black', 
+		padding: '10px', 
+		margin: '10px', 
+		display: "inline-block" 
+	}
+	return (
+		&lt;div style={student}>
+			&lt;h2>Student Name</h2>
+			&lt;h3>Town: NDK</h3>
+			&lt;h3>Phone: 112233</h3>
+		&lt;/div>
+	)
+}	
+export default Student	
 </pre>
 
 		<h1>Props</h1>

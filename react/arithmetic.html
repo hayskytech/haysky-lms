@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arithmetic</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<main>
+		<h1><q>Arithmetic.js</q></h1>
+		<pre>
+import React, { useState } from 'react'
+
+function Calculator() {
+
+	function handlex(event){
+		setx(parseInt(event.target.value))
+	}
+	function handley(event){
+		sety(parseInt(event.target.value))
+	}
+	const [x, setx] = useState(0)
+	const [y, sety] = useState(0)
+	return (
+		&lt;div>
+			X: &lt;input type="number" value={x} onChange={handlex}/>
+			&lt;br />
+			Y: &lt;input type="number" value={y} onChange={handley}/>
+			&lt;h3>Addition: {x} + {y} = {x+y}&lt;/h3>
+			&lt;h3>Subtraction {x} - {y} = {x-y}&lt;/h3>
+			&lt;h3>Multiplication: {x*y}&lt;/h3>
+			&lt;h3>Division: {x/y}&lt;/h3>
+		&lt;/div>
+	)
+}
+
+export default Calculator
+			
+</pre>
+	</main>
+	<script src="../menu.js"></script>
+</body>
+</html>

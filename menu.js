@@ -42,7 +42,10 @@ menu = {
 		"20 fecth from url"
 	],
 	"react": [
-		"index"
+		"index",
+		"news from api",
+		"arithmetic",
+		"tables"
 	],
 	"general": [
 		"index"

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Table</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<main>
+		<h1>Tables</h1>
+		<q>LoadTables.js</q>
+<pre>
+import React from 'react'
+import Table from './Table';
+
+
+function LoadTables() {
+	let tables = [];
+	for (let n = 1; n <= 10; n++) {
+		tables.push(&lt;Table n={n}/>);
+	}
+	return tables;
+}
+
+export default LoadTables
+</pre>
+
+<q>Table.js</q>
+<pre>
+import React from 'react'
+import Row from './Row'
+
+function Table(props) {
+	
+	const tablecss = {
+		border: '1px solid black',
+		padding: '10px',
+		margin: '10px',
+		display: "inline-block"
+	}
+	let rows = [];
+	for (let i = 1; i <= 10; i++) {
+		rows.push(&lt;Row n={props.n} i={i}/>);
+	}
+	return (
+		&lt;table style={tablecss}>
+			&lt;tbody>
+				{rows}
+			&lt;/tbody>
+		&lt;/table>
+	)
+}
+
+export default Table	
+</pre>
+
+<q>Row.js</q>
+<pre>
+import React from 'react'
+
+function Row(p) {
+	return (
+		&lt;tr>
+			&lt;td>{p.n} x {p.i} = {p.n * p.i}&lt;/td>
+		&lt;/tr>
+	)
+}
+
+export default Row	
+</pre>
+
+
+	</main>
+	<script src="../menu.js"></script>
+</body>
+</html>
