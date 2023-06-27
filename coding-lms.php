@@ -9,7 +9,7 @@
  * License: GPLv2 or later
  */
 // $wpdb->show_errors(); $wpdb->print_error();
-error_reporting(E_ERROR | E_PARSE);
+// error_reporting(E_ERROR | E_PARSE);
 
 add_action('admin_menu', function () {
 	add_menu_page('HTML CSS', 'HTML CSS', 'student', 'htmlcss_admin', function () {
@@ -68,7 +68,6 @@ function sc2() {
 
 include 'jquery/home.php';
 include 'php/home.php';
-include 'mysql/home.php';
 
 add_action('admin_menu', function () {
 	$pages = array(
@@ -149,7 +148,8 @@ add_action('admin_header', function () {
 	<?php
 });
 
-add_action('admin_footer', function () {
+add_action('admin_footer', 'footer_lms_js');
+function footer_lms_js() {
 	?>
 	<script type="text/javascript">
 		function openThis(icon) {
@@ -217,12 +217,4 @@ add_action('admin_footer', function () {
 		}
 	</style>
 	<?php
-});
-/*
-$files = array(
-'php_basics.php','numbers.php','strings.php','boolean.php','arrays.php','operators.php','conditions.php','loops.php','functions.php','scope.php','globals.php','form_handling.php','date_time.php','files.php','cookie.php','session.php','object.php','mysql_1.php','mysql_2.php','mysql_3.php','mysql_4.php'
-);
-foreach ($files as $file) {
-fopen('../wp-content/plugins/haysky-lms/php/'.$file, 'x');
 }
-*/

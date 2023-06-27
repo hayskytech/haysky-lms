@@ -14,7 +14,7 @@
 		<pre>
 &lt;p>Getting data from API&lt;/p>
 &lt;script>
-	const url = "https://api.sampleapis.com/countries/countries"
+	const url = "https://www.telugu360.com/wp-json/wp/v2/posts?per_page=5"
 	x = new XMLHttpRequest();
 	x.onload = function () {
 		data = JSON.parse(this.responseText)
@@ -45,15 +45,11 @@
 	x = new XMLHttpRequest();
 	x.onload = function () {
 		data = JSON.parse(this.responseText)
-		news = ''
 		for (i = 0; i < data.length; i++) {
 			title = data[i].title.rendered
 			imgurl = data[i].jetpack_featured_media_url
-			// console.log(data[i])
-			item = `<img src="${imgurl}">`
-			item += `<p>${title}</p>`
 			news = document.createElement('div')
-			news.innerHTML = item
+			news.innerHTML = `<img src="${imgurl}"><p>${title}</p>`
 			document.getElementById("news").appendChild(news)
 		}
 	}
@@ -97,6 +93,8 @@
 	}
 </style>
 </unf>
+		<iframe src="https://drive.google.com/file/d/1_eiSg-76RJ1QgSeybhiCfz47gKOzi776/preview" width="640" height="360"
+			allowfullscreen allow="autoplay"></iframe>
 		<script>
 			unf = document.getElementsByTagName("unf");
 			for (var i = 0; i < unf.length; i++) {
