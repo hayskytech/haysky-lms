@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo List</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+	<main>
+		<pre>
+import { useEffect, useState } from "react";
+
+const styles = {
+	li: {
+		width: '200px',
+		margin: '5px'
+	},
+	liBtn: {
+		float: 'right'
+	},
+	mainDiv: {
+		padding: '10px',
+		border: '1px solid blue',
+		margin: '10px',
+		width: '260px',
+		background: 'lightgrey',
+		color: 'black'
+	}
+}
+
+function App() {
+	const [list, setList] = useState([])
+	const [item, setItem] = useState('')
+	function handleItem(event) {
+		setItem(event.target.value)
+	}
+
+	useEffect(() => {
+		const data = localStorage.getItem('data');
+		let dataList = []
+		if (data) {
+			dataList = JSON.parse(data)
+			setList(dataList)
+		}
+	}, []);
+
+	function addItem(event) {
+		event.preventDefault()
+		if (item === '') return
+		setItem('')
+		const newList = [...list, item]
+		setList(newList)
+		localStorage.setItem('data', JSON.stringify(newList))
+	}
+	function removeItem(event) {
+		const id = event.target.parentElement.getAttribute('data-id');
+		const newList = [...list]
+		newList.splice(id, 1)
+		setList(newList)
+		localStorage.setItem('data', JSON.stringify(newList))
+	}
+	return (
+		&lt;div style={styles.mainDiv}>
+			&lt;h3>Todo List using local Storage&lt;/h3>
+			&lt;form action="" onSubmit={addItem}>
+				&lt;input type="text" value={item} onChange={handleItem} />
+				&lt;button>ADD ITEM&lt;/button>
+			&lt;/form>
+			&lt;ul>
+				{list.map((a, index) => (
+					&lt;li style={styles.li} data-id={index} key={index}>{a} &lt;button style={styles.liBtn} onClick={removeItem}>x&lt;/button>&lt;/li>
+				))}
+			&lt;/ul>
+		&lt;/div>
+	);
+}
+
+export default App;
+</pre>
+	</main>
+	<script src="../menu.js"></script>
+</body>
+</html>

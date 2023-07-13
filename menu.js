@@ -27,7 +27,7 @@ menu = {
 		"05 data types",
 		"06 functions",
 		"07 dom",
-		"08 dom Examples",
+		"08 dom examples",
 		"09 eventlistener",
 		"10 examples",
 		"11 calculator",
@@ -45,7 +45,8 @@ menu = {
 		"index",
 		"news from api",
 		"arithmetic",
-		"tables"
+		"tables",
+		"todo list"
 	],
 	"general": [
 		"index"
