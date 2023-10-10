@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Expo</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+	<main>
+
+
+		<h1>Expo</h1>
+		<p>Run the following command in an empty folder:</p>
+
+		<pre>npx create-expo-app .
+npm start</pre>
+
+		<h2>Webview</h2>
+		<pre>npm install react-native-web</pre>
+		<pre>npx expo install @expo/webpack-config</pre>
+
+		<h2>Icons in webview</h2>
+		<pre>import { useFonts } from 'expo-font'
+import { Ionicons } from '@expo/vector-icons'</pre>
+		<p>inside App component</p>
+		<pre>const [fontsLoaded] = useFonts({
+	'MaterialIcons': require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf'),
+	'Roboto': require('path-to-your-roboto-font-file.ttf'),
+	// Add other font names if you are using additional icon libraries
+});
+
+if (!fontsLoaded) {
+	return null; // You can show a loading screen here
+}</pre>
+
+		<h2>Firebase app</h2>
+		<pre>eas credentials</pre>
+		<p>Copy the SHA1 keys and upload in Firebase</p>
+
+		<h2>Dev Build</h2>
+		<pre>eas build --profile development --platform android</pre>
+		<pre>npx expo start --dev-client</pre>
+
+		<h3>Install eas CLI</h3>
+		<pre>npm install -g eas-cli</pre>
+		<h2>Real Build</h2>
+		<pre>eas build -p android</pre>
+
+		<h2>Upload API Key to EAS</h2>
+
+		<pre>npx expo push:android:upload --api-key your_toke_here</pre>
+
+		<hr>
+		<br>
+		<hr>
+
+
+
+		<p>this will generate app bundle</p>
+		<pre>react-native bundle --platform android --dev false --entry-file App.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</pre>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+		<input id="text" type="text" style="font-size: 22px; width: 80%;" value="exp://192.168.43.108:19000"
+			onkeypress="handleKey1(event)">
+		<button style="font-size: 22px;" onclick="run1()">Submit</button>
+		<br>
+		<div id="qrcode" style="width:200px; height:200px; margin-top:15px;border: 5px solid white;"></div>
+		<script type="text/javascript">
+			var qrcode1 = new QRCode(document.getElementById("qrcode"), {
+				width: 200,
+				height: 200
+			});
+			function run1() {
+				var elText = document.getElementById("text");
+				if (!elText.value) {
+					return;
+				}
+				qrcode1.makeCode(elText.value);
+			}
+			run1();
+			function handleKey1(event) {
+				if (event.key == 'Enter') {
+					run1()
+				}
+			}
+		</script>
+
+
+
+
+		<h2>Use SafeAreaView</h2>
+
+		<pre>npx expo install react-native-safe-area-context</pre>
+
+		<pre>import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'</pre>
+		<p>Use the component</p>
+		<pre>
+&lt;SafeAreaProvider>
+	&lt;SafeAreaView>
+
+		&lt;View style={ss.container}>
+			&lt;News />
+		&lt;/View>
+
+	&lt;/SafeAreaView>
+&lt;/SafeAreaProvider>
+</pre>
+
+		<h2>FlatList</h2>
+
+		<pre>const items = ['apple', 'bat']</pre>
+
+		<pre>
+&lt;FlatList data={items}
+	renderItem={({ item }) => { return (&lt;Text>{item}&lt;/Text>) }}
+	keyExtractor={(item, index) => index} />
+</pre>
+
+		<h1>FireBase Push Notifications</h1>
+
+		<h2>Installations</h2>
+		<pre>npm install @react-native-firebase/messaging</pre>
+
+		<h2>App.js</h2>
+		<pre>
+import messaging from '@react-native-firebase/messaging';
+</pre>
+
+		<p>Inside <q>function App.js</q></p>
+		<pre>
+async function requestUserPermission() {
+	const authStatus = await messaging().requestPermission();
+	const enabled =
+		authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+		authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+	if (enabled) {
+		console.log('Authorization status:', authStatus);
+	}
+}
+
+useEffect(() => {
+	if (requestUserPermission) {
+		messaging().getToken().then(token => {
+			console.log(token);
+		})
+	}
+	messaging()
+		.getInitialNotification()
+		.then(async (remoteMessage) => {
+			if (remoteMessage) {
+				console.log(
+					'Notification caused app to open from quit state:',
+					remoteMessage.notification,
+				);
+				// setInitialRoute(remoteMessage.data.type); // e.g. "Settings"
+			}
+			// setLoading(false);
+		});
+
+	messaging().onNotificationOpenedApp(async (remoteMessage) => {
+		console.log(
+			'Notification caused app to open from background state:',
+			remoteMessage.notification,
+		);
+		navigation.navigate(remoteMessage.data.type);
+	});
+
+	messaging().setBackgroundMessageHandler(async remoteMessage => {
+		console.log('msg in bg', remoteMessage);
+	})
+
+	const unsubscribe = messaging().onMessage(async remoteMessage => {
+		Alert.alert('A msg arrived', JSON.stringify(remoteMessage))
+	})
+
+	return unsubscribe
+
+});
+</pre>
+
+		<h2>Async Storage</h2>
+		<pre>npm install @react-native-async-storage/async-storage</pre>
+		<pre>await AsyncStorage.setItem('key', 'value')
+const x = await AsyncStorage.getItem('lang')
+await AsyncStorage.removeItem('lang')</pre>
+
+	</main>
+	<script src="../menu.js"></script>
+
+</body>
+</html>

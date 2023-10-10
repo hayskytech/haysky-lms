@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Console  Logs</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<main>
+	<h2>HTML Form</h2>
+<pre>
+&lt;form action="" id="form">
+	First Name: &lt;input type="text" name="fname" autofocus>
+	&lt;button>Add Item&lt;/button>
+&lt;/form>
+</pre>
+<h2>Scripts</h2>
+<pre>
+form = document.getElementById("form")
+form.addEventListener("submit", function (e) {
+	e.preventDefault();
+	alert(form.elements[0].value);
+})
+</pre>
+
+<pre>
+data = {
+	'name': 'raju',
+	'phone': '8498000172',
+	'town': 'Nandikotkur',
+	"district": "Kurnool"
+}
+data2 = [
+	["apple", "bat", "cat"],
+	["hero", "honda", "bike"],
+	["maruti", "suzuki", "car"]
+]
+console.error("hello")
+console.log("hello")
+console.table(data)
+console.table(data2)
+
+const car1 = { name: "Audi", model: "A4" }
+const car2 = { name: "Volvo", model: "XC90" }
+const car3 = { name: "Ford", model: "Fusion" }
+
+console.table([car1, car2, car3]);
+</pre>
+	<a href="about.html">afwawf</a>
+<pre>
+console.log("Hello world!");
+console.group("salam");
+console.log("Hello again, this time inside a group!");
+console.groupEnd();
+console.log("and we are back.");
+console.log(history.length);
+</pre>
+	<button onclick='location.assign("https://www.w3schools.com")'>OK</button>
+
+<pre>
+console.log(navigator.language);
+const person = {
+	firstName: "John",
+	lastName: "Doe",
+	age: 50,
+	eyeColor: "blue",
+	fullname : function(){ return this.firstName + this.lastName }
+};
+console.log(person.fullname());
+</pre>
+	<script>
+			unf = document.getElementsByTagName("unf");
+			for (var i = 0; i < unf.length; i++) {
+				pre = document.createElement("pre");
+				pre.innerText = unf[i].innerHTML;
+				unf[i].appendChild(pre);
+			}
+		</script>
+	<script src="../menu.js"></script>
+</main>
+</body>
+</html>

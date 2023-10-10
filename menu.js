@@ -46,7 +46,8 @@ menu = {
 		"news from api",
 		"arithmetic",
 		"tables",
-		"todo list"
+		"todo list",
+		"expo"
 	],
 	"general": [
 		"index"
