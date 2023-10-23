@@ -41,10 +41,9 @@ href="#"      =>          href="/"
 
     <h1 id="components">Components</h1>
     <h2>Create a component</h2>
-    <p>In src folder - create new folder <q>components</q> and create new js file <q>Newbar.js</q></p>
+    <p>In src folder - create new folder <q>components</q> and create new js file <q>MyComponent.js</q> - press <b style="font-family: Consolas">(rfc)</b> & enter </p>
     <pre>
-import React from 'react'
-export default function Newbar() {
+export default function MyComponent() {
 	return (
 		&lt;div>Hello&lt;/div>
 	)
@@ -52,10 +51,10 @@ export default function Newbar() {
 </pre>
     <p>In src/App.js add this to the top</p>
     <pre>
-import Newbar from './components/Newbar';
+import MyComponent from './components/MyComponent';
 </pre>
     <p>In src/App.js add this in html part</p>
-    <pre>&lt;Newbar/></pre>
+    <pre>&lt;MyComponent/></pre>
     <h2>More than one functional components in one file</h2>
 
     <pre>
@@ -89,20 +88,20 @@ function Student() {
 		&lt;/div>
 	)
 }	
-export default Student	
+export default Student
 </pre>
 
     <h1>Props</h1>
-    <p>props can be string, number, array, object etc</p>
+    <p>props can be string, number, array, object, functionfs etc</p>
     <p>Add this in component: <q>Newbar.js</q></p>
     <pre>export default function Newbar(props) {
 	return (
-		<div>Hello {props.title} {props.name}</div>
+		&lt;div>Hello {props.title} {props.name}&lt;/div>
 	)
 }</pre>
     <p>In Main component <q>App.js</q></p>
     <pre>
-	&lt;Newbar name="Raju" title="Hello"/>
+&lt;Newbar name="Raju" title="Hello"/>
 </pre>
 
     <h2>PropTypes</h2>
@@ -145,67 +144,15 @@ onClick={handleLowClick}>Change Lowercase</button>
 &lt;button className="btn btn-secondary" 
 onClick={handleRedClick}>Change Red</button>
 </pre>
-
-    <h1>Add items to list</h1>
-    <q>cmd</q> ⟹ <q>npm install uuid</q>
-    <pre>
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-function App() {
-	// const [list, setList] = React.useState([{ name: 'John' }]);
-	const [list, setList] = React.useState([]);
-	const [name, setName] = React.useState('');
-
-	function handleChange(event) {
-		setName(event.target.value);
-	}
-	function handleAdd() {
-		const newList = list.concat({ name,id: uuidv4()});
-		setList(newList);
-		setName('')
-	}
-	return (
-		&lt;>
-			&lt;div>
-				&lt;input type="text" value={name} onChange={handleChange} placeHolder="write here" autoFocus />
-				&lt;button type="button" onClick={handleAdd}>
-					Add
-				&lt;/button>
-			&lt;/div>
-			&lt;ul>
-				{list.map((item) => (
-					&lt;li key={item.id}>{item.name}&lt;/li>
-				))}
-			&lt;/ul>
-		&lt;/>
-	);
+    
+<h2>debugger</h2>
+<p>pause execution to check variable values</p>
+<pre>
+function run(){
+  const x = 5
+  debugger
 }
-
-export default App;
 </pre>
-
-    <h1>Router</h1>
-    <pre>
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-</pre>
-
-    <pre>
-&lt;BrowserRouter>
-	&lt;Routes>
-		&lt;Route path="/" element={&lt;NavBar />}>
-			&lt;Route index element={&lt;CodeGen />} />
-			{/* &lt;Route path="blogs" element={&lt;Blogs />} /> */}
-			&lt;Route path="textutils" element={&lt;Textform />} />
-			{/* &lt;Route path="*" element={&lt;NoPage />} /> */}
-		&lt;/Route>
-	&lt;/Routes>
-&lt;/BrowserRouter>
-</pre>
-
-    <h2>Link</h2>
-    <pre>import { Outlet, Link } from 'react-router-dom'</pre>
-    <pre>&lt;Link className="nav-link" to="/textutils">TextUtils&lt;/Link></pre>
 
     <h2>Multi line string</h2>
     <p>you can write anything {`here`}
@@ -218,42 +165,6 @@ return (
 		?>`}
 	&lt;/>
 );
-</pre>
-
-
-    <h1>Examples</h1>
-    <h2>DynamicList.js</h2>
-
-    <pre>
-import './App.css';
-import React, { useState } from 'react'
-import Textform from './components/Textform';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CodeGen from './components/CodeGen';
-import NavBar from './components/NavBar';
-import DynamicList from './components/DynamicList';
-function App() {
-	let [state, setState] = useState("HTML Form");
-	function handleState(value) {
-		setState(value);
-	}
-	return (
-		&lt;>
-			&lt;BrowserRouter>
-				&lt;Routes>
-					&lt;Route path="/" element={&lt;NavBar change={handleState} />}>
-						&lt;Route index element={&lt;CodeGen page={state} />} />
-						&lt;Route path="dynamic_list" element={&lt;DynamicList />} />
-						&lt;Route path="textutils" element={&lt;Textform />} />
-						{/* &lt;Route path="*" element={&lt;NoPage />} /> */}
-					&lt;/Route>
-				&lt;/Routes>
-			&lt;/BrowserRouter>
-		&lt;/>
-	);
-}
-
-export default App;
 </pre>
   </main>
   <script src="../menu.js"></script>

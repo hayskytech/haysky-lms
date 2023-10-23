@@ -43,10 +43,13 @@ menu = {
 	],
 	"react": [
 		"index",
+		"router",
 		"news from api",
 		"arithmetic",
 		"tables",
+		"form handling",
 		"todo list",
+		"nested components",
 		"expo"
 	],
 	"general": [

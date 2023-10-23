@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Todo List</title>
-	<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-	<main>
-		<pre>
+  <main>
+    <pre>
 import { useEffect, useState } from "react";
 
 const styles = {
@@ -80,7 +80,41 @@ function App() {
 
 export default App;
 </pre>
-	</main>
-	<script src="../menu.js"></script>
+
+    <h2>Todo List (with uncontrolled inputs)</h2>
+    <pre>import React, { useState } from 'react'
+
+  export default function Testing() {
+    const [list, setList] = React.useState([]);
+  
+    function handleAdd(e) {
+      e.preventDefault()
+      const form = e.target
+      const formData = new FormData(form)
+      const formJson = Object.fromEntries(formData.entries());
+      if (formJson.item === '') return
+      const newList = list.concat(formJson.item)
+      setList(newList);
+      form.reset()
+      form.item.focus()
+    }
+  
+    return (
+      &lt;div>
+        &lt;div>
+          &lt;form onSubmit={handleAdd}>
+            &lt;input type="text" name='item' placeHolder="write here" autoFocus />
+            &lt;button>Add&lt;/button>
+          &lt;/form>
+        &lt;/div>
+        &lt;ul>
+          {list.map((item, index) => &lt;li key={index}>{item}&lt;/li>)}
+        &lt;/ul>
+      &lt;/div>
+    )
+  }
+</pre>
+  </main>
+  <script src="../menu.js"></script>
 </body>
 </html>

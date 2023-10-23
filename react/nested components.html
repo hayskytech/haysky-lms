@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Handling</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Simple Component with closing tag</h1>
+    <pre>
+import React from 'react'
+
+export default function SimpleNestComp() {
+  return (
+    &lt;div>
+      &lt;Apple>hello&lt;/Apple>
+    &lt;/div>
+  )
+}
+
+function Apple(p) {
+  return (&lt;button>{p.children}&lt;/button>)
+}
+</pre>
+    <h2>Nested Components with 2 children</h2>
+<pre>
+import React from 'react'
+
+export default function Testing2() {
+  
+  return (
+    &lt;div>
+      &lt;Master>
+        &lt;p>hello&lt;/p>
+        &lt;p>bye&lt;/p>
+      &lt;/Master>
+    &lt;/div>
+  )
+}
+
+function Master(p) {
+  return (&lt;button>{p.children[0]} - {p.children[1]}&lt;/button>)
+}
+</pre>
+    <h2>Function as children</h2>
+<pre>
+import React from 'react'
+
+export default function FunctionAsChild() {
+  function myfunc() {
+    console.log('working')
+  }
+  return (
+    &lt;div>
+      &lt;Repeat numTimes={10}>
+        hello world
+        {myfunc}
+      &lt;/Repeat>
+    &lt;/div>
+  )
+}
+
+function Repeat(props) {
+  props.children[1]()
+  
+  // in case of single child
+  // props.children() 
+  
+  return &lt;b>{props.children[0]}&lt;/b>
+}
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>
+</html>

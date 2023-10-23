@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Handling</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Form Handling</h1>
+    <p><b>We are not using state variable for any form field</b></p>
+    <p>Such fields are called <q>uncontrolled fields</q></p>
+    <pre>
+import React from 'react'
+
+export default function Testing2() {
+  const [list, setList] = React.useState([]);
+
+  function handleAdd(e) {
+    e.preventDefault()
+    const form = e.target
+    const formData = new FormData(form)
+    const formJson = Object.fromEntries(formData.entries());
+    const newList = list.concat(formJson.item)
+    setList(newList);
+    form.item.value = ''
+  }
+
+  return (
+    &lt;div>
+      &lt;div>
+        &lt;form onSubmit={handleAdd}>
+          &lt;input type="text" name='item' placeHolder="write here" autoFocus />
+          &lt;button>Add&lt;/button>
+        &lt;/form>
+      &lt;/div>
+      &lt;ul>
+        {list.map((item, index) => &lt;li key={index}>{item}&lt;/li>)}
+      &lt;/ul>
+    &lt;/div>
+  )
+}
+      
+</pre>
+
+    <h2>Two way</h2>
+    <pre>const [profile, setProfile] = useState({ fname: 'raj', lname: 'kumar' })
+function updateProfile(e) {
+  e.preventDefault()
+  const formData = (new FormData(e.target))
+  const formJson = Object.fromEntries(formData.entries())
+  setProfile(formJson);
+}
+</pre>
+    <pre>{JSON.stringify(profile)}
+&lt;form action="" id='f1' onSubmit={updateProfile}>
+  fname &lt;input type="text" name="fname" defaultValue={profile.fname} />&lt;br />&lt;br />
+  lname &lt;input type="text" name="lname" defaultValue={profile.lname} />&lt;br />&lt;br />
+  &lt;button>Update&lt;/button>
+  &lt;br />&lt;br />
+&lt;/form>
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>
+</html>
