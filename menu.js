@@ -51,7 +51,7 @@ menu = {
     "otp login",
     "todo list",
     "nested components",
-    "backend API",
+    "backend APIs",
     "expo"
   ],
   "general": [
