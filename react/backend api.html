@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Express JS</h1>
+    <p>create a seperate folder <q>backend</q></p>
+    <pre>npx create-express-app .</pre>
+
+    <p>install these packages</p>
+    <pre>npm install body-parser cors express mysql nodemon</pre>
+
+    <p>add this script line</p>
+    <pre>"start": "nodemon index.js",</pre>
+
+    <p>make sure you have MySQL server running... (use <b><a href="https://www.apachefriends.org/">XAMPP</a></b>)</p>
+    <p>test the API using <b><a href="vscode:extension/rangav.vscode-thunder-client">Thunder Client</a></b> extension in vscode</p>
+
+    <h2>add this code to <q>index.js</q></h2>
+    <pre>
+const express = require("express")
+const bodyParser = require("body-parser")
+const mysql = require("mysql")
+const cors = require("cors")
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.listen(4000, () => {
+  // console.log("Server is running on port 4000");
+})
+
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "backend3"
+});
+
+db.getConnection(function (err, connection) {
+  if (err) {
+    console.err("Error connecting to the database", err);
+    return;
+  }
+})
+
+const callback = (error, result, res) => {
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(result);
+  }
+}
+
+app.get("/students", (req, res) => {
+  const sql = "SELECT id,student,father FROM student"
+  db.query(sql, (error, result) => {
+    callback(error, result, res)
+  })
+})
+
+app.get("/students/:id", (req, res) => {
+  const id = req.params.id
+  const sql = "SELECT id,student,father FROM student WHERE id=?"
+  db.query(sql, [id], (error, result) => {
+    callback(error, result, res)
+  })
+})
+
+app.post("/students", (req, res) => {
+  const { student, father, phone, address } = req.body;
+  const sql = "INSERT INTO student (student,father,phone,address) VALUES (?,?,?,?)"
+  db.query(sql, [student, father, phone, address], (error, result) => {
+    callback(error, result, res)
+  });
+})
+
+app.post("/students/:id", (req, res) => {
+  const id = req.params.id
+  const { student, father, phone, address } = req.body;
+  const sql = `UPDATE student SET student=?,father=?,phone=?,address=? WHERE id=?`
+  db.query(sql, [student, father, phone, address, id], (error, result) => {
+    callback(error, result, res)
+  });
+})
+
+app.delete("/students/:id", (req, res) => {
+  const id = req.params.id
+  const sql = "DELETE FROM student WHERE id = ?"
+  db.query(sql, [id], (error, result) => {
+    callback(error, result, res)
+  })
+})
+    </pre>
+
+  </main>
+  <script src="../menu.js"></script>
+</body>
+</html>
