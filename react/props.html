@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Props</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Props</h1>
+    <p>props can be string, number, array, object, functionfs etc</p>
+    <p>Add this in component: <q>Newbar.js</q></p>
+    <pre>export default function Newbar(props) {
+	return (
+		&lt;div>Hello {props.title} {props.name}&lt;/div>
+	)
+}</pre>
+    <p>In Main component <q>App.js</q></p>
+    <pre>
+&lt;Newbar name="Raju" title="Hello"/>
+</pre>
+
+    <h2>PropTypes</h2>
+    <pre>import PropTypes from 'prop-types'</pre>
+    <p>add this after return at the bottom of component <q>Newbar.js</q></p>
+    <pre>Newbar.propTypes = {
+	name: PropTypes.string,
+	title: PropTypes.string
+};</pre>
+
+    <h2>Default Props</h2>
+    <pre>Newbar.defaultProps = {
+	name: 'Stranger',
+	title: "Mr."
+};</pre>
+
+    <hr>
+    <h2>Different ways to pass the props</h2>
+    <pre>
+import React from 'react'
+export default function App() {
+  const todo = { fname: 'raj', lname: 'kumar' }
+  const person = { man: 'ravi', age: 'kumar' }
+  return (
+    &lt;div>
+      {/* simple and best method */}
+      &lt;Child todo={todo} person={person} />
+
+      {/* these two are same */}
+      &lt;Child {...todo} {...person} />
+      &lt;Child {...{ ...todo, ...person }} />
+
+      {/* below both are same */}
+      &lt;Child p={{ todo, person }} />
+      &lt;Child p={{ todo: todo, person: person }} />
+
+    &lt;/div>
+  )
+}
+function Child(p) {
+  return (
+    &lt;div>
+      {JSON.stringify(p)}
+    &lt;/div>
+  )
+}
+</pre>
+
+    <h2>Another way to recieve props</h2>
+
+    <pre>
+import React from 'react'
+export default function App() {
+  return (
+    &lt;div>
+      &lt;Child fname="apple" lname="bat" />
+    &lt;/div>
+  )
+}
+function Child(<b>{ fname, lname }</b>) {
+  return (
+    &lt;div>
+      {fname}
+      &lt;br />
+      {lname}
+    &lt;/div>
+  )
+}
+</pre>
+
+  </main>
+  <script src="../menu.js"></script>
+</body>
+</html>

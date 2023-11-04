@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>useState</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>States</h1>
+    <h2>Define a state and event handlers:</h2>
+    <pre>import { useState } from 'react'</pre>
+    <p>Add these inside <q>export default function</q></p>
+    <pre>const [text, setText] = useState('Enter text')
+const handleUpClick = () => {
+	let newText = text.toUpperCase();
+	setText(newText)
+}
+const handleOnChange = (event) => {
+	setText(event.target.value)
+}
+</pre>
+    <p>this is the HTML part</p>
+    <pre>
+&lt;textarea className="form-control" id="myform" rows="3" value={text} onChange={handleOnChange}></textarea>
+
+&lt;button className="btn btn-primary" 
+onClick={handleUpClick}>Change Uppercase</button>
+
+&lt;button className="btn btn-secondary" 
+onClick={handleLowClick}>Change Lowercase</button>
+
+&lt;button className="btn btn-secondary" 
+onClick={handleRedClick}>Change Red</button>
+</pre>
+
+    <h2>prev</h2>
+    <p>for repeated statements, prev is compulsory.</p>
+    <pre>
+const [count, setCount] = useState(0)
+function increaseCounter(){
+  setCount(prev => prev+1)
+  setCount(prev => prev+1)
+  setCount(prev => prev+1)
+  setCount(count+1)
+}
+</pre>
+
+    <pre>
+const [person, setPerson] = useState({name : 'John', age : 30})
+function handleOnChange(e){
+	setPerson({
+    ...person, 
+    name : e.target.value
+  })
+}
+</pre>
+
+    <p>instead of ...person you can use ...prev</p>
+    <pre>
+function handleOnChange(e){
+  setPerson((prev) => ({
+    ...prev, 
+    name : e.target.value
+  }))
+}
+</pre>
+
+  </main>
+  <script src="../menu.js"></script>
+</body>
+</html>

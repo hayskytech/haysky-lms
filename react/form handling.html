@@ -11,6 +11,28 @@
 <body>
   <main>
     <h1>Form Handling</h1>
+    <h2>Controlled</h2>
+    <p>instead of using individual state variables for each field. we can use signle object.</p>
+    <pre>
+import React, { useState } from 'react'
+export default function App() {
+  const [form, setForm] = useState({ fname: '', lname: '', })
+  function handleChange(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }
+  return (
+    &lt;div>
+      {JSON.stringify(form)}&lt;br />
+      First Name: &lt;input type="text" name='fname' onChange={handleChange} value={form.fname} />&lt;br />
+      Last Name: &lt;input type="text" name='lname' onChange={handleChange} value={form.lname} />
+    &lt;/div>
+  )
+}      
+</pre>
+    <h2>Uncontrolled</h2>
     <p><b>We are not using state variable for any form field</b></p>
     <p>Such fields are called <q>uncontrolled fields</q></p>
     <pre>
@@ -42,8 +64,7 @@ export default function Testing2() {
       &lt;/ul>
     &lt;/div>
   )
-}
-      
+}  
 </pre>
 
     <h2>Two way</h2>

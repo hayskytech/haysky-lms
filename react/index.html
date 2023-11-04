@@ -93,60 +93,6 @@ function Student() {
 export default Student
 </pre>
 
-    <h1>Props</h1>
-    <p>props can be string, number, array, object, functionfs etc</p>
-    <p>Add this in component: <q>Newbar.js</q></p>
-    <pre>export default function Newbar(props) {
-	return (
-		&lt;div>Hello {props.title} {props.name}&lt;/div>
-	)
-}</pre>
-    <p>In Main component <q>App.js</q></p>
-    <pre>
-&lt;Newbar name="Raju" title="Hello"/>
-</pre>
-
-    <h2>PropTypes</h2>
-    <pre>import PropTypes from 'prop-types'</pre>
-    <p>add this after return at the bottom of component <q>Newbar.js</q></p>
-    <pre>Newbar.propTypes = {
-	name: PropTypes.string,
-	title: PropTypes.string
-};</pre>
-
-    <h2>Default Props</h2>
-    <pre>Newbar.defaultProps = {
-	name: 'Stranger',
-	title: "Mr."
-};</pre>
-
-    <h1>States</h1>
-    <h2>Define a state and event handlers:</h2>
-    <pre>import { useState } from 'react'</pre>
-    <p>Add these inside <q>export default function</q></p>
-    <pre>const [text, setText] = useState('Enter text')
-const handleUpClick = () => {
-	let newText = text.toUpperCase();
-	setText(newText)
-}
-const handleOnChange = (event) => {
-	setText(event.target.value)
-}
-</pre>
-    <p>this is the HTML part</p>
-    <pre>
-&lt;textarea className="form-control" id="myform" rows="3" value={text} onChange={handleOnChange}></textarea>
-
-&lt;button className="btn btn-primary" 
-onClick={handleUpClick}>Change Uppercase</button>
-
-&lt;button className="btn btn-secondary" 
-onClick={handleLowClick}>Change Lowercase</button>
-
-&lt;button className="btn btn-secondary" 
-onClick={handleRedClick}>Change Red</button>
-</pre>
-
     <h2>debugger</h2>
     <p>pause execution to check variable values</p>
     <pre>

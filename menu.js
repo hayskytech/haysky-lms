@@ -43,6 +43,8 @@ menu = {
   ],
   "react": [
     "index",
+    "useState",
+    "props",
     "router",
     "news from api",
     "arithmetic",
