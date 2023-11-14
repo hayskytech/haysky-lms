@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+  <main>
+    <div id="mydiv"></div>
+    <script type="text/babel">
+      function Hello() {
+        const XY = `<h1>hello</h1>`
+        return (
+          <>
+            <div dangerouslySetInnerHTML={{ __html: XY }}></div>
+            {XY}
+          </>
+        )
+      }      
+      const root = ReactDOM.createRoot(document.getElementById('mydiv'))
+      root.render(<Hello />)
+    </script>
+  </main>
+  <style>
+    #maintable {
+      display: flex;
+      gap: 15px;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    table {
+      margin: 0;
+    }
+  </style>
+  <script src="../menu.js"></script>
+</body>
+</html>

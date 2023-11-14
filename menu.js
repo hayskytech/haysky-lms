@@ -54,6 +54,7 @@ menu = {
     "todo list",
     "nested components",
     "backend APIs",
+    "sqlite auth",
     "expo"
   ],
   "general": [
