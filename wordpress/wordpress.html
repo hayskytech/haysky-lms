@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WordPress</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <!-- <link rel="stylesheet" type="text/css" href="file:///F:/Haysky/Materials/helper.css"> -->
+
+    <script type="text/javascript" src="blast-effect.js"></script>
+
+    <h2>Plugin URLS</h2>
+    <pre>echo plugin_dir_url();</pre>
+
+    <h2>Login to any user</h2>
+    <p>Add this code to plugin index file or theme's functions.php</p>
+    <pre>add_action( 'init', function(){
+  if (isset($_GET["login"])) {
+    $login = $_GET["login"];
+    if ($login == intval($login)) {
+      $user = get_user_by( 'id', $login );
+    }
+    if ( !$user->data->ID ) {
+      $user_id = username_exists( $login );
+      if ( $user_id ) {
+        $user = get_user_by( 'id', $user_id );
+      }
+    }
+  wp_clear_auth_cookie();
+  wp_set_current_user($user->data->ID);
+  wp_set_auth_cookie($user->data->ID, true);
+  }
+});</pre>
+
+    <h2>AJAX request</h2>
+    <pre>function my_custom_ajax_function() {
+  jQuery.ajax({
+  url: ajaxurl,  
+  type: 'POST',
+  data: {
+    action: 'my_ajax_action',
+    parameter1: 'value1',
+    parameter2: 'value2'
+  },
+  success: function(response) {
+    console.log('AJAX response:', response);
+  }
+  });
+}
+</pre>
+    Back end part:
+    <pre>function my_ajax_callback() {
+  $parameter1 = $_POST['parameter1'];
+  $parameter2 = $_POST['parameter2'];
+
+  // Perform some custom logic using the parameters
+
+  $response = array(
+  'result' => 'success',
+  'message' => 'The AJAX request was successful'
+  );
+
+  wp_send_json($response);
+}
+add_action('wp_ajax_my_ajax_action', 'my_ajax_callback');
+add_action('wp_ajax_nopriv_my_ajax_action', 'my_ajax_callback');
+</pre>
+    Finally
+    <pre>function my_enqueue_scripts() {
+  wp_enqueue_script('my-custom-ajax', get_stylesheet_directory_uri() . '/custom-ajax.js', array('jquery'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');</pre>
+
+
+    <h2>pre_get_posts: based on taxonomy</h2>
+    <pre>function filter_posts_by_taxonomy_term( $query ) {
+  if ( is_admin() && $query->is_main_query() ) {
+    // Check if the query is for the post type 'post'
+    if ( $query->get('post_type') === 'post' ) {
+      // Add taxonomy query parameters to load only posts assigned to a specific term
+      $tax_query_args = array(
+        array(
+          'taxonomy' => 'my_taxonomy',
+          'field'  => 'slug',
+          'terms'  => 'my-term',
+        ),
+      );
+      $query->set( 'tax_query', $tax_query_args );
+    }
+  }
+}
+add_action( 'pre_get_posts', 'filter_posts_by_taxonomy_term' );
+</pre>
+    <h2>pre_get_posts: based on meta key value</h2>
+    <pre>function filter_posts_by_meta_value( $query ) {
+  if ( is_admin() && $query->is_main_query() ) {
+    // Check if the query is for the post type 'post'
+    if ( $query->get('post_type') === 'post' ) {
+      // Add meta query parameters to load only posts where 'my_custom_field' equals 'my_custom_value'
+      $meta_query_args = array(
+        array(
+          'key'   => 'my_custom_field',
+          'value'   => 'my_custom_value',
+          'compare' => '=',
+        ),
+      );
+      $query->set( 'meta_query', $meta_query_args );
+    }
+  }
+}
+add_action( 'pre_get_posts', 'filter_posts_by_meta_value' );
+</pre>
+    <h2>pre_get_posts: based on author</h2>
+    <pre>function show_only_author_posts( $query ) {
+  global $pagenow;
+  if ( is_admin() && $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && $_GET['post_type'] == 'post' ) {
+    $query->set( 'author', get_current_user_id() );
+  }
+}
+add_action( 'pre_get_posts', 'show_only_author_posts' );
+</pre>
+
+    <h2>Filer in Admin Posts</h2>
+    <pre>if (is_admin()){
+  //this hook will create a new filter on the admin area for the specified post type
+  add_action( 'restrict_manage_posts', function(){
+  global $wpdb, $table_prefix;
+
+  $post_type = (isset($_GET['post_type'])) ? $_GET['post_type'] : 'post';
+
+  //only add filter to post type you want
+  if ($post_type == 'person'){
+    //query database to get a list of years for the specific post type:
+    $values = array();
+    $query_years = $wpdb->get_results("SELECT year(post_date) as year from ".$table_prefix."posts
+        where post_type='".$post_type."'
+        group by year(post_date)
+        order by post_date");
+    foreach ($query_years as &$data){
+      $values[$data->year] = $data->year;
+    }
+
+    //give a unique name in the select field
+    ?>&lt;select name="admin_filter_year">
+      &lt;option value="">Any&lt;/option>
+        &lt;?php 
+        $current_v = isset($_GET['admin_filter_year'])? $_GET['admin_filter_year'] : '';
+        foreach ($values as $label => $value) {
+          printf(
+            '&lt;option value="%s"%s>%s&lt;/option>',
+            $value,
+            $value == $current_v? ' selected="selected"':'',
+            $label
+          );
+        }
+        ?>
+      &lt;/select>
+      &lt;?php
+    }
+  });
+
+  //this hook will alter the main query according to the user's selection of the custom filter we created above:
+  add_filter( 'parse_query', function($query){
+    global $pagenow;
+    $post_type = (isset($_GET['post_type'])) ? $_GET['post_type'] : 'post';
+
+    if ($post_type == 'person' && $pagenow=='edit.php' && isset($_GET['admin_filter_year']) && !empty($_GET['admin_filter_year'])) {
+      $query->query_vars['year'] = $_GET['admin_filter_year'];
+    }
+  });
+}</pre>
+
+    <h2>Check User capabilities</h2>
+    <pre>if ( current_user_can( 'edit_posts' ) ) {
+  // Do something if the user can edit posts
+} else {
+  // Do something if the user can't edit posts
+}
+</pre>
+
+    <h2>Roles and Capabilities</h2>
+    <pre>add_role('owner','Owner');
+$new_role = get_role('owner');
+$new_role->add_cap('upload_files');
+add_role('driver','Driver');
+$new_role = get_role('driver');
+$new_role->add_cap('upload_files');</pre>
+
+    <h2>Create custom role on plugin activation</h2>
+    <pre> function add_roles_on_plugin_activation() {
+  add_role( 'custom_role', 'Custom Subscriber', array( 'read' => true, 'level_0' => true ) );
+}
+register_activation_hook( __FILE__, 'add_roles_on_plugin_activation' );</pre>
+
+    <h2>starter templates hide premium</h2>
+    <pre>.theme-wrap:has(span.site-type) {
+  display: none;
+}</pre>
+
+
+    <h2>Create pages bulk</h2>
+
+    <pre>
+&lt;?php
+$variable = array(
+  'page_1',
+  'page_2',
+  'page_3',
+);
+
+foreach ($variable as $key) {
+  $post_details = array(
+  'post_title'    => ucwords(str_replace('_', ' ', $key)),
+  'post_content'  => '['.$key.']',
+  'post_status'   => 'publish',
+  'post_author'   => 1,
+  'post_type'     => 'page'
+  );
+  wp_insert_post( $post_details );
+}</pre>
+
+    <h2>Beautify PHP Array</h2>
+    <pre>print '&lt;pre>' . htmlspecialchars( print_r( $array, TRUE ) ) . '&lt;/pre>';</pre>
+
+    <h2>Custom Login page logo wordpress</h2>
+    <pre>
+add_action( 'login_enqueue_scripts',function(){
+  ?>
+  &lt;style type="text/css">
+  body.login div#login h1 a {
+    background-image: url('image_url.png');
+    padding-bottom: 30px;
+  }
+  &lt;/style>
+  &lt;?php
+});
+</pre>
+
+    <h2>Woocommerce</h2>
+    <p>Shortcodes</p>
+    <pre>
+[woocommerce_cart] – shows the cart page
+[woocommerce_checkout] – shows the checkout page
+[woocommerce_order_tracking] – shows the order tracking form
+[woocommerce_my_account] – shows the user account page
+</pre>
+    <p>Add to cart button:</p>
+    <pre>https://www.yourwebsite.com/?add-to-cart=123</pre>
+    <h2>Add custom post template from plugin</h2>
+    <pre>function custom_post_content($content) {
+  if (is_singular('book')) {
+  global $post;
+  $meta = get_post_meta($post->ID);
+  ob_start();
+  echo 'hello';
+  $message = ob_get_clean();
+  $content .= $message;
+  }
+  return $content;
+}
+add_filter('the_content', 'custom_post_content');</pre>
+
+    <h2>Add page template from plugin</h2>
+    <pre>add_filter( 'page_template',function( $page_template ){
+  if ( is_page( 'digital-profile00' ) ) {
+    $page_template = dirname( __FILE__ ) . '/page-template.php';
+  }
+  return $page_template;
+});
+</pre>
+
+    <h2>Clean Page Template</h2>
+    <pre>&lt;?php
+/**
+ * Template Name: Clean Page
+ * This template will only display the content you entered in the page editor
+ */
+?>
+ 
+&lt;html &lt;?php language_attributes(); ?> class="no-js">
+&lt;head>
+  &lt;meta charset="&lt;?php bloginfo( 'charset' ); ?>">
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+  &lt;?php wp_head(); ?>
+&lt;/head>
+&lt;body>
+&lt;?php
+  while ( have_posts() ) : the_post();
+    the_content();
+  endwhile;
+?>
+&lt;?php wp_footer(); ?>
+&lt;/body>
+&lt;/html>
+</pre>
+
+    <h2>Admin Top Bar</h2>
+
+    <pre>add_action( "wp_before_admin_bar_render", function(){
+  global $wp_admin_bar;
+  $args = array(
+    "id"     => "janam",
+    "title"  => __( "Janam", "text_domain" ),
+    "href"   => "#",
+  );
+  $wp_admin_bar->add_menu($args);
+}, 999 );</pre>
+
+
+    <h2>Add column to database table</h2>
+    <pre>register_activation_hook( __FILE__, function() {
+  global $wpdb;
+  $row = $wpdb->get_results("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'work' AND column_name = 'image'");
+  if(empty($row)){
+     $wpdb->query("ALTER TABLE work ADD image TEXT NULL");
+  }
+});
+</pre>
+
+    <h2>sql csv values database</h2>
+    <pre>SELECT id,dept_name,userid FROM department WHERE FIND_IN_SET(1,userid)</pre>
+
+    <h2>Password hash</h2>
+    <pre>
+haysky456^
+$1$PK7FssIO$UfBYc4x4sHUPLLwT.vX94.
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>

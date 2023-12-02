@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Insert student</h2>
+    <pre>
+from django.shortcuts import render
+import sqlite3
+def main(request):
+
+  con = sqlite3.connect("db.sqlite3")
+  cursor = con.cursor()
+  res = cursor.execute("SELECT name FROM sqlite_master")
+  tables = res.fetchall()
+  if ("students",) not in tables:
+    cursor.execute("CREATE TABLE students (student, class, phone)")
+    con.commit()
+
+  student = request.GET.get('student')
+  classname = request.GET.get('class')
+  phone = request.GET.get('phone')
+  
+  if student:
+    data = (student,classname,phone)
+    cursor.execute("INSERT INTO students VALUES (?,?,?)" , data)
+    con.commit()
+
+  return render(request, "students.html")
+  pass
+</pre>
+
+    <h2>List of students</h2>
+    <pre>
+from django.shortcuts import render
+import sqlite3
+
+def main(request):
+
+  con = sqlite3.connect("db.sqlite3")
+  cursor = con.cursor()
+
+  students = cursor.execute("SELECT * FROM students").fetchall()
+  print(students[0][0])
+  data = {
+    "students" : students
+  }
+  
+  return render(request, "students_list.html", data)
+</pre>
+
+    <h1>Edit and Update</h1>
+    <pre>
+from django.http import HttpResponse
+from django.shortcuts import render
+import sqlite3
+
+def home(r):
+  # return HttpResponse("Hello world")
+  return render(r, "home.html")
+
+def about(req):
+  return render(req, "about.html")
+
+def contact(req):
+  return render(req, "contact.html")
+
+def books(req):
+  con = sqlite3.connect("db.sqlite3")
+  cur = con.cursor()
+  res = cur.execute("SELECT name from sqlite_master")
+  tables = res.fetchall()
+  if ('books',) not in tables:
+    cur.execute("""CREATE TABLE books
+                  (id INTEGER NOT NULL,
+                  book TEXT NOT NULL,
+                  year INT NULL,
+                  price INT NULL,
+                  PRIMARY KEY("id" AUTOINCREMENT)
+                  );""")
+
+  if req.POST.get("add_book"):
+
+    book = req.POST.get("book")
+    year = req.POST.get("year")
+    price = req.POST.get("price")
+    data = (book, year, price)
+    cur.execute("INSERT INTO books (book,year,price) VALUES (?,?,?)", data)
+    con.commit()
+
+  if req.POST.get("delete"):
+    id = req.POST.get("id")
+    cur.execute("DELETE FROM books WHERE id = ?" , id)
+    con.commit()
+
+  books = cur.execute("SELECT * FROM books").fetchall()
+  
+  x = {
+    "books" : books
+  }
+
+  
+
+
+  return render(req, "books.html", x )
+
+
+def book_edit(req):
+  con = sqlite3.connect("db.sqlite3")
+  cur = con.cursor()
+  id = req.POST.get("id")
+  msg = ""
+  if req.POST.get("save"):
+    book = req.POST.get("book")
+    year = req.POST.get("year")
+    price = req.POST.get("price")
+
+    cur.execute("UPDATE books set book=?, year=?, price=?  WHERE id=?", (book, year, price ,id) )
+    con.commit()
+    msg = "Book updated."
+
+  data = cur.execute("SELECT * FROM books WHERE id=?" , id ).fetchone()
+  x = {
+    "id" : id,
+    "book" : data[1],
+    "year" : data[2],
+    "price" : data[3],
+    "msg" : msg
+  }
+
+  return render(req, "book_edit.html", x )
+</pre>
+
+    <h2>Book edit.html</h2>
+    <pre>
+  {% extends 'base.html' %}
+  {% block content %}
+  
+  &lt;table border="1">
+  &lt;form action="" method="post">
+    &lt;input type="hidden" name="id" value="{{id}}">
+    {% csrf_token %}
+    &lt;tr>
+      &lt;td>&lt;label for="book">Book:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="text" id="book" name="book" required value="{{book}}">&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td>&lt;label for="year">Year:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="number" id="year" name="year" value="{{year}}" required>&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td>&lt;label for="price">Price:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="number" id="price" name="price" value="{{price}}" required>&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td colspan="2" align="center">
+        &lt;input type="submit" name="save" value="Save">
+      &lt;/td>
+    &lt;/tr>
+  &lt;/form>
+  &lt;/table>
+  
+  &lt;h2>{{msg}}&lt;/h2>
+  
+  {% endblock %}
+</pre>
+
+    <h2>Books.html</h2>
+
+    <pre>
+{% extends 'base.html' %}
+
+{% block content %}
+&lt;h1>Books&lt;/h1>
+
+&lt;table>
+  &lt;form action="" method="post">
+    {% csrf_token %}
+    &lt;tr>
+      &lt;td>&lt;label for="book">Book:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="text" id="book" name="book" required>&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td>&lt;label for="year">Year:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="number" id="year" name="year" min="1900" max="2099" required>&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td>&lt;label for="price">Price:&lt;/label>&lt;/td>
+      &lt;td>&lt;input type="number" id="price" name="price" step="0.01" required>&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td colspan="2" align="center">
+        &lt;input type="submit" name="add_book" value="Submit">
+      &lt;/td>
+    &lt;/tr>
+  &lt;/form>
+  &lt;script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  &lt;/script>
+&lt;/table>
+
+&lt;h2>Books List&lt;/h2>
+
+
+&lt;table border="1">
+  {% for book in books %}
+  &lt;tr>
+    &lt;td>{{book.1}}&lt;/td>
+    &lt;td>{{book.2}}&lt;/td>
+    &lt;td>{{book.3}}&lt;/td>
+    &lt;td>
+      &lt;form action="" method="post">
+        {% csrf_token %}
+        &lt;input type="hidden" name="id" value="{{book.0}}">
+        &lt;input type="submit" name="edit" value="Edit" formaction="/book_edit">
+        &lt;input type="submit" name="delete" value="Delete">
+      &lt;/form>
+    &lt;/td>
+  &lt;/tr>
+  {% endfor %}
+&lt;/table>
+{% endblock %}
+  </pre>
+
+    <h1>API</h1>
+    <pre>
+from django.shortcuts import render
+from django.http import HttpResponse
+import sqlite3,json
+
+
+def students(req):
+  con = sqlite3.connect("db.sqlite3")
+  cur = con.cursor()
+  tables = cur.execute("SELECT * from students").fetchall()
+  i = 0
+  students = []
+  for x in tables:
+    pass
+    students.append(
+      {
+        'id' : x[0],
+        'fname' : x[1],
+        'lname' : x[2],
+        'dob' : x[3],
+        'phone' : x[4]
+      }
+    )
+    i += 1
+  # print(students)
+  return HttpResponse(json.dumps(students))
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>
+
+</html>

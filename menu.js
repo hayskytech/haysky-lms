@@ -76,8 +76,13 @@ menu = {
     '12 functions',
     'django',
     'mysql',
-    'sqlite'
-  ]
+    'sqlite',
+    'db example'
+  ],
+  "wordpress": [
+    'index',
+    'wordpress',
+  ],
 }
 
 if (typeof wordpress === "undefined") {
