@@ -36,16 +36,22 @@ if (!fontsLoaded) {
 	return null; // You can show a loading screen here
 }</pre>
 
-		<h2>Firebase app</h2>
+		<h3>Install eas CLI</h3>
+		<pre>npm install -g eas-cli</pre>
+
+		<h2>Connecting with Firebase</h2>
 		<pre>eas credentials</pre>
-		<p>Copy the SHA1 keys and upload in Firebase</p>
+		<p>Copy the SHA1, SHA256 keys and upload in Firebase. <br> After that download google-services.json file and place
+			it in
+			your project.</p>
+		<p>Mention it in the package.json</p>
+		<pre>"googleServicesFile": "./google-services.json"</pre>
 
 		<h2>Dev Build</h2>
 		<pre>eas build --profile development --platform android</pre>
 		<pre>npx expo start --dev-client</pre>
 
-		<h3>Install eas CLI</h3>
-		<pre>npm install -g eas-cli</pre>
+
 		<h2>Real Build</h2>
 		<pre>eas build -p android</pre>
 
@@ -192,4 +198,5 @@ await AsyncStorage.removeItem('lang')</pre>
 	<script src="../menu.js"></script>
 
 </body>
+
 </html>

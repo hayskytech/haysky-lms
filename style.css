@@ -26,7 +26,8 @@ pre {
 }
 
 #wpbody-content,
-body, p {
+body,
+p {
   font-family: Arial;
 }
 
@@ -67,7 +68,9 @@ body {
   display: flex;
 }
 
-table td, table, table th {
+table td,
+table,
+table th {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 5px;

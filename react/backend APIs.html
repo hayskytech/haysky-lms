@@ -13,26 +13,23 @@
   <main>
     <h1>Express JS</h1>
     <p>create a seperate folder <q>backend</q></p>
-    <pre>npx create-express-app .</pre>
+    <pre>npm init</pre>
 
     <p>install these packages</p>
-    <pre>npm install bcrypt body-parser cors ejs jsonwebtoken mysql nodemon sqlite3</pre>
+    <pre>npm install express bcrypt body-parser cors ejs jsonwebtoken mysql nodemon sqlite3</pre>
 
     <p>add this script line</p>
     <pre>"start": "nodemon index.js",</pre>
 
-    <p>make sure you have MySQL server running... (use <b><a href="https://www.apachefriends.org/">XAMPP</a></b>)</p>
-    <p>test the API using <b><a href="vscode:extension/rangav.vscode-thunder-client">Thunder Client</a></b> extension in
+    <p>If you want to work on MySQL. Use <b><a href="https://www.apachefriends.org/">XAMPP</a></b></p>
+    <p>For API testing: <b><a href="vscode:extension/rangav.vscode-thunder-client">Thunder Client</a></b> extension in
       vscode</p>
 
-    <h2>add this code to <q>index.js</q></h2>
+    <h2>Create a file: <q>index.js</q></h2>
     <pre>
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
-
-const { addSqliteAPIs } = require('./sqlitedb')
-const { addMysqlAPIs } = require('./mysql')
 
 const app = express()
 app.use(cors())
@@ -42,6 +39,59 @@ app.listen(4000, () => {
   // console.log("Server is running on port 4000");
 })
 
+// simple API
+app.get('/', (req, res) => {
+  return res.json("this is sample api")
+})
+</pre>
+
+    <h2>Add some API endpoints</h2>
+    <pre>
+// API with path
+app.get('/test1', (req, res) => {
+  return res.json('this is another API')
+})
+
+// API with method POST
+app.post('/test1', (req, res) => {
+  return res.json('this is another API with POST method')
+})
+
+// API with query
+app.get('/test2', (req, res) => {
+  const { name, age } = req.query
+  return res.json({ name, age })
+})
+
+// API with params "http://localhost:4000/test2/apple/"
+app.get('/test2/:name', (req, res) => {
+  const name = req.params.name
+  return res.json({ name })
+})
+
+// API with params (multiple) "http://localhost:4000/test2/fruits/apple"
+app.get('/test2/:category/:item', (req, res) => {
+  const { category, item } = req.params
+  return res.json({ category, item })
+})
+
+// API with body
+app.post('/test2', (req, res) => {
+  const { name, age } = req.body
+  return res.json({ name, age })
+})
+
+// using status codes
+app.get('/test3', (req, res) => {
+  return res.status(404).json('simple message')
+})
+</pre>
+
+    <h1>SQLite</h1>
+    <p>add this in <q>index.js</q></p>
+    <pre>
+const { addSqliteAPIs } = require('./sqlitedb')
+const { addMysqlAPIs } = require('./mysql')
 addSqliteAPIs(app)
 addMysqlAPIs(app)      
 </pre>
