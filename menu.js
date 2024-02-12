@@ -55,6 +55,8 @@ menu = {
     "nested components",
     "backend APIs",
     "sqlite auth",
+    "firebase realtime DB",
+    "firebase auth",
     "expo"
   ],
   "general": [

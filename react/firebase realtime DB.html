@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Firebase Realtime Database</h1>
+    <h2>Setup</h2>
+    <p>Create a new file <q>firebase.js</q></p>
+    <pre>import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+
+const firebaseConfig = {
+  .....
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth();
+
+export { db, app, auth }
+</pre>
+
+    <h2>Add to a list of data</h2>
+    <pre>const myRef = ref(db, 'matches')
+push(myRef, { match, teamA, teamB, date, time, place })</pre>
+
+    <h2>Fetch Items</h2>
+    <pre>
+useEffect(() => {
+  getItems()
+}, [user])
+function getItems() {
+  const myRef = ref(db, 'matches')
+  onValue(myRef, (snapshot) => {
+    const res = snapshot.val()
+    if (res) {
+      setData(res)
+      const arr = Object.entries(res)
+      setList(arr)
+    } else {
+      setList([])
+    }
+  })
+}</pre>
+    <h2>Delete items</h2>
+
+    <pre>
+function deleteItem(id) {
+  const delRef = ref(db, 'matches/' + id)
+  set(delRef, null)
+}
+function deleteAll() {
+  const delAllRef = ref(db, 'matches')
+  set(delAllRef, null)
+}
+</pre>
+    <h2>Edit item</h2>
+    <pre>
+function editItem(id) {
+  setBox(true)
+  setEditId(id)
+  setMatch(data[id].match)
+  setTeamA(data[id].teamA);
+  setTeamB(data[id].teamB);
+  setDate(data[id].date);
+  setTime(data[id].time);
+  setPlace(data[id].place);
+}
+</pre>
+    <h2>Save Item</h2>
+    <pre>
+function saveItem() {
+  const saveRef = ref(db, 'matches/' + editId)
+  set(saveRef, { match, teamA, teamB, date, time, place })
+  setEditId(null)
+  closeBox()
+}
+</pre>
+
+
+
+
+
+    <script src="../menu.js"></script>
+  </main>
+</body>
+
+</html>
