@@ -18,56 +18,80 @@
 		<pre>npx create-expo-app .
 npm start</pre>
 
-		<h2>Webview</h2>
-		<pre>npm install react-native-web</pre>
-		<pre>npx expo install @expo/webpack-config</pre>
-
-		<h2>Icons in webview</h2>
-		<pre>import { useFonts } from 'expo-font'
-import { Ionicons } from '@expo/vector-icons'</pre>
-		<p>inside App component</p>
-		<pre>const [fontsLoaded] = useFonts({
-	'MaterialIcons': require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf'),
-	'Roboto': require('path-to-your-roboto-font-file.ttf'),
-	// Add other font names if you are using additional icon libraries
-});
-
-if (!fontsLoaded) {
-	return null; // You can show a loading screen here
-}</pre>
-
-		<h3>Install eas CLI</h3>
+		<h3>Install eas CLI (once for a PC)</h3>
 		<pre>npm install -g eas-cli</pre>
 
-		<h2>Connecting with Firebase</h2>
+		<h2>Login to EAS (once for a project)</h2>
+		<pre>eas login</pre>
+
+		<h2>Connecting with Firebase (cmd)</h2>
+		<p>In Firebase Project Settings -> create Android app.</p>
 		<pre>eas credentials</pre>
-		<p>Copy the SHA1, SHA256 keys and upload in Firebase. <br> After that download google-services.json file and place
+		<p>Copy the SHA1, SHA256 keys and upload in Firebase. After that download google-services.json file and place
 			it in
 			your project.</p>
-		<p>Mention it in the package.json</p>
-		<pre>"googleServicesFile": "./google-services.json"</pre>
+		<p>Mention it in the <q>app.json</q> Ignore <b>intentFilters</b> if you don't want <b>Deep Links</b></p>
+		<pre>
+{
+	"expo" : {
+		"android" : {
+			"versionCode": 1,
+			"googleServicesFile": "./others/google-services.json",
+			"package": "com.example.com",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "www.example.com",
+              "pathPrefix": "/archives/"
+            },
+            {
+              "scheme": "https",
+              "host": "example.com",
+              "pathPrefix": "/archives/"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+		},
+		"scheme": "wachemo"
+	}
+}
+</pre>
 
-		<h2>Dev Build</h2>
+		<p>Upload FCM API Key or Service File to EAS online</p>
+
+		<h3>Development build (cmd)</h3>
 		<pre>eas build --profile development --platform android</pre>
-		<pre>npx expo start --dev-client</pre>
 
+		<h3>Preview apk (cmd)</h3>
+		<pre>eas build --profile previewapk --platform android</pre>
+		<p>add this to eas.json</p>
+		<pre>
+{
+	"build": {
+		"previewapk": {
+			"android": {
+				"buildType": "apk"
+			}
+		},
+	}
+}</pre>
 
-		<h2>Real Build</h2>
+		<h3>Production Build aab (cmd)</h3>
 		<pre>eas build -p android</pre>
 
-		<h2>Upload API Key to EAS</h2>
+		<p>How to generate apk from app bundle</p>
+		<pre>java -jar bundletool-all-1.15.6.jar build-apks --bundle=app.aab --output=my_app.apks --mode=universal --ks=online.jks --ks-key-alias=3e283155</pre>
 
-		<pre>npx expo push:android:upload --api-key your_toke_here</pre>
-
-		<hr>
-		<br>
-		<hr>
-
-
-
-		<p>this will generate app bundle</p>
-		<pre>react-native bundle --platform android --dev false --entry-file App.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</pre>
-
+		<h2>QR Code Generator</h2>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
 		<input id="text" type="text" style="font-size: 22px; width: 80%;" value="exp://192.168.43.108:19000"
 			onkeypress="handleKey1(event)">
@@ -193,6 +217,35 @@ useEffect(() => {
 		<pre>await AsyncStorage.setItem('key', 'value')
 const x = await AsyncStorage.getItem('lang')
 await AsyncStorage.removeItem('lang')</pre>
+
+		<h2>Icons in webview</h2>
+		<pre>import { useFonts } from 'expo-font'
+import { Ionicons } from '@expo/vector-icons'</pre>
+		<p>inside App component</p>
+		<pre>const [fontsLoaded] = useFonts({
+	'MaterialIcons': require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf'),
+	'Roboto': require('path-to-your-roboto-font-file.ttf'),
+	// Add other font names if you are using additional icon libraries
+});
+
+if (!fontsLoaded) {
+	return null; // You can show a loading screen here
+}</pre>
+
+		<h3>BackHandler</h3>
+		<pre>
+useEffect(() => {
+	const backAction = () => {
+		alert('Back button pressed');
+		return true; // Prevent default behavior (exit app)
+	};	
+	const backHandler = BackHandler.addEventListener(
+		'hardwareBackPress',
+		backAction
+	);	
+	return () => backHandler.remove();
+}, []);
+</pre>
 
 	</main>
 	<script src="../menu.js"></script>

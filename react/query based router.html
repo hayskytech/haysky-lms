@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query based router</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Query based router</h2>
+    <pre>
+let urlParams = new URLSearchParams(window.location.search);
+let paramValue = urlParams.get('page');
+if (!paramValue) {
+  paramValue = 'Home'
+}
+const [page, setPage] = useState(paramValue)
+useEffect(() => {
+  urlParams.set('page', page);
+  const updatedUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+  window.history.replaceState({}, '', updatedUrl);
+}, [page])
+    </pre>
+    <script src="../menu.js"></script>
+  </main>
+</body>
+
+</html>
