@@ -7,106 +7,86 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Grid Layout</title>
 	<link rel="stylesheet" href="../style.css">
+	<style>
+		th {
+			text-align: left;
+		}
+	</style>
 </head>
 
 <body>
 	<main>
 		<h1>Grid Layout</h1>
-		<unf><style type="text/css">
-	#grid-main {
-		padding: 0;
-		margin: 0;
-		background: pink;
-	}
-
-	#grid-main {
-		max-width: 1200px;
-		background: skyblue;
-		padding: 20px;
-		overflow: auto;
-		margin: auto;
-	}
-
-	.grid {
-		width: 100%;
-	}
-
-	.box {
-		float: left;
-		width: 25%;
-	}
-
-	.inner-box {
-		background: orange;
-		margin: 5px;
-		border: 1px solid darkblue;
+		<table>
+			<tr>
+				<th>display</th>
+				<td>grid</td>
+				<td>inline-grid</td>
+			</tr>
+			<tr>
+				<th>column-gap</th>
+				<td>50px</td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>row-gap</th>
+				<td>20px</td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>gap</th>
+				<td>10px</td>
+				<td></td>
+			</tr>
+		</table>
+		<p>
+			<q>display: grid</q>
+			<q>display: inline-grid</q>
+		</p>
+		<unf><style>
+	.grid-container {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		background-color: #2196F3;
 		padding: 10px;
 	}
 
-	@media(max-width:768px) {
-		.box {
-			width: 50%;
+	@media (max-width:480px) {
+		.grid-container {
+			grid-template-columns: auto;
 		}
 	}
 
-	@media(max-width:480px) {
-		.box {
-			width: 100%;
-		}
+	.grid-item {
+		background-color: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(0, 0, 0, 0.8);
+		padding: 20px;
+		font-size: 30px;
+		text-align: center;
+	}
+
+	#one {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+
+	#three {
+		grid-row-start: 2;
+		grid-row-end: 4;
 	}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div id="grid-main">
-	<div class="grid">
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-		<div class="box">
-			<div class="inner-box">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet</p>
-			</div>
-		</div>
-	</div>
+<div class="grid-container">
+	<div class="grid-item" id="one">1</div>
+	<div class="grid-item">2</div>
+	<div class="grid-item" id="three">3</div>
+	<div class="grid-item">4</div>
+	<div class="grid-item">5</div>
+	<div class="grid-item">6</div>
+	<div class="grid-item">7</div>
+	<div class="grid-item">8</div>
+	<div class="grid-item">9</div>
+	<div class="grid-item">10</div>
 </div>
 </unf>
 		<script>
@@ -120,4 +100,5 @@
 		<script src="../menu.js"></script>
 	</main>
 </body>
+
 </html>

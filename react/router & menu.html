@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Handling</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Create Context</h2>
+    add this line above App function
+    <pre>
+export const MyContext = createContext(null)
+</pre>
+    <h2>React Router DOM</h2>
+    <p>Use <q>HashRouter</q>, <q>BrowserRouter</q> etc</p>
+    <p>You can skip <q>MyContext</q> lines</p>
+    <pre>
+&lt;MyContext.Provider value={{ user, theme }}>
+  &lt;HashRouter>
+    &lt;Routes>
+      &lt;Route path="/" element={&lt;MainMenu />}>
+        &lt;Route index element={&lt;CodeGen />} />
+        &lt;Route path="about" element={&lt;About />} />
+        &lt;Route path="contact" element={&lt;Contact />} />
+        &lt;Route path="profile/:userid" element={&lt;Profile />} />
+        &lt;Route path="*" element={&lt;NoPage />} />
+
+        &lt;Route path='gala' element={&lt;GalaMenu />} >
+          &lt;Route path='passes' element={&lt;GalaIDs />} />
+          &lt;Route path='report' element={&lt;GalaDinner />} />
+          &lt;Route path='scan' element={&lt;GalaScan />} />
+        &lt;/Route>
+        
+      &lt;/Route>
+    &lt;/Routes>
+  &lt;/HashRouter>
+&lt;/MyContext.Provider>
+</pre>
+
+    <h3>useContext in other components</h3>
+    <pre>
+const { theme, user } = useContext(MyContext)
+</pre>
+
+    <h2>Simple Menu</h2>
+    <pre>
+function MainMenu() {
+  return (&lt;>
+  &lt;nav>
+    &lt;Link to="/">Home&lt;/Link>
+    &lt;Link to="/about">About&lt;/Link>
+    &lt;Link to="/contact">Contact&lt;/Link>
+  &lt;/nav>
+  &lt;Outlet/>
+  &lt;/>)
+}
+</pre>
+    <h3>Access <q>userid</q> in that component <q>Profile</q></h3>
+    <p>url will be <q>localhost/profile/apple</q></p>
+    <pre>
+const { userid } = useParams()
+</pre>
+
+    <h2>Semantic Menu</h2>
+    <pre>
+function MainMenu() {
+  const location = useLocation();
+  const path = location.pathname;
+  return (&lt;>
+    &lt;Menu icon='labeled' compact widths={6} size='mini' inverted={theme}>
+      &lt;Menu.Item as={Link} to='' active={path === '/'}>
+        &lt;Icon name='home' />Home
+      &lt;/Menu.Item>
+      &lt;Menu.Item as={Link} to='food' active={path === '/food'}>
+        &lt;Icon name='food' />Food
+      &lt;/Menu.Item>
+      &lt;Menu.Item as={Link} to='users' active={path === '/users'}>
+        &lt;Icon name='users' />Users
+      &lt;/Menu.Item>
+      &lt;Menu.Item as={Link} to='reports' active={path.includes('/reports')}>
+        &lt;Icon name='list alternate outline' />Reports
+      &lt;/Menu.Item>
+      &lt;Menu.Item onClick={() => setTheme(!theme)}>
+        &lt;Icon name={theme ? 'moon' : 'sun outline'} />{theme ? 'Dark' : 'Light'}
+      &lt;/Menu.Item>
+      &lt;Menu.Item as={Link} to='account' active={path === '/account'}>
+        &lt;Icon name='user' />Account
+      &lt;/Menu.Item>
+    &lt;/Menu>
+    &lt;Segment inverted={theme}>
+      &lt;Outlet />
+    &lt;/Segment>
+  &lt;/>)
+}
+</pre>
+
+    <h3>Dark theme</h3>
+    <p>Add this in <q>App.js</q></p>
+    <pre>
+let oldTheme = false
+if (localStorage.getItem('theme')) {
+  oldTheme = JSON.parse(localStorage.getItem('theme'))
+}
+const [theme, setTheme] = useState(oldTheme)
+useEffect(() => {
+  document.body.style.backgroundColor = theme ? 'black' : 'white'
+  localStorage.setItem('theme', JSON.stringify(theme))
+}, [theme])
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>
+
+</html>

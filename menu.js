@@ -45,7 +45,7 @@ menu = {
     "index",
     "useState",
     "props",
-    "router",
+    "router & menu",
     "news from api",
     "arithmetic",
     "tables",
@@ -55,8 +55,8 @@ menu = {
     "nested components",
     "backend APIs",
     "sqlite auth",
+    "firebase setup",
     "firebase realtime DB",
-    "firebase auth",
     "expo"
   ],
   "general": [
