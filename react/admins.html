@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admins</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h3>Admins</h3>
+    <pre>
+const [admins, setAdmins] = useState({})
+const [email, setEmail] = useState(null)
+const [read, setRead] = useState(false)
+const [write, setWrite] = useState(false)
+
+useEffect(() => {
+  onValue(ref(db, 'admin'), (snapshot) => {
+    if (!snapshot.exists()) return setAdmins({})
+    setAdmins(snapshot.val())
+  })
+}, [])
+
+function addItem() {
+  if (!email) return
+  set(ref(db, 'admin/' + email.replaceAll('.', ',')), { read, write })
+  closeBox()
+}
+function deleteItem(email) {
+  if (!email) return
+  set(ref(db, 'admin/' + email.replaceAll('.', ',')), null)
+}
+function closeBox() {
+  setEmail(null)
+  setRead(false)
+  setWrite(false)
+}
+</pre>
+    <h3>HTML part</h3>
+    <pre>
+&lt;Button color='green' onClick={() => setEmail('')}>Add New Email&lt;/Button>
+&lt;Modal open={email !== null} onClose={closeBox} closeIcon>
+  &lt;Modal.Content>
+    &lt;Form onSubmit={addItem}>
+      &lt;Form.Field>
+        &lt;label>Email&lt;/label>
+        &lt;Input value={email} onChange={e => setEmail(e.target.value)} />
+      &lt;/Form.Field>
+      &lt;Form.Field>
+        &lt;Checkbox label="Read" checked={read} onChange={(e, d) => setRead(d.checked)} />
+      &lt;/Form.Field>
+      &lt;Form.Field>
+        &lt;Checkbox label="Write" checked={write} onChange={(e, d) => setWrite(d.checked)} />
+      &lt;/Form.Field>
+      &lt;Button color='blue' disabled={!email}>Submit&lt;/Button>
+      &lt;Button color='grey' onClick={closeBox} type='button'>Cancel&lt;/Button>
+    &lt;/Form>
+  &lt;/Modal.Content>
+&lt;/Modal>
+
+{Object.keys(admins).length > 0 &&
+  &lt;Table unstackable compact="very" collapsing>
+    &lt;thead>
+      &lt;tr>
+        &lt;th>Email&lt;/th>
+        &lt;th>Read&lt;/th>
+        &lt;th>Write&lt;/th>
+        &lt;th>Actions&lt;/th>
+      &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+      {Object.entries(admins).map((row) => {
+        return (&lt;tr>
+          &lt;td>{row[0].replaceAll(',', '.')}&lt;/td>
+          &lt;td>{row[1].read ?
+            &lt;Icon name='check circle' color='green' size='large' /> :
+            &lt;Icon name='delete' color='red' size='large' />
+          }&lt;/td>
+          &lt;td>{row[1].write ?
+            &lt;Icon name='check circle' color='green' size='large' /> :
+            &lt;Icon name='delete' color='red' size='large' />
+          }&lt;/td>
+          &lt;td>
+            &lt;Icon name='edit' color='blue' circular
+              onClick={() => {
+                setEmail(row[0].replaceAll(',', '.'));
+                setWrite(row[1].read);
+                setRead(row[1].read);
+              }} />
+            &lt;Icon name='trash' color="red" onClick={() => deleteItem(row[0])} circular />
+          &lt;/td>
+        &lt;/tr>)
+      })}
+    &lt;/tbody>
+  &lt;/Table>
+}
+</pre>
+
+  </main>
+  <script src="../menu.js"></script>
+</body>
+
+</html>

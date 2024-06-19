@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add to Home Screen</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Add to Home Screen</h2>
+    <p>Create new file <q>A2HS.js</q></p>
+    <pre>
+import React, { useEffect, useState } from 'react'
+import { Button, Icon } from 'semantic-ui-react';
+
+export default function A2HS({ user, data }) {
+  let deferredPrompt;
+
+  useEffect(() => {
+
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, [user, data]);
+
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [installing, setInstalling] = useState(false)
+
+  const handleInstallButtonClick = () => {
+
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the installation');
+          setIsStandalone(true)
+          setInstalling(true)
+        } else {
+          console.log('User dismissed the installation');
+        }
+
+        // deferredPrompt = null; // Reset the deferredPrompt variable
+      });
+    } else {
+      window.alert('App aleady added to HomeScreen or this feature is not available on this device.')
+    }
+  };
+
+  useEffect(() => {
+    const checkStandaloneMode = () => {
+      if (navigator.standalone !== undefined) {
+        // iOS devices
+        setIsStandalone(navigator.standalone);
+      } else if (window.matchMedia('(display-mode: standalone)').matches) {
+        // Android devices
+        setIsStandalone(true);
+      }
+    };
+
+    checkStandaloneMode();
+
+    window.addEventListener('appinstalled', checkStandaloneMode);
+
+    return () => {
+      window.removeEventListener('appinstalled', checkStandaloneMode);
+    };
+  }, []);
+  return (
+    &lt;>
+      {!isStandalone && &lt;Button color='blue' icon labelPosition='left' onClick={handleInstallButtonClick}>
+        &lt;Icon name='download' />Add to HomeScreen
+      &lt;/Button>}
+      &lt;br />
+      {installing && &lt;p>Go to Home Screen and open the App&lt;/p>}
+    &lt;/>
+  )
+}     
+</pre>
+
+    <h4>Use it in <q>App.js</q> or <q>Home.js</q></h4>
+    <pre>
+&lt;A2HS />
+</pre>
+  </main>
+  <script src="../menu.js"></script>
+</body>
+
+</html>
