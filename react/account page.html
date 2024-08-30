@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Page</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Example Settings Page</h2>
+
+    <pre>
+import React, { useContext } from 'react'
+import { List } from 'semantic-ui-react'
+import { MyContext } from '../App'
+import { Link } from 'react-router-dom'
+import { doLogout } from '../firebaseConfig'
+
+export default function Account() {
+  const { theme, user, setTheme } = useContext(MyContext)
+  return (
+    &lt;div>
+      &lt;h3>Account Settings&lt;/h3>
+
+      &lt;List divided relaxed="very" inverted={theme}>
+        &lt;List.Item as={Link} to="/courses">
+          &lt;List.Icon name='book' size='large' verticalAlign='middle' />
+          &lt;List.Content>
+            &lt;List.Header>Courses&lt;/List.Header>
+            &lt;List.Description>Add - Edit - Delete Courses&lt;/List.Description>
+          &lt;/List.Content>
+        &lt;/List.Item>
+        &lt;List.Item as={Link} to="/settings">
+          &lt;List.Icon name='setting' size='large' verticalAlign='middle' />
+          &lt;List.Content>
+            &lt;List.Header>Settings&lt;/List.Header>
+            &lt;List.Description>Change app settings&lt;/List.Description>
+          &lt;/List.Content>
+        &lt;/List.Item>
+        &lt;List.Item as={Link} to="/student_fields">
+          &lt;List.Icon name='user' size='large' verticalAlign='middle' />
+          &lt;List.Content>
+            &lt;List.Header>Student Fields&lt;/List.Header>
+            &lt;List.Description>Change student fields&lt;/List.Description>
+          &lt;/List.Content>
+        &lt;/List.Item>
+        &lt;List.Item as={Link} onClick={() => setTheme(!theme)}>
+          &lt;List.Icon name={theme ? 'moon' : 'sun'} size='large' verticalAlign='middle' />
+          &lt;List.Content>
+            &lt;List.Header>Change Theme&lt;/List.Header>
+            &lt;List.Description>Current: {theme ? 'Dark' : 'Light'}&lt;/List.Description>
+          &lt;/List.Content>
+        &lt;/List.Item>
+        &lt;List.Item as={Link} onClick={doLogout}>
+          &lt;List.Icon name='log out' size='large' color='red' verticalAlign='middle' />
+          &lt;List.Content>
+            &lt;List.Header>Logout&lt;/List.Header>
+            &lt;List.Description>{user?.email}&lt;/List.Description>
+          &lt;/List.Content>
+        &lt;/List.Item>
+
+      &lt;/List>
+    &lt;/div>
+  )
+}      
+</pre>
+
+    <script src="../menu.js"></script>
+  </main>
+</body>
+
+</html>

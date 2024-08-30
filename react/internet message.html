@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <main>
+    <h2>Internet Message</h2>
+    <p>Add this above <q>MainMenu.js</q></p>
+    <pre>
+&lt;InternetMsg />
+</pre>
+
+    <h3>Actual code</h3>
+    <pre>
+import { onValue, ref } from "firebase/database";
+import { useEffect, useState } from "react";
+import { db } from "../firebaseConfig";
+import { ReactComponent as Warn } from '../images/warn.svg'
+
+export default function InternetMsg() {
+  const [conn, setConn] = useState(null)
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  const updateOnlineStatus = () => {
+    setIsOnline(navigator.onLine);
+  };
+
+  useEffect(() => {
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    return () => {
+      window.removeEventListener('online', updateOnlineStatus);
+      window.removeEventListener('offline', updateOnlineStatus);
+    };
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      onValue(ref(db, ".info/connected"), (snap) => {
+        if (snap.val() === true) {
+          setConn(true);
+        } else {
+          setConn(false);
+        }
+      });
+    }, 5000);
+  }, [])
+
+  return (&lt;>
+    {conn === false &&
+      &lt;div style={{ backgroundColor: '#a60000', padding: 10 }}>
+        &lt;div style={{ textAlign: 'center', color: 'yellow', fontWeight: 'bold' }}>
+          &lt;span style={{ verticalAlign: 'middle', marginRight: 5 }}>&lt;Warn />&lt;/span>
+          {!isOnline && 'No internet. '}
+          {conn === false && 'No Database connection.'}
+        &lt;/div>
+      &lt;/div>
+    }
+  &lt;/>)
+}
+</pre>
+
+    <script src="../menu.js"></script>
+  </main>
+</body>
+
+</html>

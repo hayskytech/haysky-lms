@@ -10,70 +10,204 @@
 
 <body>
   <main>
-    <h1>Firebase Realtime Database</h1>
+    <h1>Firebase Realtime Database CRUD</h1>
     <h2>Setup</h2>
-    <p>Create a new file <q>firebaseConfig.js</q> (see firebase auth.html)</p>
+    <p>Create a new file <q>firebaseConfig.js</q> (see <a href="firebase setup.html">Firebase Setup</a> )</p>
 
-    <h2>Add to a list of data</h2>
-    <pre>const myRef = ref(db, 'matches')
-push(myRef, { match, teamA, teamB, date, time, place })</pre>
-
-    <h2>Fetch Items</h2>
+    <h2>Items Table</h2>
     <pre>
-useEffect(() => {
-  getItems()
-}, [user])
-function getItems() {
-  const myRef = ref(db, 'matches')
-  onValue(myRef, (snapshot) => {
-    const res = snapshot.val()
-    if (res) {
-      setData(res)
-      const arr = Object.entries(res)
-      setList(arr)
-    } else {
-      setList([])
+import React, { useContext, useEffect, useState } from 'react';
+import { onValue, ref, set, push, query, orderByChild, equalTo } from "firebase/database";
+import { Button, Icon, Label, Table } from 'semantic-ui-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { MyContext } from '../App';
+import { db } from '../firebaseConfig';
+
+export default function Todos() {
+  const { user, theme } = useContext(MyContext);
+  const navigate = useNavigate();
+  const path = `todos`;
+  const [list, setList] = useState({});
+  const [status, setStatus] = useState('active');
+
+  useEffect(() => {
+    if (!user) return setList({});
+    let myQuery;
+    if (status) myQuery = query(ref(db, path), orderByChild('status'), equalTo(status));
+    if (!status) myQuery = query(ref(db, path));
+    onValue(myQuery, (snapshot) => {
+      if (!snapshot.exists()) return setList({});
+      setList(snapshot.val());
+    });
+  }, [user, status]);
+
+  function addItem() {
+    const newKey = push(ref(db, path)).key;
+    navigate(`edit/${newKey}`);
+  }
+
+  function deleteItem(id) {
+    if (!id) return window.alert('Delete ID missing');
+    if (window.confirm('Delete this item?')) {
+      set(ref(db, `${path}/${id}`), null);
     }
-  })
-}</pre>
-    <h2>Delete items</h2>
+  }
 
-    <pre>
-function deleteItem(id) {
-  const delRef = ref(db, 'matches/' + id)
-  set(delRef, null)
-}
-function deleteAll() {
-  const delAllRef = ref(db, 'matches')
-  set(delAllRef, null)
+  function deleteAll() {
+    if (window.confirm('Delete All items?')) {
+      set(ref(db, path), null);
+    }
+  }
+
+  return (
+    &lt;div style={{ maxWidth: 650, margin: 'auto' }}>
+      &lt;Button color='blue' onClick={() => setStatus('active')} inverted={status === 'active'}>Active&lt;/Button>
+      &lt;Button color='blue' onClick={() => setStatus('inactive')} inverted={status === 'inactive'}>Inactive&lt;/Button>
+      &lt;Button color='blue' onClick={() => setStatus('')} inverted={status === ''}>All&lt;/Button>
+
+      &lt;h2 style={{ textTransform: 'capitalize' }}>
+        {status ? status : 'All'} Todos ({Object.keys(list).length})
+        &lt;Icon size='large' name='plus circle' color='green' className='clickable' onClick={addItem} />
+      &lt;/h2>
+
+      &lt;Table celled unstackable striped inverted={theme} size='large' compact>
+        &lt;tbody>
+          {Object.entries(list).map(item => (
+            &lt;tr key={item[0]}>
+              &lt;td>{item[1].todo}&lt;/td>
+              &lt;td>{item[1].timestamp}&lt;/td>
+              &lt;td>{item[1].status}&lt;/td>
+              &lt;td>
+                &lt;Label as={Link} to={`edit/${item[0]}`} color='blue'>Edit&lt;/Label>
+                &lt;Label onClick={() => deleteItem(item[0])} color='red'>Delete&lt;/Label>
+              &lt;/td>
+            &lt;/tr>
+          ))}
+        &lt;/tbody>
+      &lt;/Table>
+    &lt;/div>
+  );
 }
 </pre>
-    <h2>Edit item</h2>
+
+    <h2>Edit Item</h2>
+
     <pre>
-function editItem(id) {
-  setBox(true)
-  setEditId(id)
-  setMatch(data[id].match)
-  setTeamA(data[id].teamA);
-  setTeamB(data[id].teamB);
-  setDate(data[id].date);
-  setTime(data[id].time);
-  setPlace(data[id].place);
-}
+import React, { useState, useContext, useEffect } from 'react';
+import { Form, Input, Button, Radio } from 'semantic-ui-react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ref, set, onValue } from 'firebase/database';
+import { db } from '../firebaseConfig';
+import { MyContext } from '../App';
+
+export default function TodoEdit() {
+  const { user, theme } = useContext(MyContext);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const path = `todos/${id}`;
+
+  const [todo, setTodo] = useState('');
+  const [timestamp, setTimestamp] = useState('');
+  const [status, setStatus] = useState('active');
+
+  useEffect(() => {
+    if (!user) return;
+    onValue(ref(db, path), (snapshot) => {
+      if (!snapshot.exists()) return;
+      const res = snapshot.val();
+      setTodo(res.todo || '');
+      setTimestamp(res.timestamp || '');
+      setStatus(res.status || 'active');
+    });
+  }, [user]);
+
+  function saveItem() {
+    const details = {
+      todo,
+      timestamp,
+      status,
+    };
+    set(ref(db, path), details)
+      .then(() => {
+        window.alert('saved');
+        window.history.back();
+      }, (error) => {
+        window.alert(error);
+      });
+  }
+
+  function deleteItem() {
+    if (!id) return window.alert('Delete ID missing');
+    if (!window.confirm('Delete this item?')) return;
+    set(ref(db, `${path}`), null);
+    window.history.back();
+  }
+
+  return (
+    &lt;div style={{ maxWidth: 650, margin: 'auto' }}>
+      &lt;h3>Edit Todo&lt;/h3>
+      &lt;Form inverted={theme} onSubmit={saveItem} size='large'>
+        &lt;Form.Field
+          control={Input}
+          label='Todo'
+          required
+          value={todo}
+          onChange={(e, d) => setTodo(d.value)}
+        />
+        &lt;Form.Field
+          control={Input}
+          label='Timestamp'
+          required
+          value={timestamp}
+          onChange={(e, d) => setTimestamp(d.value)}
+        />
+        &lt;Form.Group inline>
+          &lt;label>Status&lt;/label>
+          &lt;Button color='blue' onClick={() => setStatus('active')} inverted={status !== 'active'}>
+            Active
+          &lt;/Button>
+          &lt;Button color='blue' onClick={() => setStatus('inactive')} inverted={status !== 'inactive'}>
+            Inactive
+          &lt;/Button>
+          &lt;Button color='blue' onClick={() => setStatus('')} inverted={status !== ''}>
+            All
+          &lt;/Button>
+        &lt;/Form.Group>
+        &lt;Button color='blue'>Save&lt;/Button>
+        &lt;Button color='red' type='button' onClick={deleteItem}>
+          Delete
+        &lt;/Button>
+      &lt;/Form>
+    &lt;/div>
+  );
+}  
 </pre>
-    <h2>Save Item</h2>
+
+    <h3>Add these two files in <q>App.js</q></h3>
     <pre>
-function saveItem() {
-  const saveRef = ref(db, 'matches/' + editId)
-  set(saveRef, { match, teamA, teamB, date, time, place })
-  setEditId(null)
-  closeBox()
-}
+&lt;Route path='todos' element={&lt;TodoMenu />} >
+  &lt;Route path='' element={&lt;Todos />} />
+  &lt;Route path='edit/:id' element={&lt;TodoEdit />} />
+&lt;/Route>
 </pre>
 
+    <h3>Add these two files in <q>MainMenu.js</q></h3>
 
+    <pre>
+import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
+import { Label } from 'semantic-ui-react'
 
-
+export default function MainMenu() {
+  return (
+    &lt;div style={{ maxWidth: 650, margin: 'auto' }}>
+      &lt;Label color='teal' as={Link} to={`/todos`}>Todos&lt;/Label>
+      &lt;hr />
+      &lt;Outlet />
+    &lt;/div>
+  )
+}  
+</pre>
 
     <script src="../menu.js"></script>
   </main>

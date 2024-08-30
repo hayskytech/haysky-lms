@@ -57,6 +57,8 @@ menu = {
     "sqlite auth",
     "firebase setup",
     "firebase realtime DB",
+    "account page",
+    "internet message",
     "admins",
     "add to home screen",
     "expo"
